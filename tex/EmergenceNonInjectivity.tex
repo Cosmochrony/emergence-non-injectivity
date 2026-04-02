@@ -15,7 +15,8 @@
 
 \newcommand{\bstar}{\beta^*}
 
-\title{Non-Injectivity as a Structural Necessity of Genuine Emergence}
+\title{Non-Injectivity as a Structural Necessity of Genuine Emergence:\\
+A No-Go Theorem for Faithful Emergent Descriptions}
 
 \author{J\'er\^ome Beau\\
 \small Independent Researcher\\
@@ -31,23 +32,32 @@
     We prove that any genuinely emergent physical description is necessarily
     non-injective and intrinsically compressive.
     The argument is purely structural: given a surjective projection
-    $\Pi : \Omega \to \mathcal{O}$ whose observables are entirely defined by $\Pi$,
-    if the effective level is not structurally isomorphic to the fundamental level,
-    then $\Pi$ cannot be injective, and the associated projection entropy
-    $S_\Pi > 0$.
-    The proof uses only surjectivity, the definition of observables by projection,
-    and the non-isomorphism condition; it is independent of any specific physical
-    framework.
+    $\Pi : \Omega \to \mathcal{O}$ such that $\mathcal{O}$ carries no
+    independent microstate-resolving structure beyond what $\Pi$ provides,
+    and such that the effective level is not structurally isomorphic to the
+    fundamental level, then $\Pi$ cannot be injective and the associated
+    projection entropy $S_\Pi > 0$.
+    The proof uses only surjectivity, informational completeness of $\Pi$ for
+    observables, and the non-isomorphism condition; it is independent of any
+    specific physical framework.
+    The result constitutes a \emph{no-go theorem for faithful emergence}: a
+    surjective projection that is both informationally faithful and genuinely
+    emergent cannot exist.
     As a corollary, descriptive redundancy, non-injectivity of $\Pi$, and
-    $S_\Pi > 0$ are co-extensive in any projective emergent framework, and any
-    non-trivial gauge structure requires these properties.
-    The result reframes non-injectivity from a modelling choice to a structural
-    necessity: a fully injective emergent description would reduce to a mere
-    reparametrisation of the fundamental level.
-    We discuss how this universal constraint is explicitly realised in the
-    Cosmochrony relational framework~\cite{Cosmochrony}, where non-injectivity
-    of the projection $\Pi$ underlies the emergence of gauge structure, spacetime
-    geometry, and quantum correlations~\cite{Beau2026k,BellPaper}.
+    $S_\Pi > 0$ are co-extensive in any projective emergent framework; any
+    non-trivial gauge structure requires these properties; and any theory
+    admitting a regime where its own description ceases to be valid --- such
+    as standard cosmology at $t \lesssim t_\mathrm{Planck}$ --- implicitly
+    assumes a non-injective projection.
+    We provide a categorical reformulation (genuine emergence corresponds to
+    a non-faithful functor) and an informational one (the Kullback--Leibler
+    divergence of any state distribution with respect to its projection
+    lift is strictly positive).
+    The result is illustrated by a concrete spin model and discussed in
+    relation to the projective incompleteness of $\Lambda$CDM and the
+    Standard Model, whose fundamental constants are identified as invariants
+    of an unspecified projection $\Pi$ invisible from the effective level
+    alone.
   \end{abstract}
 
   \paragraph{Keywords.}
@@ -378,49 +388,11 @@
     The resulting gauge structure underlies the emergence of electroweak
     interactions, while the Born--Infeld saturation bound selects the unique
     admissible infrared dynamics~\cite{Beau2026c}.
-    At the spectral level, the parity involution $c \leftrightarrow q - c$ of the
-    Weil representation is a discrete realisation of projective fibre duality,
-    and the pair observable $\sigma_{\mathrm{pair}} = \sigma_c \cdot \sigma_{q-c}$
-    is the admissibility observable dictated by this non-injective
-    structure~\cite{Beau2026a21,Beau2026a22}.
     Bell-type correlations arise as the observable signature of $S_\Pi >
   0$~\cite{BellPaper}.
-
-    \begin{remark}[On the route from non-injectivity to $\mathrm{SU}(2)$]
-      \label{rem:SU2}
-      Theorem~\ref{thm:main} guarantees the existence of non-trivial fibres but
-      says nothing about their form.
-      The identification of $G_\Pi$ with $\mathrm{SU}(2)$ rather than
-      $\mathrm{SO}(3)$ or another group is a separate result, established in
-      Cosmochrony via a chain of constraints absent from the universal theorem.
-
-      The route is the following.
-      The Born--Infeld parity constraint~\cite{Beau2026a22} fixes the minimal fibre
-      structure to the involution $c \leftrightarrow q - c$.
-      The requirement that the representation algebra be associative, combined with
-      the Hurwitz classification of real normed division algebras ($\mathbb{R}$,
-      $\mathbb{C}$, $\mathbb{H}$, $\mathbb{O}$), selects $\mathbb{H}$ as the
-      minimal associative non-commutative structure~\cite{Beau2026a26}.
-      The admissible neutral sector then has exactly $\dim_{\mathbb{R}} \mathrm{Im}\,
-      \mathbb{H} = 3$ independent directions --- the content of $\Sigma_c(n_3) = 3$
-      in O23~\cite{Beau2026a26} --- and the groups realising this sector form
-      the set $\{Q_8, \mathrm{Dic}_n, 2O, 2I\}$, all subgroups of $\mathrm{SU}(2)$
-      and not of $\mathrm{SO}(3)$~\cite{Cosmochrony}.
-      The exclusion of $\mathrm{SO}(3)$ is structural: quotienting the central
-      $\mathbb{Z}_2$ of $\mathrm{SU}(2)$ destroys the $4\pi$-periodicity required
-      for spinorial holonomy.
-      In the continuum limit, the chain $Q_8 \hookrightarrow 2I \hookrightarrow
-      \mathrm{LPS}_p \hookrightarrow \mathrm{SU}(2)$ converges to $\mathrm{SU}(2)$
-      as the unique spectral attractor.
-
-      These steps use Born--Infeld dynamics, Weil representations, and the
-      Hurwitz theorem --- none of which appears in Theorem~\ref{thm:main}.
-      The universal theorem supplies the necessary condition (non-trivial fibres);
-      Cosmochrony supplies the sufficient conditions that fix their geometry.
-      This selection is not universal but model-dependent: other emergent frameworks
-      may yield different fibre geometries and different structure groups.
-      The two results are complementary and non-redundant.
-    \end{remark}
+    The route from non-injectivity to the specific group $\mathrm{SU}(2)$,
+    via Born--Infeld parity, Weil representations, and the Hurwitz classification
+    of real normed division algebras, is detailed in Appendix~\ref{app:SU2}.
 
   \section{Scope and Limits of the Result}
     \label{sec:scope}
@@ -551,7 +523,6 @@
     not a limitation to be overcome but a structural property of the emergent
     description itself.
 
-  \clearpage
   \section{Discussion}
     \label{sec:discussion}
 
