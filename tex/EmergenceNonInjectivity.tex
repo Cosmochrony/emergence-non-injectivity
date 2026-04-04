@@ -77,9 +77,17 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   A recurring feature of such frameworks is that $\Pi$ is many-to-one:
   distinct configurations $\omega \in \Omega$ may correspond to the same
   observable state $o \in \mathcal{O}$.
+  This feature is closely related to coarse-graining and renormalisation
+  procedures, where effective descriptions arise through systematic loss
+  of microscopic information~\cite{Wilson1975,Jaynes1957,GellMannHartle1993}.
+  More generally, the relation between emergence and information
+  compression has been discussed in both physical and philosophical
+  contexts~\cite{Butterfield2011,Ellis2012}.
   This non-injectivity has been identified as the structural origin of gauge
-  symmetry~\cite{Cosmochrony}, Bell-inequality violations~\cite{BellPaper},
-  and black hole entropy~\cite{Beau2026c}.
+  symmetry~\cite{Cosmochrony}, Bell-inequality violations~\cite{Beau2026b},
+  and black hole entropy~\cite{Beau2026c}, and is broadly related to
+  redundancy structures appearing in constrained and coarse-grained
+  descriptions.
   In each case, however, non-injectivity has been introduced as a feature of
   a specific model rather than derived as a universal necessity.
 
@@ -257,7 +265,7 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   \end{equation}
   $S_\Pi = 0$ if and only if $\Pi$ is (almost everywhere) injective; $S_\Pi > 0$
   if and only if at least one fibre $\Pi^{-1}(o)$ has measure greater than
-  that of a single point~\cite{BellPaper,Cosmochrony}.
+  that of a single point~\cite{Beau2026b,Cosmochrony}.
 
   \section{Main Result}
   \label{sec:theorem}
@@ -369,6 +377,11 @@ A No-Go Theorem for Faithful Emergent Descriptions}
     the redundancy may in turn manifest as a gauge structure.
   \end{corollary}
 
+  This perspective is consistent with the standard interpretation of gauge
+  symmetry as a redundancy of description, as formalised in constrained
+  Hamiltonian systems~\cite{HenneauxTeitelboim1992} and relational
+  approaches to observables~\cite{Rovelli2002}.
+
   \section{Three-Level Structure}
   \label{sec:levels}
 
@@ -399,7 +412,7 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   interactions, while the Born--Infeld saturation bound selects the unique
   admissible infrared dynamics~\cite{Beau2026c}.
   Bell-type correlations arise as the observable signature of $S_\Pi >
-  0$~\cite{BellPaper}.
+  0$~\cite{Beau2026b}.
   The route from non-injectivity to the specific group $\mathrm{SU}(2)$,
   via Born--Infeld parity, Weil representations, and the Hurwitz classification
   of real normed division algebras, is detailed in Appendix~\ref{app:SU2}.
@@ -526,12 +539,16 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   compression.
 
   The informational reading also connects to the renormalisation group.
-  The Wilsonian RG projection $\Pi_\Lambda$ is non-injective by construction:
+  The Wilsonian RG projection $\Pi_\Lambda$ is non-injective by construction~\cite{Wilson1975}:
   the same low-energy observable corresponds to infinitely many UV completions.
   Corollary~\ref{cor:info} says that any such effective field theory has
   $S_{\Pi_\Lambda} > 0$ and $D_{\mathrm{KL}} > 0$: the loss of UV information is
   not a limitation to be overcome but a structural property of the emergent
   description itself.
+
+  This interpretation aligns with the information-theoretic view of
+  statistical mechanics and inference, where macroscopic descriptions
+  necessarily involve a loss of microscopic detail~\cite{Jaynes1957}.
 
   \section{Discussion}
   \label{sec:discussion}
@@ -549,6 +566,13 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   ($\mathcal{O} \not\cong \Omega$) cannot exist.
   One of the two conditions must be abandoned; genuine emergence requires
   abandoning injectivity.
+
+  While the connection between emergence and information loss is widely
+  recognised in the context of coarse-graining and effective field
+  theories, the present result sharpens this intuition into a structural
+  necessity: it does not rely on a specific dynamical or statistical
+  framework, but follows from minimal assumptions on the relation between
+  levels of description.
 
   The hypotheses are minimal.
   We do not assume a metric, a Hilbert space, a Lagrangian, or any physical
@@ -731,6 +755,42 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   The two results are complementary and non-redundant.
 
   \begin{thebibliography}{99}
+
+    \bibitem{Wilson1975}
+    K. G. Wilson,
+    ``The renormalization group: Critical phenomena and the Kondo problem,''
+    Rev. Mod. Phys. 47, 773 (1975).
+
+    \bibitem{Jaynes1957}
+    E. T. Jaynes,
+    ``Information theory and statistical mechanics,''
+    Phys. Rev. 106, 620 (1957).
+
+    \bibitem{GellMannHartle1993}
+    M. Gell-Mann and J. B. Hartle,
+    ``Classical equations for quantum systems,''
+    Phys. Rev. D 47, 3345 (1993).
+
+    \bibitem{Butterfield2011}
+    J. Butterfield,
+    ``Less is different: Emergence and reduction reconciled,''
+    Found. Phys. 41, 1065 (2011).
+
+    \bibitem{Ellis2012}
+    G. F. R. Ellis,
+    ``Top-down causation and emergence: Some comments on mechanisms,''
+    Interface Focus 2, 126 (2012).
+
+    \bibitem{HenneauxTeitelboim1992}
+    M. Henneaux and C. Teitelboim,
+    ``Quantization of Gauge Systems,''
+    Princeton University Press (1992).
+
+    \bibitem{Rovelli2002}
+    C. Rovelli,
+    ``Partial observables,''
+    Phys. Rev. D 65, 124013 (2002).
+
     \input{cosmochrony-bibliography}
   \end{thebibliography}
 
