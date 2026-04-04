@@ -47,8 +47,8 @@ A No-Go Theorem for Faithful Emergent Descriptions}
     $S_\Pi > 0$ are co-extensive in any projective emergent framework; any
     non-trivial gauge structure requires these properties; and any theory
     admitting a regime where its own description ceases to be valid --- such
-    as standard cosmology at $t \lesssim t_\mathrm{Planck}$ --- implicitly
-    assumes a non-injective projection.
+    as standard cosmology at $t \lesssim t_\mathrm{Planck}$ --- is
+    structurally consistent with the presence of a non-injective projection.
     We provide a categorical reformulation (genuine emergence corresponds to
     a non-faithful functor) and an informational one (the Kullback--Leibler
     divergence of any state distribution with respect to its projection
@@ -56,7 +56,7 @@ A No-Go Theorem for Faithful Emergent Descriptions}
     The result is illustrated by a concrete spin model and discussed in
     relation to the projective incompleteness of $\Lambda$CDM and the
     Standard Model, whose fundamental constants are identified as invariants
-    of an unspecified projection $\Pi$ invisible from the effective level
+    of an unspecified projection $\Pi$ not accessible from the effective level
     alone.
   \end{abstract}
 
@@ -90,8 +90,11 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   descriptions.
   In each case, however, non-injectivity has been introduced as a feature of
   a specific model rather than derived as a universal necessity.
+  What is missing across these frameworks is a structural necessity result:
+  while non-injective mappings appear operationally, no general theorem
+  establishes that they are unavoidable for emergence itself.
 
-  The present note closes this logical gap.
+  The present note supplies this missing result.
   We show that non-injectivity is not a modelling choice but a structural
   consequence of genuine emergence: any surjective map $\Pi$ whose observables
   are entirely defined by $\Pi$, and whose effective level is not isomorphic
@@ -436,6 +439,42 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   projection $\Pi$ to be injective or otherwise.
   The theorem is silent about them.
 
+  Loop quantum gravity (LQG) deserves explicit discussion, as it occupies an
+  intermediate position~\cite{Rovelli2004,Thiemann2007}.
+  LQG describes the quantum geometry of the universe --- spin networks and spin
+  foams --- as fundamental objects that are themselves part of the observable
+  universe, not external to it.
+  It does not posit a pre-geometric substrate $\Omega$ from which observables
+  are projected; it claims to \emph{be} the fundamental level.
+  In this sense LQG is not emergent: it does not fit the projective structure
+  of Definition~\ref{def:defined-by-Pi}, and Theorem~\ref{thm:main} does not
+  apply to it as a fundamental theory.
+
+  The relevant demarcation criterion is therefore not the presence of a
+  singularity but an ontological one:
+  \begin{quote}
+    \emph{Theorem~\ref{thm:main} applies naturally to frameworks that posit
+    a level $\Omega$ structurally external to the observable universe,
+      from which observables are projected via $\Pi$.
+      A theory that describes the universe at a finer scale --- however fine ---
+      without positing such an external level falls outside this class.}
+  \end{quote}
+  LQG describes the universe at the Planck scale; it does not describe what
+  lies outside or before the universe.
+  Cosmochrony, by contrast, posits a pre-geometric substrate $\mathcal{C}_\chi$
+  that is pre-spatial, pre-temporal, and structurally prior to the observable
+  universe: it is explicitly in the class to which the theorem applies.
+
+  Note, however, that the semi-classical limit of LQG ---
+  the projection $\Pi_\mathrm{sc} : \mathcal{H}_\mathrm{LQG} \to g_{\mu\nu}$
+  that recovers classical general relativity --- is itself a non-injective map
+  within the class of Definition~\ref{def:defined-by-Pi}, with
+  $\Omega = \mathcal{H}_\mathrm{LQG}$ and $\mathcal{O} = \{g_{\mu\nu}\}$.
+  Theorem~\ref{thm:main} applies to this projection: general relativity is
+  genuinely emergent from LQG, and its projection is necessarily non-injective.
+  The two claims --- LQG is not emergent as a fundamental theory, GR is
+  emergent from LQG --- are consistent.
+
   \textbf{Theories within the scope.}
   Theorem~\ref{thm:main} applies to any framework where the effective description
   is genuinely derived from a finer-grained level via projection.
@@ -460,7 +499,8 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   The result isolates a precise logical boundary:
 
   \begin{quote}
-    \emph{Injectivity of $\Pi$ is equivalent to the absence of genuine emergence.}
+    \emph{Within the present projective-emergent setting,
+      injectivity of $\Pi$ is equivalent to the absence of genuine emergence.}
   \end{quote}
 
   If $\Pi$ is injective, the effective level is isomorphic to the fundamental
@@ -603,33 +643,48 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   The frameworks $\Lambda$CDM and the Standard Model describe the structure of
   $\mathcal{O}$ with extraordinary precision, but they specify neither the
   fundamental level $\Omega$ nor the projection $\Pi : \Omega \to \mathcal{O}$.
-  Yet three independent mechanisms within these frameworks each imply the
-  existence of a non-injective projection.
+  Yet three independent mechanisms within these frameworks each admit a
+  natural reading in terms of a non-injective projection.
 
   \emph{(i) Cosmological singularity.}
   The metric $g_{\mu\nu}$ ceases to be defined at $t \lesssim t_\mathrm{Planck}$,
-  so the geometry is effective, not fundamental.
-  An implicit $\Omega$ and $\Pi$ must exist; by Theorem~\ref{thm:main},
-  $\Pi$ is non-injective.
+  which is structurally consistent with the geometry being an effective
+  description arising from a more primitive level.
+  If such a level $\Omega$ and projection $\Pi$ are posited and satisfy
+  Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial},
+  Theorem~\ref{thm:main} forces $\Pi$ to be non-injective.
 
   \emph{(ii) Renormalisation group.}
-  The Standard Model is a Wilsonian effective field theory with UV cutoff
-  $\Lambda$.
-  The projection $\Pi_\Lambda : \Omega_\mathrm{UV} \to \mathcal{O}_\mathrm{IR}$
-  is non-injective by construction: infinitely many UV completions yield the
+  The Standard Model can be naturally interpreted as a Wilsonian effective
+  field theory~\cite{Wilson1975} with UV cutoff $\Lambda$.
+  Under this interpretation, the map
+  $\Pi_\Lambda : \Omega_\mathrm{UV} \to \mathcal{O}_\mathrm{IR}$
+  is non-injective: infinitely many UV completions yield the
   same infrared observables.
+  Similar compressive structures appear in classical statistical mechanics
+  through phase-space coarse-graining, where macroscopic thermodynamic
+  variables correspond to vast equivalence classes of microstates.
 
   \emph{(iii) Quantum measurement.}
-  The projection $\Pi_\mathrm{meas} : \mathcal{H} \to \mathcal{O}_\mathrm{class}$
-  maps distinct quantum states to the same classical outcome.
-  The measurement problem is, in the present language, the question of the
-  structure of $\Pi_\mathrm{meas}$ and why it is non-injective.
+  The transition from quantum states to classical outcomes admits a natural
+  description as a projection
+  $\Pi_\mathrm{meas} : \mathcal{H} \to \mathcal{O}_\mathrm{class}$
+  mapping distinct quantum states to the same classical outcome.
+  The measurement problem can then be read, in the present language, as the
+  question of what determines the structure of $\Pi_\mathrm{meas}$ and why
+  it is non-injective.
 
-  These three mechanisms are independent of any hypothesis specific to
-  Cosmochrony; they follow from the internal structure of standard physics alone.
-  Their common conclusion is that $\Lambda$CDM and the Standard Model are
-  necessarily projectively incomplete.
-  The following table identifies what is described and what is absent.
+  These three readings are independent of any hypothesis specific to
+  Cosmochrony.
+  They illustrate that the projective structure identified in
+  Theorem~\ref{thm:main} is not exotic: it appears wherever an effective
+  description is obtained from a finer-grained level.
+  What is missing in these frameworks is a structural necessity result:
+  while non-injective mappings appear operationally in each case, no general
+  theorem establishes that they are unavoidable for emergence itself.
+  Theorem~\ref{thm:main} supplies this missing result.
+  The following table identifies what is described and what is absent in
+  standard physics.
 
   \begin{center}
     \begin{tabular}{lll}
@@ -646,19 +701,64 @@ A No-Go Theorem for Faithful Emergent Descriptions}
 
   The quantities that standard physics cannot derive --- the fine-structure
   constant $\alpha$, the electron-to-proton mass ratio $m_e/m_p$, the CKM
-  mixing angles --- are precisely the invariants of $\Pi$ that $\mathcal{O}$
-  alone cannot determine: they encode properties of the fibres $\Pi^{-1}(o)$
-  that are invisible to any description confined to the effective level.
+  mixing angles --- can be naturally interpreted as invariants of $\Pi$ that
+  $\mathcal{O}$ alone cannot determine: under this interpretation, they encode
+  properties of the fibres $\Pi^{-1}(o)$ that are invisible to any description
+  confined to the effective level.
 
   The incompleteness is not empirical but structural:
   \begin{quote}
-    \emph{Standard physics omits the map that defines its own observables.}
+    \emph{Standard physics omits the map defining its observables.}
   \end{quote}
   This imposes a precise constraint on any candidate unification or
   quantum-gravity programme: a theory that remains within $\mathcal{O}$ ---
   however sophisticated --- does not complete the description; it extends it.
   Any theory that genuinely completes standard physics must specify $\Omega$,
   $\Pi$, and the non-injective structure of $\Pi$.
+
+  \textbf{Singularity elimination does not restore completeness.}
+  A natural response is to propose a framework that eliminates the initial
+  singularity entirely --- loop quantum cosmology (LQC), pre-Big Bang
+  scenarios, bounce cosmologies, or emergent-universe models --- on the
+  grounds that if $g_{\mu\nu}$ is everywhere well defined, the cosmological
+  argument of Section~\ref{sec:intro} does not apply.
+  This response is correct as far as it goes, but it confuses eliminating a
+  \emph{signal} of incompleteness with eliminating the incompleteness itself.
+
+  Consider the four main classes.
+  LQC replaces the singularity by a quantum bounce at Planck
+  density~\cite{Ashtekar2006,Bojowald2001}.
+  It has a partial $\Omega$ --- spin-network states --- and a many-to-one
+  projection to the effective metric.
+  It is more advanced than $\Lambda$CDM in specifying $\Omega$, but $\Pi$
+  remains unspecified: the effective dynamics is postulated, not derived from
+  the projection structure.
+  Pre-Big Bang scenarios (string cosmology~\cite{Gasperini1993},
+  ekpyrotic~\cite{Khoury2001}, conformal cyclic~\cite{Penrose2010})
+  displace the singularity into a preceding phase, but that phase is itself
+  described by an effective geometry --- the question of its own $\Omega$ and
+  $\Pi$ is deferred, not answered.
+  Bounce cosmologies with everywhere-regular $g_{\mu\nu}$ avoid the
+  cosmological argument directly; they remain incomplete through the
+  renormalisation and measurement non-injectivities of mechanisms~(ii)
+  and~(iii) above.
+  Emergent-universe models (Hartle--Hawking~\cite{HartleHawking1983},
+  tunnelling from nothing~\cite{Vilenkin1982}) replace
+  the singularity by a quantum-to-classical transition --- which is itself a
+  non-injective projection from $\mathcal{H}$ to a classical geometry.
+
+  In every case, the structure of the argument is the same:
+  \begin{quote}
+    \emph{Eliminating the singularity removes one signal of projective
+    incompleteness.
+    It does not supply $\Omega$, $\Pi$, or the non-injective structure of $\Pi$.
+    A theory without a singularity but without a fundamental level is simply
+    a theory whose limit of validity has not yet been reached within the
+    observed range.}
+  \end{quote}
+  Completeness in the projective sense requires specifying what lies above
+  $\mathcal{O}$, not merely extending $\mathcal{O}$ to a regime where it no
+  longer breaks down.
 
   The three reformulations --- structural (Theorem~\ref{thm:main}), categorical
   (Theorem~\ref{thm:cat}), and informational
@@ -685,6 +785,10 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   within the projective-emergent setting, which rules out the possibility of
   a faithful emergent description --- something that is not guaranteed by
   pointing to examples of coarse-graining.
+  The present result does not introduce a new model of emergence, but
+  establishes a structural constraint that any such model must satisfy:
+  within the present projective-emergent framework, emergence without
+  non-injectivity is impossible.
 
   The core equivalence, within the present projective-emergent setting, can
   be stated in a single line:
@@ -791,6 +895,51 @@ A No-Go Theorem for Faithful Emergent Descriptions}
     C. Rovelli,
     ``Partial observables,''
     Phys. Rev. D 65, 124013 (2002).
+
+    \bibitem{Rovelli2004}
+    C. Rovelli,
+    ``Quantum Gravity,''
+    Cambridge University Press (2004).
+
+    \bibitem{Thiemann2007}
+    T. Thiemann,
+    ``Modern Canonical Quantum General Relativity,''
+    Cambridge University Press (2007).
+
+    \bibitem{Ashtekar2006}
+    A. Ashtekar and P. Singh,
+    ``Loop quantum cosmology: A status report,''
+    Class. Quantum Grav.\ 28, 213001 (2011).
+
+    \bibitem{Bojowald2001}
+    M. Bojowald,
+    ``Absence of a singularity in loop quantum cosmology,''
+    Phys. Rev. Lett.\ 86, 5227 (2001).
+
+    \bibitem{Gasperini1993}
+    M. Gasperini and G. Veneziano,
+    ``Pre-Big Bang in string cosmology,''
+    Astropart. Phys.\ 1, 317 (1993).
+
+    \bibitem{Khoury2001}
+    J. Khoury, B. A. Ovrut, P. J. Steinhardt and N. Turok,
+    ``The ekpyrotic universe,''
+    Phys. Rev. D 64, 123522 (2001).
+
+    \bibitem{Penrose2010}
+    R. Penrose,
+    ``Cycles of Time,''
+    Bodley Head (2010).
+
+    \bibitem{HartleHawking1983}
+    J. B. Hartle and S. W. Hawking,
+    ``Wave function of the universe,''
+    Phys. Rev. D 28, 2960 (1983).
+
+    \bibitem{Vilenkin1982}
+    A. Vilenkin,
+    ``Creation of universes from nothing,''
+    Phys. Lett. B 117, 25 (1982).
 
     \input{cosmochrony-bibliography}
   \end{thebibliography}
