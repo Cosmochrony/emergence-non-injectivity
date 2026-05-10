@@ -996,49 +996,86 @@ Independent Researcher, Paris, France\\
 
   \appendix
 
-  \section{On the Route from Non-Injectivity to $\mathrm{SU}(2)$}
+  \section{On the Route from Non-Injectivity to the Standard Model Gauge Group}
   \label{app:SU2}
 
   Theorem~\ref{thm:main} guarantees the existence of non-trivial fibres but
   says nothing about their form.
-  The identification of the structure group $G_\Pi$ with $\mathrm{SU}(2)$
-  rather than $\mathrm{SO}(3)$ or another compact group is a separate result,
-  established in~\cite{Cosmochrony} via a chain of constraints absent
-  from the universal theorem.
+  The identification of the structure group $G_\Pi$ with the Standard Model gauge
+  group $G_{\mathrm{SM}} = \mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$
+  is a separate result, established in~\cite{Cosmochrony} and subsequent
+  papers via a chain of constraints absent from the universal theorem.
+  We sketch the main steps for $\mathrm{SU}(2)$, then indicate how the same
+  mechanism extends to the full gauge group.
 
-  The route proceeds in four steps.
-  First, the Born--Infeld parity constraint~\cite{Beau2026a22} fixes the
-  minimal fibre structure to the involution $c \leftrightarrow q - c$ on the
-  Weil representation space of $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$.
-  Second, the requirement that the representation algebra be associative,
-  combined with the Hurwitz classification of real normed division algebras
-  ($\mathbb{R}$, $\mathbb{C}$, $\mathbb{H}$, $\mathbb{O}$), selects
-  $\mathbb{H}$ as the minimal associative non-commutative
-  structure~\cite{Beau2026a26}.
-  Third, the admissible neutral sector has exactly
-  $\dim_{\mathbb{R}} \mathrm{Im}\,\mathbb{H} = 3$ independent directions ---
-  the content of $\Sigma_c(n_3) = 3$ in~\cite{Beau2026a26} --- and the
-  groups realising this sector form the set $\{Q_8, \mathrm{Dic}_n, 2O, 2I\}$,
-  all subgroups of $\mathrm{SU}(2)$ and not of $\mathrm{SO}(3)$~\cite{Cosmochrony}.
-  The exclusion of $\mathrm{SO}(3)$ is structural: quotienting the central
-  $\mathbb{Z}_2$ of $\mathrm{SU}(2)$ destroys the $4\pi$-periodicity required
-  for spinorial holonomy.
-  Fourth, in the continuum limit, the chain
-  $Q_8 \hookrightarrow 2I \hookrightarrow \mathrm{LPS}_p \hookrightarrow
-  \mathrm{SU}(2)$ converges to $\mathrm{SU}(2)$ as the unique spectral
-  attractor~\cite{Cosmochrony}.
+  \subsection*{The SU(2) identification}
 
-  These steps use Born--Infeld dynamics, Weil representations on Heisenberg
-  groups, and the Hurwitz theorem --- none of which appears in
-  Theorem~\ref{thm:main}.
-  The universal theorem supplies the necessary condition (non-trivial fibres);
-  the framework-specific constraints of~\cite{Cosmochrony} supply the sufficient
-  conditions that fix their geometry to $S^3 \cong \mathrm{SU}(2)$.
-  This selection is model-dependent: other emergent frameworks may yield
-  different fibre geometries and different structure groups.
-  The two results are complementary and non-redundant.
+    The route to $\mathrm{SU}(2)$ proceeds in four steps, now entirely analytical.
+    First, the Born--Infeld parity constraint~\cite{Beau2026a22} fixes the
+    minimal fibre structure to the involution $c \leftrightarrow q - c$ on the
+    Weil representation space of $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$.
+    Second, the requirement that the representation algebra be associative,
+    combined with the Hurwitz classification of real normed division algebras
+    ($\mathbb{R}$, $\mathbb{C}$, $\mathbb{H}$, $\mathbb{O}$), selects
+    $\mathbb{H}$ as the minimal associative non-commutative structure, with
+    $\dim_{\mathbb{R}} \mathrm{Im}\,\mathbb{H} = 3$ admissible directions~\cite{Beau2026a26}.
+    Third, the quaternionic rigidity theorem~\cite{Beau2026a31} proves that
+    every admissible morphism on $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ necessarily
+    factors through $\mathfrak{su}(2)$, and the symmetric rank formula
+    $r_{\mathrm{eff}} = d_\rho(d_\rho + 1)/2 = 3$ uniquely identifies
+    $d_\rho = 2$~\cite{Beau2026a33}.
+    The exclusion of $\mathrm{SO}(3)$ is structural: quotienting the central
+    $\mathbb{Z}_2$ of $\mathrm{SU}(2)$ destroys the $4\pi$-periodicity required
+    for spinorial holonomy.
+    Fourth, the Born--Infeld parity anti-linearity forces an equatorial constraint
+    on the admissible fibre, from which the invariant covariance ratio
+    $\lambda_1/\lambda_2 = 2$ is derived analytically as the squared
+    symmetric-tensor normalisation of the Carnot-degree-2 central generator
+    $Z = [X, Y]$~\cite{Beau2026a34}.
 
-  \clearpage
+    These four steps close the following analytical chain:
+    \begin{equation}
+      \text{emergence} \;\Rightarrow\; \mathfrak{su}(2)\;\text{\cite{Beau2026a31}}
+      \;\Rightarrow\; d_\rho = 2\;\text{\cite{Beau2026a33}}
+      \;\Rightarrow\; \lambda_1/\lambda_2 = 2\;\text{\cite{Beau2026a34}, proved}.
+      \label{eq:SU2chain}
+    \end{equation}
+    Each implication in~\eqref{eq:SU2chain} is a proved theorem.
+
+  \subsection*{Extension to the full gauge group}
+
+    The $\mathrm{U}(1)$ factor corresponds to global phase rotations within the
+    complex fibre $\mathbb{C}^q$, which lie in the kernel of $\Pi$ by the phase
+    invariance of $\sigma_c(n)$~\cite{Beau2026a31}.
+    Its identification is unconditional.
+
+    The $\mathrm{SU}(3)$ factor arises from a structurally distinct mechanism:
+    the colour triplet $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$
+    satisfying $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ and pairwise non-conjugacy.
+    Under Hypothesis [H-color] (triplet co-admissibility,
+    $\sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n)$), the group of
+    Born--Infeld-compatible fibre-preserving transformations of the combined
+    effective space $\tilde{V}_{\mathrm{color}} \cong \mathbb{C}^3$ is exactly
+    $\mathrm{SU}(3)$; all alternatives ($\mathrm{U}(3)$, $\mathrm{SO}(3)$,
+    $\mathrm{U}(2)$, $G_2$) are excluded~\cite{Beau2026a35}.
+    The composite admissibility fixed point is therefore
+    $G_{\mathrm{SM}} = \mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$,
+    derived unconditionally for the colour-adapted Cayley graph and
+    conditionally on [H-color] for the standard graph~\cite{Beau2026a35}.
+
+  \subsection*{Complementarity with Theorem~\ref{thm:main}}
+
+    None of the steps above --- Born--Infeld dynamics, Weil representations,
+    Hurwitz theorem, quaternionic rigidity, colour triplet co-admissibility ---
+    appears in Theorem~\ref{thm:main}.
+    The universal theorem supplies the necessary condition (non-trivial fibres,
+    $S_\Pi > 0$); the framework-specific constraints supply the sufficient
+    conditions that fix the fibre geometry to $G_{\mathrm{SM}}$.
+    This selection is model-dependent: other emergent frameworks may yield
+    different structure groups.
+    The two results are complementary and non-redundant.
+
+    \clearpage
   \section*{Acknowledgements}
 
   This work is part of a research programme on projective emergent physics~\cite{Cosmochrony}.
