@@ -2,6 +2,7 @@
 
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{hyperref}
+\usepackage{doi}
 \usepackage{microtype}
 \usepackage[margin=2.5cm]{geometry}
 
@@ -29,7 +30,7 @@ Independent Researcher, Paris, France\\
   \maketitle
 
   \begin{abstract}
-    We prove that any genuinely emergent (i.e. non-isomorphic effective) physical
+    We prove that any genuinely emergent (i.e.\ non-isomorphic effective) physical
     description is necessarily non-injective and intrinsically compressive.
     The argument is purely structural: given a surjective projection
     $\Pi : \Omega \to \mathcal{O}$ such that $\mathcal{O}$ carries no
@@ -58,10 +59,22 @@ Independent Researcher, Paris, France\\
     Standard Model, whose fundamental constants are identified as invariants
     of an unspecified projection $\Pi$ not accessible from the effective level
     alone.
+    A further corollary establishes that non-injectivity is recursive: any
+    tower of genuinely distinct emergent levels carries one independent
+    non-injective projection per stratum, with entropy accumulating across
+    levels.
+    This recursive structure implies that colour confinement --- the
+    non-observability of free quarks --- is a structural necessity of any
+    framework in which colour-neutral hadrons arise as genuinely emergent from
+    coloured degrees of freedom.
   \end{abstract}
 
   \paragraph{Keywords.}
-    emergence, non-injectivity, projection, gauge symmetry, information loss, entropy, effective theories.
+    emergence, non-injectivity, projection, gauge symmetry, information loss,
+    entropy, effective theories, colour confinement, towers of emergence.
+
+    \clearpage
+    \tableofcontents
 
     \clearpage
 
@@ -100,6 +113,9 @@ Independent Researcher, Paris, France\\
   are entirely defined by $\Pi$, and whose effective level is not isomorphic
   to the fundamental level, must be non-injective.
   The proof is elementary and framework-independent.
+  A further corollary (Section~\ref{sec:towers}) shows that non-injectivity is
+  recursive: the same structural necessity applies at every stratum of a tower
+  of emergent descriptions, with entropy accumulating across levels.
 
   \subsection*{A preliminary observation: standard cosmology as an effective description}
 
@@ -178,7 +194,7 @@ Independent Researcher, Paris, France\\
     \textbf{Key message.}
     A fully injective emergent description is a contradiction in terms under
     Definitions 1 and 2: if $\Pi$ were injective, the effective level would be
-    isomorphic to the fundamental level, and there would be no emergence —
+    isomorphic to the fundamental level, and there would be no emergence ---
     only a relabelling.
 
   \section{Framework and Definitions}
@@ -385,6 +401,41 @@ Independent Researcher, Paris, France\\
   Hamiltonian systems~\cite{HenneauxTeitelboim1992} and relational
   approaches to observables~\cite{Rovelli2002}.
 
+  \begin{corollary}[Recursive non-injectivity]
+    \label{cor:recursive}
+    Let $\Omega_0 \xrightarrow{\Pi_1} \Omega_1 \xrightarrow{\Pi_2} \Omega_2$ be a tower
+    of surjective projections in which, at each step $i \in \{1,2\}$, the observables of
+    $\Omega_i$ are defined by $\Pi_i$ and $\Omega_i \not\cong \Omega_{i-1}$.
+    Then each $\Pi_i$ is non-injective, $S_{\Pi_i} > 0$, and the composed projection
+    $\Pi_2 \circ \Pi_1 : \Omega_0 \to \Omega_2$ is non-injective with
+    \[
+      S_{\Pi_2 \circ \Pi_1} \;\geq\; S_{\Pi_1}.
+    \]
+    The result extends to towers of arbitrary finite depth.
+  \end{corollary}
+
+  \begin{proof}
+    Non-injectivity of each $\Pi_i$ follows from Theorem~\ref{thm:main} applied at each
+    level independently.
+    Non-injectivity of the composition is immediate: if $\Pi_1(\omega) = \Pi_1(\omega')$
+    for $\omega \neq \omega'$, then $\Pi_2(\Pi_1(\omega)) = \Pi_2(\Pi_1(\omega'))$.
+    The entropy bound $S_{\Pi_2 \circ \Pi_1} \geq S_{\Pi_1}$ follows because each fibre of
+    $\Pi_2 \circ \Pi_1$ is a union of fibres of $\Pi_1$, so the composed map is at least as
+    compressive as $\Pi_1$ alone.
+  \end{proof}
+
+  \begin{remark}[Self-application of the theorem]
+    \label{rem:self-application}
+    Corollary~\ref{cor:recursive} expresses a self-application property:
+    Theorem~\ref{thm:main} does not merely apply once to the pair $(\Omega, \mathcal{O})$
+    posited by a given framework.
+    It applies at every pair of adjacent levels in any tower of emergence.
+    Non-injectivity therefore accumulates across levels: each emergent description carries its
+    own necessary compression, independently of the compressions already realised below it.
+    A framework with $k$ genuinely distinct levels of description carries at least $k-1$
+    independent non-injective projections, each with strictly positive projection entropy.
+  \end{remark}
+
   \section{Three-Level Structure}
   \label{sec:levels}
 
@@ -419,6 +470,96 @@ Independent Researcher, Paris, France\\
   The route from non-injectivity to the specific group $\mathrm{SU}(2)$,
   via Born--Infeld parity, Weil representations, and the Hurwitz classification
   of real normed division algebras, is detailed in Appendix~\ref{app:SU2}.
+
+  \section{Towers of Emergence and Structural Confinement}
+  \label{sec:towers}
+
+  Corollary~\ref{cor:recursive} elevates the main result from a constraint on a
+  single projection to a constraint on any stratified emergent framework.
+  Each stratum is subject to Theorem~\ref{thm:main}; the non-injectivities at
+  different strata are independent and additive in entropy.
+  We make this structure explicit in the Cosmochrony context, where the
+  admissibility programme identifies a natural tower, and draw a consequence for
+  colour confinement.
+
+  \subsection*{The admissibility tower}
+
+    The O-series sub-programme~\cite{Cosmochrony} works with conjugate pairs
+    $\{c, q-c\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ as its fundamental observable units.
+    Conjugate pairs are colour-neutral by construction: $c + (q-c) = q \equiv 0$, so
+    the pair observable $\sigma_{\mathrm{pair}}(n) = \sigma_c(n) \cdot \sigma_{q-c}(n)$
+    retains no colour information.
+    Leptons, which are colourless, are naturally identified at this level.
+
+    However, each element $c_i$ of a colour triplet
+    $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$~\cite{Beau2026a34}
+    already carries a two-dimensional Weil-trajectory space $V_\rho \cong \mathbb{C}^2$ ---
+    the spin-$\frac{1}{2}$ structure inherited from its own conjugate pair $\{c_i, q-c_i\}$
+    --- together with a colour eigenspace $\tilde{V}_{c_i} \cong \mathbb{C}$ selected
+    by Born--Infeld saturation.
+    The individual sector $c_i$ therefore carries simultaneously spin-$\frac{1}{2}$ and a
+    colour charge: the minimal quantum number content of a quark.
+
+    This identifies a tower of genuinely distinct emergent levels above the pre-geometric
+    substrate $\Omega_0$:
+    \begin{equation}
+      \Omega_0
+      \;\xrightarrow{\Pi_1}\;
+      \{\text{individual sectors } c_i\}
+      \;\xrightarrow{\Pi_2}\;
+      \{\text{colour-neutral pairs and triplets}\}
+      \;\xrightarrow{\Pi_3}\;
+      \{\text{leptons, hadrons}\}.
+      \label{eq:tower}
+    \end{equation}
+    Each arrow satisfies the hypotheses of Theorem~\ref{thm:main}: the target level is
+    genuinely distinct from the source (different symmetry group, different admissibility
+    structure, different observable content), and its observables are defined by the
+    projection.
+    By Corollary~\ref{cor:recursive}, each $\Pi_i$ is non-injective with
+    $S_{\Pi_i} > 0$.
+
+  \subsection*{Structural confinement}
+
+    The projection $\Pi_2$ in~\eqref{eq:tower} maps coloured sectors $c_i$ to
+    colour-neutral pairs and triplets.
+    Theorem~\ref{thm:main}, applied to this pair of adjacent levels, forces $\Pi_2$ to
+    be non-injective: distinct colour configurations --- distinct assignments of colours to
+    the three sectors $c_1, c_2, c_3$ --- map to the same colour-neutral observable.
+
+    This is the structural content of colour confinement: individual coloured sectors are
+    not observable because $\Pi_2$ erases colour information.
+    Within the projective-emergent setting, confinement is not a dynamical accident
+    requiring a separate explanation; it is a structural necessity of the emergence of
+    colour-neutral observables from coloured degrees of freedom.
+
+    \begin{remark}[Confinement as projective necessity]
+      \label{rem:confinement}
+      The present argument does not reproduce the quantitative features of QCD confinement
+      (string tension, running coupling, asymptotic freedom).
+      It establishes the weaker but more fundamental claim: any framework in which
+      colour-neutral hadrons arise as genuinely emergent from coloured sectors --- in the
+      sense of Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial} --- must have
+      a non-injective colour projection.
+      The non-observability of free colour charges is the observable signature of
+      $S_{\Pi_2} > 0$ at the colour stratum.
+      The quantitative dynamics of confinement is a supplementary question, analogous to
+      the question of which specific group $G_\Pi$ organises the fibre redundancy
+      (Remark~\ref{rem:converse}).
+    \end{remark}
+
+  \subsection*{Recursive self-similarity}
+
+    A structural consequence of Remark~\ref{rem:self-application} is that the compression
+    mechanism is self-similar across the tower~\eqref{eq:tower}: the same structural
+    argument --- surjectivity, informational completeness, non-isomorphism --- forces
+    non-injectivity at each stratum, regardless of which stratum one takes as its own
+    ``fundamental level.''
+    The non-injectivity of $\Pi_1$ is not a distinguished feature of the deepest level; it
+    is the first instance of a pattern that the theorem forces to repeat at every level of
+    genuine emergence.
+    This self-similarity is not postulated but derived: it is the content of
+    Corollary~\ref{cor:recursive} applied to each adjacent pair in the tower.
 
   \section{Scope and Limits of the Result}
   \label{sec:scope}
@@ -461,9 +602,9 @@ Independent Researcher, Paris, France\\
   \end{quote}
   LQG describes the universe at the Planck scale; it does not describe what
   lies outside or before the universe.
-  Cosmochrony, by contrast, posits a pre-geometric substrate $\mathcal{C}_\chi$
-  that is pre-spatial, pre-temporal, and structurally prior to the observable
-  universe: it is explicitly in the class to which the theorem applies.
+  Cosmochrony, by contrast, posits a pre-geometric substrate that is
+  pre-spatial, pre-temporal, and structurally prior to the observable universe:
+  it is explicitly in the class to which the theorem applies.
 
   Note, however, that the semi-classical limit of LQG ---
   the projection $\Pi_\mathrm{sc} : \mathcal{H}_\mathrm{LQG} \to g_{\mu\nu}$
@@ -741,6 +882,26 @@ Independent Researcher, Paris, France\\
   Any theory that genuinely completes standard physics must specify $\Omega$,
   $\Pi$, and the non-injective structure of $\Pi$.
 
+  \textbf{Recursive structure and the particle hierarchy.}
+  Corollary~\ref{cor:recursive} and Section~\ref{sec:towers} show that the
+  structural incompleteness of standard physics is not confined to its deepest level.
+  The Standard Model itself contains an internal tower of emergence: leptons and
+  hadrons are not fundamental objects but colour-neutral projections of coloured
+  degrees of freedom.
+  The projection from the quark level to the hadronic level is subject to
+  Theorem~\ref{thm:main} in its own right and is therefore necessarily non-injective.
+  This is a second instance of structural incompleteness within $\mathcal{O}$ itself:
+  the map $\Pi_{\mathrm{SM}} : \{\text{quarks}\} \to \{\text{hadrons}\}$ is a
+  non-injective projection whose fibre structure is currently described dynamically
+  (QCD) but not derived from a more primitive level.
+  Theorem~\ref{thm:main} does not construct this fibre structure; it establishes that
+  any framework which derives hadrons as genuinely emergent from quarks must have
+  $S_{\Pi_{\mathrm{SM}}} > 0$.
+  The quantities that QCD cannot derive from first principles --- the proton-to-electron
+  mass ratio $m_p/m_e$, the strong coupling constant $\alpha_s$ at a given scale ---
+  can be interpreted, in line with the general argument of this section, as invariants
+  of $\Pi_{\mathrm{SM}}$ not accessible from the hadronic level alone.
+
   \textbf{Singularity elimination does not restore completeness.}
   A natural response is to propose a framework that eliminates the initial
   singularity entirely --- loop quantum cosmology (LQC), pre-Big Bang
@@ -878,95 +1039,13 @@ Independent Researcher, Paris, France\\
   different fibre geometries and different structure groups.
   The two results are complementary and non-redundant.
 
+  \clearpage
   \section*{Acknowledgements}
 
   This work is part of the Cosmochrony research programme.
   The author thanks the referees for helpful comments.
 
-  \clearpage
-  \begin{thebibliography}{99}
-
-    \bibitem{Wilson1975}
-    K. G. Wilson,
-    ``The renormalization group: Critical phenomena and the Kondo problem,''
-    Rev. Mod. Phys. 47, 773 (1975).
-
-    \bibitem{Jaynes1957}
-    E. T. Jaynes,
-    ``Information theory and statistical mechanics,''
-    Phys. Rev. 106, 620 (1957).
-
-    \bibitem{GellMannHartle1993}
-    M. Gell-Mann and J. B. Hartle,
-    ``Classical equations for quantum systems,''
-    Phys. Rev. D 47, 3345 (1993).
-
-    \bibitem{Butterfield2011}
-    J. Butterfield,
-    ``Less is different: Emergence and reduction reconciled,''
-    Found. Phys. 41, 1065 (2011).
-
-    \bibitem{Ellis2012}
-    G. F. R. Ellis,
-    ``Top-down causation and emergence: Some comments on mechanisms,''
-    Interface Focus 2, 126 (2012).
-
-    \bibitem{HenneauxTeitelboim1992}
-    M. Henneaux and C. Teitelboim,
-    ``Quantization of Gauge Systems,''
-    Princeton University Press (1992).
-
-    \bibitem{Rovelli2002}
-    C. Rovelli,
-    ``Partial observables,''
-    Phys. Rev. D 65, 124013 (2002).
-
-    \bibitem{Rovelli2004}
-    C. Rovelli,
-    ``Quantum Gravity,''
-    Cambridge University Press (2004).
-
-    \bibitem{Thiemann2007}
-    T. Thiemann,
-    ``Modern Canonical Quantum General Relativity,''
-    Cambridge University Press (2007).
-
-    \bibitem{Ashtekar2006}
-    A. Ashtekar and P. Singh,
-    ``Loop quantum cosmology: A status report,''
-    Class. Quantum Grav.\ 28, 213001 (2011).
-
-    \bibitem{Bojowald2001}
-    M. Bojowald,
-    ``Absence of a singularity in loop quantum cosmology,''
-    Phys. Rev. Lett.\ 86, 5227 (2001).
-
-    \bibitem{Gasperini1993}
-    M. Gasperini and G. Veneziano,
-    ``Pre-Big Bang in string cosmology,''
-    Astropart. Phys.\ 1, 317 (1993).
-
-    \bibitem{Khoury2001}
-    J. Khoury, B. A. Ovrut, P. J. Steinhardt and N. Turok,
-    ``The ekpyrotic universe,''
-    Phys. Rev. D 64, 123522 (2001).
-
-    \bibitem{Penrose2010}
-    R. Penrose,
-    ``Cycles of Time,''
-    Bodley Head (2010).
-
-    \bibitem{HartleHawking1983}
-    J. B. Hartle and S. W. Hawking,
-    ``Wave function of the universe,''
-    Phys. Rev. D 28, 2960 (1983).
-
-    \bibitem{Vilenkin1982}
-    A. Vilenkin,
-    ``Creation of universes from nothing,''
-    Phys. Lett. B 117, 25 (1982).
-
-    \input{cosmochrony-bibliography}
-  \end{thebibliography}
+  \bibliographystyle{plain}
+  \bibliography{cosmochrony-bibliography, external-refs}
 
 \end{document}
