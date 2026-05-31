@@ -2,6 +2,7 @@
 
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{hyperref}
+\usepackage{doi}
 \usepackage{microtype}
 \usepackage[margin=2.5cm]{geometry}
 
@@ -9,16 +10,18 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
 \newtheorem{definition}{Definition}
 \newtheorem{remark}{Remark}
 
 \newcommand{\bstar}{\beta^*}
 
-\title{Non-Injectivity as a Structural Necessity of Genuine Emergence}
+\title{Non-Injectivity as a Structural Necessity of Genuine Emergence:\\
+A No-Go Theorem for Faithful Emergent Descriptions}
 
 \author{J\'er\^ome Beau\\
-\small Independent Researcher\\
-\small \href{mailto:jerome.beau@cosmochrony.org}{jerome.beau@cosmochrony.org}}
+Independent Researcher, Paris, France\\
+\texttt{jerome.beau@cosmochrony.org}}
 
 \date{2026}
 
@@ -27,513 +30,1084 @@
   \maketitle
 
   \begin{abstract}
-    We prove that any genuinely emergent physical description is necessarily
-    non-injective and intrinsically compressive.
+    We prove that any genuinely emergent (i.e.\ non-isomorphic effective) physical
+    description is necessarily non-injective and intrinsically compressive.
     The argument is purely structural: given a surjective projection
-    $\Pi : \Omega \to \mathcal{O}$ whose observables are entirely defined by $\Pi$,
-    if the effective level is not structurally isomorphic to the fundamental level,
-    then $\Pi$ cannot be injective, and the associated projection entropy
-    $S_\Pi > 0$.
-    The proof uses only surjectivity, the definition of observables by projection,
-    and the non-isomorphism condition; it is independent of any specific physical
-    framework.
+    $\Pi : \Omega \to \mathcal{O}$ such that $\mathcal{O}$ carries no
+    independent microstate-resolving structure beyond what $\Pi$ provides,
+    and such that the effective level is not structurally isomorphic to the
+    fundamental level, then $\Pi$ cannot be injective and the associated
+    projection entropy $S_\Pi > 0$.
+    The proof uses only surjectivity, informational completeness of $\Pi$ for
+    observables, and the non-isomorphism condition; it is independent of any
+    specific physical framework.
+    The result constitutes a \emph{no-go theorem for faithful emergence}: a
+    surjective projection that is both informationally faithful and genuinely
+    emergent cannot exist.
     As a corollary, descriptive redundancy, non-injectivity of $\Pi$, and
-    $S_\Pi > 0$ are co-extensive in any projective emergent framework, and any
-    non-trivial gauge structure requires these properties.
-    The result reframes non-injectivity from a modelling choice to a structural
-    necessity: a fully injective emergent description would reduce to a mere
-    reparametrisation of the fundamental level.
-    We discuss how this universal constraint is explicitly realised in the
-    Cosmochrony relational framework~\cite{Cosmochrony}, where non-injectivity
-    of the projection $\Pi$ underlies the emergence of gauge structure, spacetime
-    geometry, and quantum correlations~\cite{Beau2026k,BellPaper}.
+    $S_\Pi > 0$ are co-extensive in any projective emergent framework; any
+    non-trivial gauge structure requires these properties; and any theory
+    admitting a regime where its own description ceases to be valid --- such
+    as standard cosmology at $t \lesssim t_\mathrm{Planck}$ --- is
+    structurally consistent with the presence of a non-injective projection.
+    We provide a categorical reformulation (genuine emergence corresponds to
+    a non-faithful functor) and an informational one (the Kullback--Leibler
+    divergence of any state distribution with respect to its projection
+    lift is strictly positive).
+    The result is illustrated by a concrete spin model and discussed in
+    relation to the projective incompleteness of $\Lambda$CDM and the
+    Standard Model, whose fundamental constants are identified as invariants
+    of an unspecified projection $\Pi$ not accessible from the effective level
+    alone.
+    A further corollary establishes that non-injectivity is recursive: any
+    tower of genuinely distinct emergent levels carries one independent
+    non-injective projection per stratum, with entropy accumulating across
+    levels.
+    This recursive structure implies that colour confinement --- the
+    non-observability of free quarks --- is a structural necessity of any
+    framework in which colour-neutral hadrons arise as genuinely emergent from
+    coloured degrees of freedom.
   \end{abstract}
 
   \paragraph{Keywords.}
-    emergence, non-injectivity, projection, gauge symmetry, information loss, entropy, effective theories.
+    emergence, non-injectivity, projection, gauge symmetry, information loss,
+    entropy, effective theories, colour confinement, towers of emergence.
 
     \clearpage
+    \tableofcontents
+
+    \clearpage
+
   \section{Introduction}
-    \label{sec:intro}
+  \label{sec:intro}
 
-    Many physical frameworks assume the existence of two distinct levels of
-    description: a fundamental level $\Omega$ of underlying configurations, and
-    an effective level $\mathcal{O}$ of observable states.
-    The relationship between these levels is typically encoded in a projection
-    map $\Pi : \Omega \to \mathcal{O}$.
+  Many physical frameworks assume the existence of two distinct levels of
+  description: a fundamental level $\Omega$ of underlying configurations, and
+  an effective level $\mathcal{O}$ of observable states.
+  The relationship between these levels is typically encoded in a projection
+  map $\Pi : \Omega \to \mathcal{O}$.
 
-    A recurring feature of such frameworks is that $\Pi$ is many-to-one:
-    distinct configurations $\omega \in \Omega$ may correspond to the same
-    observable state $o \in \mathcal{O}$.
-    This non-injectivity has been identified as the structural origin of gauge
-    symmetry~\cite{Cosmochrony}, Bell-inequality violations~\cite{BellPaper},
-    and black hole entropy~\cite{Beau2026c}.
-    In each case, however, non-injectivity has been introduced as a feature of
-    a specific model rather than derived as a universal necessity.
+  A recurring feature of such frameworks is that $\Pi$ is many-to-one:
+  distinct configurations $\omega \in \Omega$ may correspond to the same
+  observable state $o \in \mathcal{O}$.
+  This feature is closely related to coarse-graining and renormalisation
+  procedures, where effective descriptions arise through systematic loss
+  of microscopic information~\cite{Wilson1975,Jaynes1957,GellMannHartle1993}.
+  More generally, the relation between emergence and information
+  compression has been discussed in both physical and philosophical
+  contexts~\cite{Butterfield2011,Ellis2012}.
+  This non-injectivity has been identified as the structural origin of gauge
+  symmetry~\cite{Cosmochrony}, Bell-inequality violations~\cite{Beau2026b},
+  and black hole entropy~\cite{Beau2026c}, and is broadly related to
+  redundancy structures appearing in constrained and coarse-grained
+  descriptions.
+  In each case, however, non-injectivity has been introduced as a feature of
+  a specific model rather than derived as a universal necessity.
+  What is missing across these frameworks is a structural necessity result:
+  while non-injective mappings appear operationally, no general theorem
+  establishes that they are unavoidable for emergence itself.
 
-    The present note closes this logical gap.
-    We show that non-injectivity is not a modelling choice but a structural
-    consequence of genuine emergence: any surjective map $\Pi$ whose observables
-    are entirely defined by $\Pi$, and whose effective level is not isomorphic
-    to the fundamental level, must be non-injective.
-    The proof is elementary and framework-independent.
+  The present note supplies this missing result.
+  We show that non-injectivity is not a modelling choice but a structural
+  consequence of genuine emergence: any surjective map $\Pi$ whose observables
+  are entirely defined by $\Pi$, and whose effective level is not isomorphic
+  to the fundamental level, must be non-injective.
+  The proof is elementary and framework-independent.
+  A further corollary (Section~\ref{sec:towers}) shows that non-injectivity is
+  recursive: the same structural necessity applies at every stratum of a tower
+  of emergent descriptions, with entropy accumulating across levels.
+
+  \subsection*{A preliminary observation: standard cosmology as an effective description}
+
+    Before stating our results, we draw attention to a structural feature of
+    Big Bang cosmology that motivates the theorem.
+
+    In the standard cosmological model $\Lambda$CDM, an effective spacetime
+    geometry $g_{\mu\nu}$ is well defined and descriptively valid for
+    $t > t_\mathrm{Planck}$.
+    For $t \lesssim t_\mathrm{Planck}$, the geometric description ceases to be
+    valid: the metric diverges, the Einstein equations break down, and
+    $g_{\mu\nu}$ is not a well-defined object.
+    Yet the large-scale geometry that exists for $t \gg t_\mathrm{Planck}$ is
+    stable, continuous, and physically meaningful.
+
+    These three facts suggest that $g_{\mu\nu}$ should be regarded as an
+    effective object.
+    A description that fails in a given regime is naturally interpreted as
+    arising from a more fundamental structure whose validity extends beyond
+    that regime.
+    From this perspective, the breakdown of $g_{\mu\nu}$ indicates the limit of
+    applicability of the geometric description, rather than a failure of
+    physical existence.
+
+    If this line of interpretation is adopted, one may view $g_{\mu\nu}$ as
+    arising from a more primitive structure $\Omega$, through a projection
+    $\Pi$ that becomes well-defined when appropriate conditions for
+    projectability are met.
+
+    \begin{remark}[Heuristic status of this argument]
+      \label{rem:lcdm-heuristic}
+      The implication ``$g_{\mu\nu}$ breaks down $\Rightarrow$ $\Pi$ exists and
+      is non-injective'' is a heuristic rather than a logical consequence of
+      Theorem~\ref{thm:main}.
+      Theorem~\ref{thm:main} applies to frameworks that explicitly posit $\Omega$
+      and $\Pi$; it does not construct them from the mere existence of a
+      singularity.
+      The argument here is interpretive: it identifies the breakdown of
+      $g_{\mu\nu}$ as a structural signal that the geometric description is
+      effective, and suggests that any complete successor theory would need to
+      supply the missing $\Omega$ and $\Pi$.
+      This does not constitute a critique of the standard model, but a
+      reformulation of its domain of validity in structural terms.
+      Once such a successor is posited --- and once it satisfies
+      Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial} ---
+      Theorem~\ref{thm:main} applies and forces non-injectivity.
+    \end{remark}
+
+    In this sense, any theory that admits a regime where its own description
+    ceases to be valid can be interpreted as an effective description with a
+    restricted domain of applicability.
+    Such a theory does not necessarily specify the underlying level explicitly,
+    but its structure is compatible with an emergent interpretation.
+
+    \begin{quote}
+      \emph{Any cosmological framework admitting a regime where spacetime geometry
+      ceases to be well-defined can be consistently interpreted as an effective
+      description, suggesting the existence of a more fundamental level from which
+      geometry arises.
+      The absence of an explicit formulation of this underlying level does not
+      eliminate this interpretation, but leaves it structurally incomplete.}
+    \end{quote}
+
+    From this viewpoint, the absence of a geometric description for
+    $t \lesssim t_\mathrm{Planck}$ should be understood as delimiting the
+    regime of validity of the spacetime description, rather than as implying
+    the absence of an underlying structure.
+
+    If a projection $\Pi$ relating such a fundamental level $\Omega$ to the
+    effective observables $\mathcal{O}$ is introduced and satisfies the
+    conditions of Section~\ref{sec:framework}, Theorem~\ref{thm:main} implies
+    that it must be non-injective.
+    The non-injectivity is therefore not a model-dependent feature, but a
+    structural necessity of any complete projective-emergent framework.
 
     \textbf{Key message.}
-    A fully injective emergent description is a contradiction in terms: if $\Pi$
-    were injective, the effective level would be isomorphic to the fundamental
-    level, and there would be no emergence --- only a relabelling.
+    A fully injective emergent description is a contradiction in terms under
+    Definitions 1 and 2: if $\Pi$ were injective, the effective level would be
+    isomorphic to the fundamental level, and there would be no emergence ---
+    only a relabelling.
 
   \section{Framework and Definitions}
-    \label{sec:framework}
+  \label{sec:framework}
 
-    Let $\Omega$ be a space of fundamental configurations and $\mathcal{O}$ a
-    space of observable states.
-    We consider a surjective map $\Pi : \Omega \to \mathcal{O}$.
+  Let $\Omega$ be a space of fundamental configurations and $\mathcal{O}$ a
+  space of observable states.
+  We consider a surjective map $\Pi : \Omega \to \mathcal{O}$.
 
-    \begin{definition}[Observables defined by $\Pi$]
-      \label{def:defined-by-Pi}
-      The observables of $\mathcal{O}$ are \emph{defined by $\Pi$} if every
-      structure on $\mathcal{O}$ --- topology, algebraic relations, dynamical
-      laws, or any other physically relevant structure --- is entirely induced
-      from $\Omega$ via $\Pi$, with no independent attribute assigned to
-      $\mathcal{O}$ by an external postulate.
-      Two configurations $\omega, \omega' \in \Omega$ are observationally
-      indiscernible if and only if $\Pi(\omega) = \Pi(\omega')$.
-    \end{definition}
+  \begin{definition}[Observables defined by $\Pi$]
+    \label{def:defined-by-Pi}
+    The observables of $\mathcal{O}$ are \emph{defined by $\Pi$} if
+    $\mathcal{O}$ carries no independent microstate-resolving structure:
+    every distinction present in $\mathcal{O}$ is a distinction already present
+    in $\Omega$ and transported by $\Pi$, with no additional resolving power
+    assigned to $\mathcal{O}$ by an external postulate.
+    Equivalently, two configurations $\omega, \omega' \in \Omega$ are
+    observationally indiscernible if and only if $\Pi(\omega) = \Pi(\omega')$.
+  \end{definition}
 
-    This definition is not an additional assumption: it is the formal translation
-    of what is meant by a \emph{purely emergent} description.
-    $\mathcal{O}$ has no autonomous content; it is exactly what $\Pi$ transports
-    from $\Omega$.
-    Any theory that assigns independent postulated attributes to $\mathcal{O}$
-    is, by that very act, a two-level theory rather than an emergent one.
-    Definition~\ref{def:defined-by-Pi} therefore does not restrict the class of
-    emergent theories; it \emph{defines} it.
-    Frameworks where $\mathcal{O}$ carries independent structure --- such as
-    standard quantum mechanics or general relativity, which directly postulate
-    a Hilbert space or a spacetime manifold --- lie outside this class by
-    construction; see Section~\ref{sec:scope}.
+  This condition is the minimal formalisation of what it means for observables
+  to \emph{arise from} a more fundamental level rather than being postulated
+  independently.
+  It is weaker than requiring that every structure on $\mathcal{O}$ be
+  explicitly constructed from $\Omega$: it only requires that $\mathcal{O}$
+  introduces no new resolving power beyond what $\Pi$ already provides.
+  Equivalently, Definition~\ref{def:defined-by-Pi} can be rephrased as:
+  \emph{$\Pi$ is informationally complete for observables} --- meaning that
+  every distinction $\mathcal{O}$ can draw is already drawn by $\Pi$, and
+  $\mathcal{O}$ adds no further discriminating capacity of its own.
+  Any theory that assigns independent microstate-resolving attributes to
+  $\mathcal{O}$ is, by that act, a two-level theory with autonomous observable
+  structure, not an emergent one.
+  Frameworks where $\mathcal{O}$ carries independent structure --- such as
+  standard quantum mechanics or general relativity, which directly postulate
+  a Hilbert space or a spacetime manifold --- lie outside this class by
+  construction; see Section~\ref{sec:scope} for a precise discussion.
 
-    \begin{definition}[Effectively non-trivial description]
-      \label{def:non-trivial}
-      The description is \emph{effectively non-trivial} if:
-      \begin{itemize}
-        \item[(E1)] \textbf{Distinguishability:} $\Pi$ is not constant ---
-        there exist $\omega_1, \omega_2 \in \Omega$ such that
-        $\Pi(\omega_1) \neq \Pi(\omega_2)$.
-        \item[(E3)] \textbf{Structural non-isomorphism:} $\mathcal{O} \not\cong \Omega$
-        as structured spaces, where ``structured space'' refers to the full set of
-        physically relevant structures induced by $\Pi$ (topology, algebraic
-        relations, observables, or dynamical laws).
-      \end{itemize}
-    \end{definition}
+  \begin{example}[Spin model]
+    \label{ex:spin}
+    Let $\Omega = \{-1,+1\}^N$ be the configuration space of $N$ Ising spins,
+    and let $\mathcal{O} = \mathbb{R}$ with $\Pi(\sigma) = N^{-1}\sum_i \sigma_i$
+    the mean magnetisation.
+    Distinct spin configurations with the same mean magnetisation are
+    observationally indiscernible: $\mathcal{O}$ carries no structure that
+    distinguishes them.
+    Definition~\ref{def:defined-by-Pi} is satisfied.
+    Condition~(E3) holds since $|\mathcal{O}| \ll |\Omega|$ for large $N$.
+    Theorem~\ref{thm:main} then guarantees $S_\Pi > 0$, which is immediate:
+    for any magnetisation value $m \in (-1,1)$, the fibre $\Pi^{-1}(m)$ has
+    exponentially many elements.
+    The non-injectivity is not merely observed here; it is a structural
+    necessity of the emergent description.
+  \end{example}
 
-    \begin{remark}
-      Condition (E3) is the formal statement that the effective level is
-      genuinely distinct from the fundamental level.
-      An isomorphism $\mathcal{O} \cong \Omega$ would mean that $\mathcal{O}$ is
-      merely a relabelling of $\Omega$, not an emergent structure.
-      Note that (E2) --- the statement that $\Pi$ is non-injective --- is
-      deliberately absent from Definition~\ref{def:non-trivial}: including it
-      would make the main theorem circular.
-    \end{remark}
+  \begin{definition}[Effectively non-trivial description]
+    \label{def:non-trivial}
+    The description is \emph{effectively non-trivial} if:
+    \begin{itemize}
+      \item[(E1)] \textbf{Distinguishability:} $\Pi$ is not constant ---
+      there exist $\omega_1, \omega_2 \in \Omega$ such that
+      $\Pi(\omega_1) \neq \Pi(\omega_2)$.
+      \item[(E3)] \textbf{Structural non-isomorphism:} $\mathcal{O} \not\cong \Omega$
+      as structured spaces, where ``structured space'' refers to the full set of
+      physically relevant structures induced by $\Pi$ (topology, algebraic
+      relations, observables, or dynamical laws).
+    \end{itemize}
+  \end{definition}
 
-    We also recall the standard projection entropy associated with $\Pi$.
-    Given a non-degenerate measure $\mu$ on $\Omega$, define $\nu(o) =
+  \begin{remark}
+    Condition (E3) is the formal statement that the effective level is
+    genuinely distinct from the fundamental level.
+    An isomorphism $\mathcal{O} \cong \Omega$ would mean that $\mathcal{O}$ is
+    merely a relabelling of $\Omega$, not an emergent structure.
+    Note that (E2) --- the statement that $\Pi$ is non-injective --- is
+    deliberately absent from Definition~\ref{def:non-trivial}: including it
+    would make the main theorem circular.
+  \end{remark}
+
+  We also recall the standard projection entropy associated with $\Pi$.
+  Given a non-degenerate measure $\mu$ on $\Omega$, define $\nu(o) =
   \mu(\Pi^{-1}(o))$ for each $o \in \mathcal{O}$.
-    The \emph{projection entropy} is
-    \begin{equation}
-      S_\Pi \;\equiv\; -\sum_{o \in \mathcal{O}} \nu(o) \log \nu(o).
-      \label{eq:SPI}
-    \end{equation}
-    $S_\Pi = 0$ if and only if $\Pi$ is (almost everywhere) injective; $S_\Pi > 0$
-    if and only if at least one fibre $\Pi^{-1}(o)$ has measure greater than
-    that of a single point~\cite{BellPaper,Cosmochrony}.
+  The \emph{projection entropy} is
+  \begin{equation}
+    S_\Pi \;\equiv\; -\sum_{o \in \mathcal{O}} \nu(o) \log \nu(o).
+    \label{eq:SPI}
+  \end{equation}
+  $S_\Pi = 0$ if and only if $\Pi$ is (almost everywhere) injective; $S_\Pi > 0$
+  if and only if at least one fibre $\Pi^{-1}(o)$ has measure greater than
+  that of a single point~\cite{Beau2026b,Cosmochrony}.
 
   \section{Main Result}
-    \label{sec:theorem}
+  \label{sec:theorem}
 
-    The proof of Theorem~\ref{thm:main} rests entirely on the following lemma,
-    which we state and prove separately to make the logical hinge explicit.
+  The proof of Theorem~\ref{thm:main} rests entirely on the following lemma,
+  which we state and prove separately to make the logical hinge explicit.
 
-    \begin{lemma}[Injective projection is an isomorphism]
-      \label{lem:pivot}
-      Let $\Pi : \Omega \to \mathcal{O}$ be surjective and injective, with
-      observables defined by $\Pi$ in the sense of Definition~\ref{def:defined-by-Pi}.
-      Then $\Pi$ is a structural isomorphism $\mathcal{O} \cong \Omega$.
-    \end{lemma}
+  \begin{lemma}[Injective projection is an isomorphism]
+    \label{lem:pivot}
+    Let $\Pi : \Omega \to \mathcal{O}$ be surjective and injective, with
+    observables defined by $\Pi$ in the sense of Definition~\ref{def:defined-by-Pi}.
+    Then $\Pi$ is a structural isomorphism $\mathcal{O} \cong \Omega$.
+  \end{lemma}
 
-    \begin{proof}
-      Since $\Pi$ is surjective and injective, it is bijective.
-      Since all structure on $\mathcal{O}$ is induced from $\Omega$ by $\Pi$
-      (Definition~\ref{def:defined-by-Pi}), a bijection that transports all
-      structure is a structure-preserving isomorphism.
-      Hence $\mathcal{O} \cong \Omega$.
-    \end{proof}
+  \begin{proof}
+    Since $\Pi$ is surjective and injective, it is bijective.
+    Since all structure on $\mathcal{O}$ is induced from $\Omega$ by $\Pi$
+    (Definition~\ref{def:defined-by-Pi}), a bijection that transports all
+    structure is a structure-preserving isomorphism.
+    Hence $\mathcal{O} \cong \Omega$.
+  \end{proof}
 
-    \begin{remark}[Why this lemma is the pivot]
-Lemma~\ref{lem:pivot} is the single logical hinge of the entire paper.
-Its content is deceptively simple: if nothing is lost under $\Pi$ (injectivity)
-and everything in $\mathcal{O}$ comes from $\Omega$ (Definition~\ref{def:defined-by-Pi}),
-then $\mathcal{O}$ and $\Omega$ are the same structured space under different names.
-There is no emergence, only relabelling.
-Condition~(E3) of Definition~\ref{def:non-trivial} forbids precisely this ---
-and thereby forces non-injectivity.
-    \end{remark}
+  \begin{remark}[Why this lemma is the pivot]
+      Lemma~\ref{lem:pivot} is the single logical hinge of the entire paper.
+      Its content is deceptively simple: if nothing is lost under $\Pi$ (injectivity)
+      and everything in $\mathcal{O}$ comes from $\Omega$ (Definition~\ref{def:defined-by-Pi}),
+      then $\mathcal{O}$ and $\Omega$ are the same structured space under different names.
+      There is no emergence, only relabelling.
+      Condition~(E3) of Definition~\ref{def:non-trivial} forbids precisely this ---
+      and thereby forces non-injectivity.
+  \end{remark}
 
-    \begin{theorem}[Compression necessity]
-      \label{thm:main}
-      Let $\Pi : \Omega \to \mathcal{O}$ be surjective, with observables defined by
-      $\Pi$ in the sense of Definition~\ref{def:defined-by-Pi} and description
-      effectively non-trivial in the sense of Definition~\ref{def:non-trivial}.
-      Then $\Pi$ is necessarily non-injective, and for any non-degenerate measure
-      $\mu$ on $\Omega$,
-      \[
-        S_\Pi > 0.
-      \]
-    \end{theorem}
+  \begin{theorem}[Compression necessity]
+    \label{thm:main}
+    Let $\Pi : \Omega \to \mathcal{O}$ be surjective, with observables defined by
+    $\Pi$ in the sense of Definition~\ref{def:defined-by-Pi} and description
+    effectively non-trivial in the sense of Definition~\ref{def:non-trivial}.
+    Then $\Pi$ is necessarily non-injective, and for any non-degenerate measure
+    $\mu$ on $\Omega$,
+    \[
+      S_\Pi > 0.
+    \]
+  \end{theorem}
 
-    \begin{proof}
-      Suppose for contradiction that $\Pi$ is injective.
-      By Lemma~\ref{lem:pivot}, $\mathcal{O} \cong \Omega$ as structured spaces.
-      This contradicts condition~(E3).
-      Therefore $\Pi$ is not injective.
+  \begin{proof}
+    Suppose for contradiction that $\Pi$ is injective.
+    By Lemma~\ref{lem:pivot}, $\mathcal{O} \cong \Omega$ as structured spaces.
+    This contradicts condition~(E3).
+    Therefore $\Pi$ is not injective.
 
-      Since $\Pi$ is not injective, there exists $o \in \mathcal{O}$ such that
-      $|\Pi^{-1}(o)| > 1$.
-      For any non-degenerate measure $\mu$, the weight $\nu(o) \in (0,1)$ for
-      this $o$, and $-\nu(o)\log\nu(o) > 0$.
-      Hence $S_\Pi > 0$.
-    \end{proof}
+    Since $\Pi$ is not injective, there exists $o \in \mathcal{O}$ such that
+    $|\Pi^{-1}(o)| > 1$.
+    For any non-degenerate measure $\mu$, the weight $\nu(o) \in (0,1)$ for
+    this $o$, and $-\nu(o)\log\nu(o) > 0$.
+    Hence $S_\Pi > 0$.
+  \end{proof}
 
   \section{Gauge Structure and Co-extensivity}
-    \label{sec:gauge}
+  \label{sec:gauge}
 
-    \begin{proposition}[Gauge requires non-injectivity]
-      \label{prop:gauge}
-      In any framework where observables are defined by $\Pi$
-      (Definition~\ref{def:defined-by-Pi}), any non-trivial gauge structure
-      in $\mathcal{O}$ requires $\Pi$ to be non-injective, and hence $S_\Pi > 0$.
-    \end{proposition}
+  \begin{proposition}[Gauge requires non-injectivity]
+    \label{prop:gauge}
+    In any framework where observables are defined by $\Pi$
+    (Definition~\ref{def:defined-by-Pi}), any non-trivial gauge structure
+    in $\mathcal{O}$ requires $\Pi$ to be non-injective, and hence $S_\Pi > 0$.
+  \end{proposition}
 
-    \begin{proof}
-      If $\Pi$ were injective, the holonomy group of $\Pi$ would be trivial
-      ($G_\Pi = \{e\}$), every connection would be flat, and no non-trivial gauge
-      field could emerge from the bundle structure of $\Pi$ alone.
-      Any non-trivial gauge field would then require an independent postulate at
-      the level of $\mathcal{O}$, violating Definition~\ref{def:defined-by-Pi}.
-    \end{proof}
+  \begin{proof}
+    If $\Pi$ were injective, the holonomy group of $\Pi$ would be trivial
+    ($G_\Pi = \{e\}$), every connection would be flat, and no non-trivial gauge
+    field could emerge from the bundle structure of $\Pi$ alone.
+    Any non-trivial gauge field would then require an independent postulate at
+    the level of $\mathcal{O}$, violating Definition~\ref{def:defined-by-Pi}.
+  \end{proof}
 
-    \begin{remark}[On the converse]
-      \label{rem:converse}
-      The converse of Proposition~\ref{prop:gauge} does not hold in general:
-      non-injectivity does not automatically produce gauge structure.
-      For the redundancy encoded in non-trivial fibres to organise into a gauge
-      symmetry, additional geometric hypotheses are required: the fibres
-      $\Pi^{-1}(o)$ must form a principal bundle over $\mathcal{O}$ with a
-      non-trivial structure group $G_\Pi$ admitting a connection.
-      This is a result supplementary to Theorem~\ref{thm:main}, not a consequence
-      of it.
-    \end{remark}
+  \begin{remark}[On the converse]
+    \label{rem:converse}
+    The converse of Proposition~\ref{prop:gauge} does not hold in general:
+    non-injectivity does not automatically produce gauge structure.
+    For the redundancy encoded in non-trivial fibres to organise into a gauge
+    symmetry, additional geometric hypotheses are required: the fibres
+    $\Pi^{-1}(o)$ must form a principal bundle over $\mathcal{O}$ with a
+    non-trivial structure group $G_\Pi$ admitting a connection.
+    This is a result supplementary to Theorem~\ref{thm:main}, not a consequence
+    of it.
+  \end{remark}
 
-    \begin{corollary}[Co-extensivity]
-      \label{cor:co-ext}
-      In any projective emergent framework satisfying the hypotheses of
-      Theorem~\ref{thm:main},
-      \[
-        \text{descriptive redundancy}
-        \;\Longleftrightarrow\;
-        \Pi \text{ non-injective}
-        \;\Longleftrightarrow\;
-        S_\Pi > 0,
-      \]
-      and any non-trivial gauge structure requires these properties:
-      \[
-        \text{non-trivial gauge}
-        \;\Longrightarrow\;
-        \Pi \text{ non-injective}
-        \;\Longleftrightarrow\;
-        S_\Pi > 0.
-      \]
-      Under additional geometric hypotheses on the fibre organisation of $\Pi$
-      (principal bundle structure, admissible connection, non-trivial holonomy),
-      the redundancy may in turn manifest as a gauge structure.
-    \end{corollary}
-
-  \section{Three-Level Structure}
-    \label{sec:levels}
-
-    The results of Sections~\ref{sec:theorem} and~\ref{sec:gauge} establish a
-    hierarchy with three distinct levels of increasing specificity.
-
-    \textbf{Universal level.}
-    Theorem~\ref{thm:main} holds for any surjective $\Pi$ satisfying
-    Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial}.
-    No dynamical, geometric, or physical hypothesis is required beyond the
-    structural conditions on $\Pi$.
-    The conclusion --- $\Pi$ non-injective, $S_\Pi > 0$ --- is a structural
-    constraint on any framework that takes emergence seriously.
-
-    \textbf{Intermediate level.}
-    If the non-trivial fibres of $\Pi$ are organised geometrically --- forming a
-    principal $G_\Pi$-bundle with admissible connection --- then the projective
-    redundancy can support a gauge structure with holonomy group $G_\Pi$.
-    This is an additional geometric hypothesis, not a consequence of
-    Theorem~\ref{thm:main} alone.
-
-    \textbf{Cosmochrony level.}
-    In the Cosmochrony relational framework~\cite{Cosmochrony}, the intermediate
-    hypothesis is explicitly realised: the projection $\Pi : \mathcal{C}_\chi
-  \to \mathcal{M}$ defines a principal bundle with fibre $S^3$, yielding
-    $G_\Pi \supseteq \mathrm{SU}(2) \times \mathrm{U}(1)$.
-    The resulting gauge structure underlies the emergence of electroweak
-    interactions, while the Born--Infeld saturation bound selects the unique
-    admissible infrared dynamics~\cite{Beau2026c}.
-    At the spectral level, the parity involution $c \leftrightarrow q - c$ of the
-    Weil representation is a discrete realisation of projective fibre duality,
-    and the pair observable $\sigma_{\mathrm{pair}} = \sigma_c \cdot \sigma_{q-c}$
-    is the admissibility observable dictated by this non-injective
-    structure~\cite{Beau2026a21,Beau2026a22}.
-    Bell-type correlations arise as the observable signature of $S_\Pi >
-  0$~\cite{BellPaper}.
-
-    \begin{remark}[On the route from non-injectivity to $\mathrm{SU}(2)$]
-      \label{rem:SU2}
-      Theorem~\ref{thm:main} guarantees the existence of non-trivial fibres but
-      says nothing about their form.
-      The identification of $G_\Pi$ with $\mathrm{SU}(2)$ rather than
-      $\mathrm{SO}(3)$ or another group is a separate result, established in
-      Cosmochrony via a chain of constraints absent from the universal theorem.
-
-      The route is the following.
-      The Born--Infeld parity constraint~\cite{Beau2026a22} fixes the minimal fibre
-      structure to the involution $c \leftrightarrow q - c$.
-      The requirement that the representation algebra be associative, combined with
-      the Hurwitz classification of real normed division algebras ($\mathbb{R}$,
-      $\mathbb{C}$, $\mathbb{H}$, $\mathbb{O}$), selects $\mathbb{H}$ as the
-      minimal associative non-commutative structure~\cite{Beau2026a26}.
-      The admissible neutral sector then has exactly $\dim_{\mathbb{R}} \mathrm{Im}\,
-      \mathbb{H} = 3$ independent directions --- the content of $\Sigma_c(n_3) = 3$
-      in O23~\cite{Beau2026a26} --- and the groups realising this sector form
-      the set $\{Q_8, \mathrm{Dic}_n, 2O, 2I\}$, all subgroups of $\mathrm{SU}(2)$
-      and not of $\mathrm{SO}(3)$~\cite{Cosmochrony}.
-      The exclusion of $\mathrm{SO}(3)$ is structural: quotienting the central
-      $\mathbb{Z}_2$ of $\mathrm{SU}(2)$ destroys the $4\pi$-periodicity required
-      for spinorial holonomy.
-      In the continuum limit, the chain $Q_8 \hookrightarrow 2I \hookrightarrow
-      \mathrm{LPS}_p \hookrightarrow \mathrm{SU}(2)$ converges to $\mathrm{SU}(2)$
-      as the unique spectral attractor.
-
-      These steps use Born--Infeld dynamics, Weil representations, and the
-      Hurwitz theorem --- none of which appears in Theorem~\ref{thm:main}.
-      The universal theorem supplies the necessary condition (non-trivial fibres);
-      Cosmochrony supplies the sufficient conditions that fix their geometry.
-      This selection is not universal but model-dependent: other emergent frameworks
-      may yield different fibre geometries and different structure groups.
-      The two results are complementary and non-redundant.
-    \end{remark}
-
-  \section{Scope and Limits of the Result}
-    \label{sec:scope}
-
-    Theorem~\ref{thm:main} is a conditional result.
-    Its conclusion holds whenever the hypotheses of
-    Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial} are satisfied.
-    It is therefore essential to identify the class of theories to which it applies
-    and the class to which it does not.
-
-    \textbf{Theories outside the scope.}
-    Standard physical frameworks --- quantum mechanics, general relativity,
-    standard-model field theories --- are not covered by Theorem~\ref{thm:main}.
-    These theories posit their fundamental objects (Hilbert space, spacetime manifold,
-    gauge fields) directly at the level $\mathcal{O}$, without deriving them from a
-    more primitive space $\Omega$ via a projection.
-    The question of non-injectivity does not arise in such frameworks: there is no
-    projection $\Pi$ to be injective or otherwise.
-    The theorem is silent about them.
-
-    \textbf{Theories within the scope.}
-    Theorem~\ref{thm:main} applies to any framework where the effective description
-    is genuinely derived from a finer-grained level via projection.
-    This includes, in particular:
-    renormalisation group (RG) approaches, where the projection
-    $\Pi_\Lambda : \Omega_\mathrm{UV} \to \mathcal{O}_\mathrm{IR}$ integrates out
-    modes above the scale $\Lambda$ and is non-injective by construction;
-    causal set models, where macroscopic geometry is an invariant of sets of
-    micro-configurations and the mapping is many-to-one;
-    spin-foam and spin-network models, where the effective geometrical observables
-    arise from averaging over discrete micro-structures;
-    and relational frameworks such as Cosmochrony~\cite{Cosmochrony}, where the
-    full observable structure is explicitly derived from a pre-geometric substrate
-    via a projection $\Pi$.
-
-    In each of these cases, the theorem does not prove non-injectivity from nothing:
-    it shows that the non-injectivity already implicit in the framework's own
-    definition of ``effective description'' is a logical necessity, not a contingent
-    modelling choice.
-
-    \textbf{The key distinction.}
-    The result isolates a precise logical boundary:
-
-    \begin{quote}
-      \emph{Injectivity of $\Pi$ is equivalent to the absence of genuine emergence.}
-    \end{quote}
-
-    If $\Pi$ is injective, the effective level is isomorphic to the fundamental
-    level: nothing is lost, nothing is emergent.
-    If the effective level is genuinely distinct, something is necessarily lost, and
-    that loss is precisely $S_\Pi > 0$.
-
-  \section{Categorical and Informational Reformulations}
-    \label{sec:cat-info}
-
-    Two reformulations of Theorem~\ref{thm:main} strengthen its connections to
-    existing mathematical frameworks.
-
-    \textbf{Categorical form.}
-    Let $\mathbf{Fund}$ be the category whose objects are spaces of fundamental
-    configurations and whose morphisms are dynamically compatible maps, and let
-    $\mathbf{Obs}$ be the category of observable spaces.
-    The projection $\Pi$ defines a functor $F_\Pi : \mathbf{Fund} \to \mathbf{Obs}$.
-    Recall that a functor is \emph{faithful} if it distinguishes all morphisms
-    that the source category distinguishes; faithfulness is the categorical
-    analogue of injectivity.
-
-    \begin{theorem}[Categorical form of compression necessity]
-      \label{thm:cat}
-      Under the hypotheses of Theorem~\ref{thm:main}, the functor
-      $F_\Pi : \mathbf{Fund} \to \mathbf{Obs}$ is necessarily non-faithful.
-      Conversely, a faithful functor from $\mathbf{Fund}$ to a non-equivalent
-      $\mathbf{Obs}$ cannot exist.
-    \end{theorem}
-
-    \begin{proof}
-      If $F_\Pi$ were faithful, the induced map on morphisms would be injective at
-      every hom-set, which at the level of objects recovers the injectivity of $\Pi$.
-      By Lemma~\ref{lem:pivot}, this forces $\mathcal{O} \cong \Omega$, i.e.\
-      $\mathbf{Obs} \simeq \mathbf{Fund}$, contradicting condition~(E3).
-      Hence $F_\Pi$ cannot be faithful.
-      The converse follows immediately: a faithful functor to a non-equivalent
-      category is a contradiction in the same sense.
-    \end{proof}
-
-    \begin{remark}
-      Theorem~\ref{thm:cat} identifies genuine emergence with the failure of
-      faithfulness in the categorical sense.
-      Faithful functors preserve all distinctions of the source; non-faithful
-      functors compress them.
-      Emergence is precisely this compression, now stated as a categorical necessity.
-    \end{remark}
-
-    \textbf{Informational version.}
-    Let $p$ be a probability distribution on $\Omega$ and
-    $q = \Pi_* p$ its pushforward on $\mathcal{O}$.
-    The Kullback--Leibler divergence of $p$ with respect to the lifted distribution
-    $\Pi^* q$ measures the information lost under $\Pi$:
-    \begin{equation}
-      D_{\mathrm{KL}}(p \,\|\, \Pi^* q)
-      \;=\; \sum_{\omega \in \Omega} p(\omega) \log \frac{p(\omega)}{q(\Pi(\omega))}.
-      \label{eq:KL}
-    \end{equation}
-    If $\Pi$ is injective, $p(\omega) = q(\Pi(\omega))$ for all $\omega$ and
-    $D_{\mathrm{KL}} = 0$.
-    Theorem~\ref{thm:main} implies:
-
-    \begin{corollary}[Informational lower bound]
-      \label{cor:info}
-      In any effectively non-trivial emergent framework, there exists a distribution
-      $p$ on $\Omega$ such that $D_{\mathrm{KL}}(p \,\|\, \Pi^* q) > 0$.
-      The projection entropy $S_\Pi$ provides a distribution-independent lower bound
-      on the structural information loss.
-    \end{corollary}
-
-    The projection entropy $S_\Pi$ defined in Eq.~\eqref{eq:SPI} is the
-    distribution-independent part of this loss: it captures the structural
-    compression built into $\Pi$ independently of any particular state.
-    $D_{\mathrm{KL}}$ then adds the state-dependent contribution.
-    Together, they quantify two distinct aspects of the same fundamental
-    compression.
-
-    The informational reading also connects to the renormalisation group.
-    The Wilsonian RG projection $\Pi_\Lambda$ is non-injective by construction:
-    the same low-energy observable corresponds to infinitely many UV completions.
-    Corollary~\ref{cor:info} says that any such effective field theory has
-    $S_{\Pi_\Lambda} > 0$ and $D_{\mathrm{KL}} > 0$: the loss of UV information is
-    not a limitation to be overcome but a structural property of the emergent
-    description itself.
-
-  \clearpage
-  \section{Discussion}
-    \label{sec:discussion}
-
-    The central result admits a concise reading:
-    \begin{quote}
-      \emph{Any genuinely emergent physical description necessarily involves
-      information compression.
-      A fully injective projection would reduce emergence to a mere
-      reparametrisation.}
-    \end{quote}
-
-    The hypotheses are minimal.
-    We do not assume a metric, a Hilbert space, a Lagrangian, or any physical
-    dynamics.
-    We require only that the effective description be defined by projection
-    (Definition~\ref{def:defined-by-Pi}) and genuinely distinct from the
-    fundamental level (condition~E3).
-
-    The connection to information theory is direct.
-    The projection entropy $S_\Pi$ is not an epistemic quantity: it does not
-    measure ignorance about which $\omega \in \Omega$ is the true configuration.
-    It measures an objective structural property of $\Pi$ --- the degree to which
-    $\Omega$ distinctions are compressed out of $\mathcal{O}$.
-    Theorem~\ref{thm:main} establishes that this compression is not optional: in
-    any genuine emergent framework, $S_\Pi > 0$ is a structural necessity, not a
-    contingent feature.
-
-    The result also clarifies the status of gauge symmetry.
-    Gauge invariance has long been understood as a redundancy of description.
-    Proposition~\ref{prop:gauge} and Remark~\ref{rem:converse} make this precise
-    in the projective setting: redundancy is equivalent to non-injectivity, which
-    is itself forced by the structure of genuine emergence.
-    Gauge symmetry is therefore not a fundamental feature of nature but a
-    necessary organisational consequence of any emergent description that is rich
-    enough to carry a principal bundle structure.
-
-    The three reformulations --- structural (Theorem~\ref{thm:main}), categorical
-    (Theorem~\ref{thm:cat}), and informational
-    (Corollary~\ref{cor:info}) --- are equivalent in content but address different
-    audiences and connect to different existing bodies of work.
-    Their convergence on the same conclusion strengthens the claim that
-    non-injectivity is a universal structural feature of emergent descriptions,
-    not an artefact of any particular formalism.
-
-    The core equivalence, within the present projective-emergent setting, can
-    be stated in a single line:
-    \begin{equation}
-      \text{genuine emergence}
-      \;\Longleftrightarrow\;
-      \text{information loss}
+  \begin{corollary}[Co-extensivity]
+    \label{cor:co-ext}
+    In any projective emergent framework satisfying the hypotheses of
+    Theorem~\ref{thm:main},
+    \[
+      \text{descriptive redundancy}
       \;\Longleftrightarrow\;
       \Pi \text{ non-injective}
       \;\Longleftrightarrow\;
+      S_\Pi > 0,
+    \]
+    and any non-trivial gauge structure requires these properties:
+    \[
+      \text{non-trivial gauge}
+      \;\Longrightarrow\;
+      \Pi \text{ non-injective}
+      \;\Longleftrightarrow\;
       S_\Pi > 0.
-      \label{eq:equivalence}
-    \end{equation}
-    The left-to-right direction is Theorem~\ref{thm:main}; the right-to-left
-    direction follows from the fact that any non-injective $\Pi$ whose fibres are
-    non-trivial defines a genuinely distinct effective level by the identification
-    of distinct configurations.
-    A fully injective effective theory is not an emergent theory but a renaming
-    of the fundamental level.
+    \]
+    Under additional geometric hypotheses on the fibre organisation of $\Pi$
+    (principal bundle structure, admissible connection, non-trivial holonomy),
+    the redundancy may in turn manifest as a gauge structure.
+  \end{corollary}
 
+  This perspective is consistent with the standard interpretation of gauge
+  symmetry as a redundancy of description, as formalised in constrained
+  Hamiltonian systems~\cite{HenneauxTeitelboim1992} and relational
+  approaches to observables~\cite{Rovelli2002}.
+
+  \begin{remark}[Algebraic route to $S_\Pi > 0$ via fibre non-commutativity]
+    \label{rem:heisenberg-route}
+    Theorem~\ref{thm:main} derives $S_\Pi > 0$ from the structural conditions
+    (surjectivity, informational completeness, non-isomorphism) without
+    specifying a mechanism for the kernel of~$\Pi$.
+    In frameworks where the admissibility structure of the fibre carries a
+    Heisenberg-type algebra --- specifically where the fibre generators satisfy
+    $[X, Y] = Z \neq 0$ --- a complementary algebraic derivation is available.
+    Any projection $\Pi$ with trivial kernel would require the simultaneous
+    diagonalisation of $X$ and $Y$, which the non-zero commutator structurally
+    forbids; hence $\ker\Pi \neq \{0\}$ and $S_\Pi > 0$ follow directly from
+    the algebraic structure of the fibre, independently of the non-isomorphism
+    condition (E3).
+    The two derivations are complementary: Theorem~\ref{thm:main} is
+    framework-independent and answers \emph{what} is structurally forced;
+    the algebraic route is mechanism-specific and answers \emph{why} it is
+    forced in frameworks whose fibre carries non-commutative structure.
+    In such frameworks, structural fluctuations --- the irreducible projective
+    residue guaranteed by $\ker\Pi \neq \{0\}$ --- are not contingent
+    modelling choices but necessary consequences of fibre non-commutativity,
+    providing an independent source for the same conclusion that
+    Theorem~\ref{thm:main} reaches by abstract necessity.
+  \end{remark}
+
+  \begin{corollary}[Recursive non-injectivity]
+    \label{cor:recursive}
+    Let $\Omega_0 \xrightarrow{\Pi_1} \Omega_1 \xrightarrow{\Pi_2} \Omega_2$ be a tower
+    of surjective projections in which, at each step $i \in \{1,2\}$, the observables of
+    $\Omega_i$ are defined by $\Pi_i$ and $\Omega_i \not\cong \Omega_{i-1}$.
+    Then each $\Pi_i$ is non-injective, $S_{\Pi_i} > 0$, and the composed projection
+    $\Pi_2 \circ \Pi_1 : \Omega_0 \to \Omega_2$ is non-injective with
+    \[
+      S_{\Pi_2 \circ \Pi_1} \;\geq\; S_{\Pi_1}.
+    \]
+    The result extends to towers of arbitrary finite depth.
+  \end{corollary}
+
+  \begin{proof}
+    Non-injectivity of each $\Pi_i$ follows from Theorem~\ref{thm:main} applied at each
+    level independently.
+    Non-injectivity of the composition is immediate: if $\Pi_1(\omega) = \Pi_1(\omega')$
+    for $\omega \neq \omega'$, then $\Pi_2(\Pi_1(\omega)) = \Pi_2(\Pi_1(\omega'))$.
+    The entropy bound $S_{\Pi_2 \circ \Pi_1} \geq S_{\Pi_1}$ follows because each fibre of
+    $\Pi_2 \circ \Pi_1$ is a union of fibres of $\Pi_1$, so the composed map is at least as
+    compressive as $\Pi_1$ alone.
+  \end{proof}
+
+  \begin{remark}[Self-application of the theorem]
+    \label{rem:self-application}
+    Corollary~\ref{cor:recursive} expresses a self-application property:
+    Theorem~\ref{thm:main} does not merely apply once to the pair $(\Omega, \mathcal{O})$
+    posited by a given framework.
+    It applies at every pair of adjacent levels in any tower of emergence.
+    Non-injectivity therefore accumulates across levels: each emergent description carries its
+    own necessary compression, independently of the compressions already realised below it.
+    A framework with $k$ genuinely distinct levels of description carries at least $k-1$
+    independent non-injective projections, each with strictly positive projection entropy.
+  \end{remark}
+
+  \section{Three-Level Structure}
+  \label{sec:levels}
+
+  The results of Sections~\ref{sec:theorem} and~\ref{sec:gauge} establish a
+  hierarchy with three distinct levels of increasing specificity.
+
+  \textbf{Universal level.}
+  Theorem~\ref{thm:main} holds for any surjective $\Pi$ satisfying
+  Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial}.
+  No dynamical, geometric, or physical hypothesis is required beyond the
+  structural conditions on $\Pi$.
+  The conclusion --- $\Pi$ non-injective, $S_\Pi > 0$ --- is a structural
+  constraint on any framework that takes emergence seriously.
+
+  \textbf{Intermediate level.}
+  If the non-trivial fibres of $\Pi$ are organised geometrically --- forming a
+  principal $G_\Pi$-bundle with admissible connection --- then the projective
+  redundancy can support a gauge structure with holonomy group $G_\Pi$.
+  This is an additional geometric hypothesis, not a consequence of
+  Theorem~\ref{thm:main} alone.
+
+  \textbf{Concrete realisation.}
+  In the pre-geometric projective framework of~\cite{Cosmochrony}, the intermediate
+  hypothesis is explicitly realised: the fundamental projection $\Pi$ defines a principal
+  bundle with fibre $S^3$, yielding $G_\Pi \supseteq \mathrm{SU}(2) \times \mathrm{U}(1)$.
+  The resulting gauge structure underlies the emergence of electroweak
+  interactions, while the Born--Infeld saturation bound selects the unique
+  admissible infrared dynamics~\cite{Beau2026c}.
+  Bell-type correlations arise as the observable signature of $S_\Pi >
+  0$~\cite{Beau2026b}.
+  The route from non-injectivity to the specific group $\mathrm{SU}(2)$,
+  via Born--Infeld parity, Weil representations, and the Hurwitz classification
+  of real normed division algebras, is detailed in Appendix~\ref{app:SU2}.
+
+  \section{Towers of Emergence and Structural Confinement}
+  \label{sec:towers}
+
+  Corollary~\ref{cor:recursive} elevates the main result from a constraint on a
+  single projection to a constraint on any stratified emergent framework.
+  Each stratum is subject to Theorem~\ref{thm:main}; the non-injectivities at
+  different strata are independent and additive in entropy.
+  We make this structure explicit in the framework of~\cite{Cosmochrony,Beau2026a35},
+  where the spectral admissibility programme identifies a natural tower, and draw a
+  consequence for colour confinement.
+
+  \subsection*{The admissibility tower}
+
+    The spectral admissibility programme of~\cite{Cosmochrony} works with conjugate pairs
+    $\{c, q-c\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ as its fundamental observable units.
+    Conjugate pairs are colour-neutral by construction: $c + (q-c) = q \equiv 0$, so
+    the pair observable $\sigma_{\mathrm{pair}}(n) = \sigma_c(n) \cdot \sigma_{q-c}(n)$
+    retains no colour information.
+    Leptons, which are colourless, are naturally identified at this level.
+
+    However, each element $c_i$ of a colour triplet
+    $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$~\cite{Beau2026a35}
+    already carries a two-dimensional Weil-trajectory space $V_\rho \cong \mathbb{C}^2$ ---
+    the spin-$\frac{1}{2}$ structure inherited from its own conjugate pair $\{c_i, q-c_i\}$
+    --- together with a colour eigenspace $\tilde{V}_{c_i} \cong \mathbb{C}$ selected
+    by Born--Infeld saturation.
+    The individual sector $c_i$ therefore carries simultaneously spin-$\frac{1}{2}$ and a
+    colour charge: the minimal quantum number content of a quark.
+
+    This identifies a tower of genuinely distinct emergent levels above the pre-geometric
+    substrate $\Omega_0$:
+    \begin{equation}
+      \Omega_0
+      \;\xrightarrow{\Pi_1}\;
+      \{\text{individual sectors } c_i\}
+      \;\xrightarrow{\Pi_2}\;
+      \{\text{colour-neutral pairs and triplets}\}
+      \;\xrightarrow{\Pi_3}\;
+      \{\text{leptons, hadrons}\}.
+      \label{eq:tower}
+    \end{equation}
+    Each arrow satisfies the hypotheses of Theorem~\ref{thm:main}: the target level is
+    genuinely distinct from the source (different symmetry group, different admissibility
+    structure, different observable content), and its observables are defined by the
+    projection.
+    By Corollary~\ref{cor:recursive}, each $\Pi_i$ is non-injective with
+    $S_{\Pi_i} > 0$.
+
+  \subsection*{Structural confinement}
+
+    The projection $\Pi_2$ in~\eqref{eq:tower} maps coloured sectors $c_i$ to
+    colour-neutral pairs and triplets.
+    Theorem~\ref{thm:main}, applied to this pair of adjacent levels, forces $\Pi_2$ to
+    be non-injective: distinct colour configurations --- distinct assignments of colours to
+    the three sectors $c_1, c_2, c_3$ --- map to the same colour-neutral observable.
+
+    This is the structural content of colour confinement: individual coloured sectors are
+    not observable because $\Pi_2$ erases colour information.
+    Within the projective-emergent setting, confinement is not a dynamical accident
+    requiring a separate explanation; it is a structural necessity of the emergence of
+    colour-neutral observables from coloured degrees of freedom.
+
+    \begin{remark}[Confinement as projective necessity]
+      \label{rem:confinement}
+      The present argument does not reproduce the quantitative features of QCD confinement
+      (string tension, running coupling, asymptotic freedom).
+      It establishes the weaker but more fundamental claim: any framework in which
+      colour-neutral hadrons arise as genuinely emergent from coloured sectors --- in the
+      sense of Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial} --- must have
+      a non-injective colour projection.
+      The non-observability of free colour charges is the observable signature of
+      $S_{\Pi_2} > 0$ at the colour stratum.
+      The quantitative dynamics of confinement is a supplementary question, analogous to
+      the question of which specific group $G_\Pi$ organises the fibre redundancy
+      (Remark~\ref{rem:converse}).
+    \end{remark}
+
+  \subsection*{Recursive self-similarity}
+
+    A structural consequence of Remark~\ref{rem:self-application} is that the compression
+    mechanism is self-similar across the tower~\eqref{eq:tower}: the same structural
+    argument --- surjectivity, informational completeness, non-isomorphism --- forces
+    non-injectivity at each stratum, regardless of which stratum one takes as its own
+    ``fundamental level.''
+    The non-injectivity of $\Pi_1$ is not a distinguished feature of the deepest level; it
+    is the first instance of a pattern that the theorem forces to repeat at every level of
+    genuine emergence.
+    This self-similarity is not postulated but derived: it is the content of
+    Corollary~\ref{cor:recursive} applied to each adjacent pair in the tower.
+
+  \section{Scope and Limits of the Result}
+  \label{sec:scope}
+
+  Theorem~\ref{thm:main} is a conditional result.
+  Its conclusion holds whenever the hypotheses of
+  Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial} are satisfied.
+  It is therefore essential to identify the class of theories to which it applies
+  and the class to which it does not.
+
+  \textbf{Theories outside the scope.}
+  Standard physical frameworks --- quantum mechanics, general relativity,
+  standard-model field theories --- are not covered by Theorem~\ref{thm:main}.
+  These theories posit their fundamental objects (Hilbert space, spacetime manifold,
+  gauge fields) directly at the level $\mathcal{O}$, without deriving them from a
+  more primitive space $\Omega$ via a projection.
+  The question of non-injectivity does not arise in such frameworks: there is no
+  projection $\Pi$ to be injective or otherwise.
+  The theorem is silent about them.
+
+  Loop quantum gravity (LQG) deserves explicit discussion, as it occupies an
+  intermediate position~\cite{Rovelli2004,Thiemann2007}.
+  LQG describes the quantum geometry of the universe --- spin networks and spin
+  foams --- as fundamental objects that are themselves part of the observable
+  universe, not external to it.
+  It does not posit a pre-geometric substrate $\Omega$ from which observables
+  are projected; it claims to \emph{be} the fundamental level.
+  In this sense LQG is not emergent: it does not fit the projective structure
+  of Definition~\ref{def:defined-by-Pi}, and Theorem~\ref{thm:main} does not
+  apply to it as a fundamental theory.
+
+  The relevant demarcation criterion is therefore not the presence of a
+  singularity but an ontological one:
+  \begin{quote}
+    \emph{Theorem~\ref{thm:main} applies naturally to frameworks that posit
+    a level $\Omega$ structurally external to the observable universe,
+      from which observables are projected via $\Pi$.
+      A theory that describes the universe at a finer scale --- however fine ---
+      without positing such an external level falls outside this class.}
+  \end{quote}
+  LQG describes the universe at the Planck scale; it does not describe what
+  lies outside or before the universe.
+  The framework of~\cite{Cosmochrony}, by contrast, posits a pre-geometric substrate that is
+  pre-spatial, pre-temporal, and structurally prior to the observable universe:
+  it is explicitly in the class to which the theorem applies.
+
+  Note, however, that the semi-classical limit of LQG ---
+  the projection $\Pi_\mathrm{sc} : \mathcal{H}_\mathrm{LQG} \to g_{\mu\nu}$
+  that recovers classical general relativity --- is itself a non-injective map
+  within the class of Definition~\ref{def:defined-by-Pi}, with
+  $\Omega = \mathcal{H}_\mathrm{LQG}$ and $\mathcal{O} = \{g_{\mu\nu}\}$.
+  Theorem~\ref{thm:main} applies to this projection: general relativity is
+  genuinely emergent from LQG, and its projection is necessarily non-injective.
+  The two claims --- LQG is not emergent as a fundamental theory, GR is
+  emergent from LQG --- are consistent.
+
+  \begin{remark}[Multi-valued maps lie outside the scope]
+    \label{rem:multivalued}
+    Theorem~\ref{thm:main} assumes a single-valued surjection
+    $\Pi : \Omega \to \mathcal{O}$.
+    Multi-valued maps $\Phi : \Omega \rightrightarrows \mathcal{O}$,
+    in which a single configuration $\omega \in \Omega$ may be associated
+    with several distinct observables, fall outside the framework.
+
+    The exclusion is independent of injectivity and follows directly from
+    Definition~\ref{def:defined-by-Pi}.
+    If $\Phi(\omega)$ contains distinct elements $o_1 \neq o_2$, then
+    $\mathcal{O}$ resolves a distinction --- between $o_1$ and $o_2$ ---
+    that is not resolved by the fundamental description at $\omega$.
+    The observable level then carries a strictly finer discriminating
+    structure than the fundamental level, which is incompatible with the
+    requirement that $\mathcal{O}$ carry no independent microstate-resolving
+    structure.
+
+    Such generative maps describe a structurally different relationship
+    between levels: one in which the effective description is more
+    expressive than the fundamental one.
+    Whether they admit structural necessity results analogous to
+    Theorem~\ref{thm:main} is an open question.
+  \end{remark}
+
+  \textbf{Theories within the scope.}
+  Theorem~\ref{thm:main} applies to any framework where the effective description
+  is genuinely derived from a finer-grained level via projection.
+  This includes, in particular:
+  renormalisation group (RG) approaches, where the projection
+  $\Pi_\Lambda : \Omega_\mathrm{UV} \to \mathcal{O}_\mathrm{IR}$ integrates out
+  modes above the scale $\Lambda$ and is non-injective by construction;
+  causal set models, where macroscopic geometry is an invariant of sets of
+  micro-configurations and the mapping is many-to-one;
+  spin-foam and spin-network models, where the effective geometrical observables
+  arise from averaging over discrete micro-structures;
+  and pre-geometric relational frameworks~\cite{Cosmochrony}, where the
+  full observable structure is explicitly derived from a pre-geometric substrate
+  via a projection $\Pi$.
+
+  In each of these cases, the theorem does not prove non-injectivity from nothing:
+  it shows that the non-injectivity already implicit in the framework's own
+  definition of ``effective description'' is a logical necessity, not a contingent
+  modelling choice.
+
+  \textbf{The key distinction.}
+  The result isolates a precise logical boundary:
+
+  \begin{quote}
+    \emph{Within the present projective-emergent setting,
+      injectivity of $\Pi$ is equivalent to the absence of genuine emergence.}
+  \end{quote}
+
+  If $\Pi$ is injective, the effective level is isomorphic to the fundamental
+  level: nothing is lost, nothing is emergent.
+  If the effective level is genuinely distinct, something is necessarily lost, and
+  that loss is precisely $S_\Pi > 0$.
+
+  \section{Categorical and Informational Reformulations}
+  \label{sec:cat-info}
+
+  Two reformulations of Theorem~\ref{thm:main} strengthen its connections to
+  existing mathematical frameworks.
+
+  \textbf{Categorical form.}
+  Let $\mathbf{Fund}$ be the category whose objects are spaces of fundamental
+  configurations and whose morphisms are dynamically compatible maps, and let
+  $\mathbf{Obs}$ be the category of observable spaces.
+  The projection $\Pi$ defines a functor $F_\Pi : \mathbf{Fund} \to \mathbf{Obs}$.
+  Recall that a functor is \emph{faithful} if it distinguishes all morphisms
+  that the source category distinguishes; faithfulness is the categorical
+  analogue of injectivity.
+
+  \begin{theorem}[Categorical form of compression necessity]
+    \label{thm:cat}
+    Under the hypotheses of Theorem~\ref{thm:main}, the functor
+    $F_\Pi : \mathbf{Fund} \to \mathbf{Obs}$ is necessarily non-faithful.
+    Conversely, a faithful functor from $\mathbf{Fund}$ to a non-equivalent
+    $\mathbf{Obs}$ cannot exist.
+  \end{theorem}
+
+  \begin{proof}
+    If $F_\Pi$ were faithful, the induced map on morphisms would be injective at
+    every hom-set, which at the level of objects recovers the injectivity of $\Pi$.
+    By Lemma~\ref{lem:pivot}, this forces $\mathcal{O} \cong \Omega$, i.e.\
+    $\mathbf{Obs} \simeq \mathbf{Fund}$, contradicting condition~(E3).
+    Hence $F_\Pi$ cannot be faithful.
+    The converse follows immediately: a faithful functor to a non-equivalent
+    category is a contradiction in the same sense.
+  \end{proof}
+
+  \begin{remark}
+    Theorem~\ref{thm:cat} identifies genuine emergence with the failure of
+    faithfulness in the categorical sense.
+    Faithful functors preserve all distinctions of the source; non-faithful
+    functors compress them.
+    Emergence is precisely this compression, now stated as a categorical necessity.
+  \end{remark}
+
+  \textbf{Informational version.}
+  Let $p$ be a probability distribution on $\Omega$ and
+  $q = \Pi_* p$ its pushforward on $\mathcal{O}$.
+  The Kullback--Leibler divergence of $p$ with respect to the lifted distribution
+  $\Pi^* q$ measures the information lost under $\Pi$:
+  \begin{equation}
+    D_{\mathrm{KL}}(p \,\|\, \Pi^* q)
+    \;=\; \sum_{\omega \in \Omega} p(\omega) \log \frac{p(\omega)}{q(\Pi(\omega))}.
+    \label{eq:KL}
+  \end{equation}
+  If $\Pi$ is injective, $p(\omega) = q(\Pi(\omega))$ for all $\omega$ and
+  $D_{\mathrm{KL}} = 0$.
+  Theorem~\ref{thm:main} implies:
+
+  \begin{corollary}[Informational lower bound]
+    \label{cor:info}
+    In any effectively non-trivial emergent framework, there exists a distribution
+    $p$ on $\Omega$ such that $D_{\mathrm{KL}}(p \,\|\, \Pi^* q) > 0$.
+    The projection entropy $S_\Pi$ provides a distribution-independent lower bound
+    on the structural information loss.
+  \end{corollary}
+
+  The projection entropy $S_\Pi$ defined in Eq.~\eqref{eq:SPI} is the
+  distribution-independent part of this loss: it captures the structural
+  compression built into $\Pi$ independently of any particular state.
+  $D_{\mathrm{KL}}$ then adds the state-dependent contribution.
+  Together, they quantify two distinct aspects of the same fundamental
+  compression.
+
+  The informational reading also connects to the renormalisation group.
+  The Wilsonian RG projection $\Pi_\Lambda$ is non-injective by construction~\cite{Wilson1975}:
+  the same low-energy observable corresponds to infinitely many UV completions.
+  Corollary~\ref{cor:info} says that any such effective field theory has
+  $S_{\Pi_\Lambda} > 0$ and $D_{\mathrm{KL}} > 0$: the loss of UV information is
+  not a limitation to be overcome but a structural property of the emergent
+  description itself.
+
+  This interpretation aligns with the information-theoretic view of
+  statistical mechanics and inference, where macroscopic descriptions
+  necessarily involve a loss of microscopic detail~\cite{Jaynes1957}.
+
+  \section{Discussion}
+  \label{sec:discussion}
+
+  The central result admits a concise reading:
+  \begin{quote}
+    \emph{Any genuinely emergent physical description necessarily involves
+    information compression.
+    A fully injective projection would reduce emergence to a mere
+    reparametrisation.}
+  \end{quote}
+  Equivalently, Theorem~\ref{thm:main} can be read as a \emph{no-go theorem
+  for faithful emergence}: a surjective projection that is both
+  informationally faithful (injective) and genuinely emergent
+  ($\mathcal{O} \not\cong \Omega$) cannot exist.
+  One of the two conditions must be abandoned; genuine emergence requires
+  abandoning injectivity.
+
+  While the connection between emergence and information loss is widely
+  recognised in the context of coarse-graining and effective field
+  theories, the present result sharpens this intuition into a structural
+  necessity: it does not rely on a specific dynamical or statistical
+  framework, but follows from minimal assumptions on the relation between
+  levels of description.
+
+  The hypotheses are minimal.
+  We do not assume a metric, a Hilbert space, a Lagrangian, or any physical
+  dynamics.
+  We require only that the effective description be defined by projection
+  (Definition~\ref{def:defined-by-Pi}) and genuinely distinct from the
+  fundamental level (condition~E3).
+
+  The connection to information theory is direct.
+  The projection entropy $S_\Pi$ is not an epistemic quantity: it does not
+  measure ignorance about which $\omega \in \Omega$ is the true configuration.
+  It measures an objective structural property of $\Pi$ --- the degree to which
+  $\Omega$ distinctions are compressed out of $\mathcal{O}$.
+  Theorem~\ref{thm:main} establishes that this compression is not optional: in
+  any genuine emergent framework, $S_\Pi > 0$ is a structural necessity, not a
+  contingent feature.
+
+  The result also clarifies the status of gauge symmetry.
+  Gauge invariance has long been understood as a redundancy of description.
+  Proposition~\ref{prop:gauge} and Remark~\ref{rem:converse} make this precise
+  in the projective setting: redundancy is equivalent to non-injectivity, which
+  is itself forced by the structure of genuine emergence.
+  Gauge symmetry is therefore not a fundamental feature of nature but a
+  necessary organisational consequence of any emergent description that is rich
+  enough to carry a principal bundle structure.
+
+  \textbf{Projective incompleteness of standard physics.}
+  The frameworks $\Lambda$CDM and the Standard Model describe the structure of
+  $\mathcal{O}$ with extraordinary precision, but they specify neither the
+  fundamental level $\Omega$ nor the projection $\Pi : \Omega \to \mathcal{O}$.
+  Yet three independent mechanisms within these frameworks each admit a
+  natural reading in terms of a non-injective projection.
+
+  \emph{(i) Cosmological singularity.}
+  The metric $g_{\mu\nu}$ ceases to be defined at $t \lesssim t_\mathrm{Planck}$,
+  which is structurally consistent with the geometry being an effective
+  description arising from a more primitive level.
+  If such a level $\Omega$ and projection $\Pi$ are posited and satisfy
+  Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial},
+  Theorem~\ref{thm:main} forces $\Pi$ to be non-injective.
+
+  \emph{(ii) Renormalisation group.}
+  The Standard Model can be naturally interpreted as a Wilsonian effective
+  field theory~\cite{Wilson1975} with UV cutoff $\Lambda$.
+  Under this interpretation, the map
+  $\Pi_\Lambda : \Omega_\mathrm{UV} \to \mathcal{O}_\mathrm{IR}$
+  is non-injective: infinitely many UV completions yield the
+  same infrared observables.
+  Similar compressive structures appear in classical statistical mechanics
+  through phase-space coarse-graining, where macroscopic thermodynamic
+  variables correspond to vast equivalence classes of microstates.
+
+  \emph{(iii) Quantum measurement.}
+  The transition from quantum states to classical outcomes admits a natural
+  description as a projection
+  $\Pi_\mathrm{meas} : \mathcal{H} \to \mathcal{O}_\mathrm{class}$
+  mapping distinct quantum states to the same classical outcome.
+  The measurement problem can then be read, in the present language, as the
+  question of what determines the structure of $\Pi_\mathrm{meas}$ and why
+  it is non-injective.
+
+  These three readings are independent of any hypothesis specific to
+  the framework of~\cite{Cosmochrony}.
+  They illustrate that the projective structure identified in
+  Theorem~\ref{thm:main} is not exotic: it appears wherever an effective
+  description is obtained from a finer-grained level.
+  What is missing in these frameworks is a structural necessity result:
+  while non-injective mappings appear operationally in each case, no general
+  theorem establishes that they are unavoidable for emergence itself.
+  Theorem~\ref{thm:main} supplies this missing result.
+  The following table identifies what is described and what is absent in
+  standard physics.
+
+  \begin{center}
+    \begin{tabular}{lll}
+      \hline
+      Level                          & Standard physics & Missing                  \\
+      \hline
+      Observable space $\mathcal{O}$ & fully described  & ---                      \\
+      Fundamental space $\Omega$     & absent           & unknown structure        \\
+      Projection $\Pi$               & absent           & law of projection        \\
+      Fibres $\Pi^{-1}(o)$           & absent           & microscopic multiplicity \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  The quantities that standard physics cannot derive --- the fine-structure
+  constant $\alpha$, the electron-to-proton mass ratio $m_e/m_p$, the CKM
+  mixing angles --- can be naturally interpreted as invariants of $\Pi$ that
+  $\mathcal{O}$ alone cannot determine: under this interpretation, they encode
+  properties of the fibres $\Pi^{-1}(o)$ that are invisible to any description
+  confined to the effective level.
+
+  The incompleteness is not empirical but structural:
+  \begin{quote}
+    \emph{Standard physics omits the map defining its observables.}
+  \end{quote}
+  This imposes a precise constraint on any candidate unification or
+  quantum-gravity programme: a theory that remains within $\mathcal{O}$ ---
+  however sophisticated --- does not complete the description; it extends it.
+  Any theory that genuinely completes standard physics must specify $\Omega$,
+  $\Pi$, and the non-injective structure of $\Pi$.
+
+  \textbf{Recursive structure and the particle hierarchy.}
+  Corollary~\ref{cor:recursive} and Section~\ref{sec:towers} show that the
+  structural incompleteness of standard physics is not confined to its deepest level.
+  The Standard Model itself contains an internal tower of emergence: leptons and
+  hadrons are not fundamental objects but colour-neutral projections of coloured
+  degrees of freedom.
+  The projection from the quark level to the hadronic level is subject to
+  Theorem~\ref{thm:main} in its own right and is therefore necessarily non-injective.
+  This is a second instance of structural incompleteness within $\mathcal{O}$ itself:
+  the map $\Pi_{\mathrm{SM}} : \{\text{quarks}\} \to \{\text{hadrons}\}$ is a
+  non-injective projection whose fibre structure is currently described dynamically
+  (QCD) but not derived from a more primitive level.
+  Theorem~\ref{thm:main} does not construct this fibre structure; it establishes that
+  any framework which derives hadrons as genuinely emergent from quarks must have
+  $S_{\Pi_{\mathrm{SM}}} > 0$.
+  The quantities that QCD cannot derive from first principles --- the proton-to-electron
+  mass ratio $m_p/m_e$, the strong coupling constant $\alpha_s$ at a given scale ---
+  can be interpreted, in line with the general argument of this section, as invariants
+  of $\Pi_{\mathrm{SM}}$ not accessible from the hadronic level alone.
+
+  \textbf{Singularity elimination does not restore completeness.}
+  A natural response is to propose a framework that eliminates the initial
+  singularity entirely --- loop quantum cosmology (LQC), pre-Big Bang
+  scenarios, bounce cosmologies, or emergent-universe models --- on the
+  grounds that if $g_{\mu\nu}$ is everywhere well defined, the cosmological
+  argument of Section~\ref{sec:intro} does not apply.
+  This response is correct as far as it goes, but it confuses eliminating a
+  \emph{signal} of incompleteness with eliminating the incompleteness itself.
+
+  Consider the four main classes.
+  LQC replaces the singularity by a quantum bounce at Planck
+  density~\cite{Ashtekar2006,Bojowald2001}.
+  It has a partial $\Omega$ --- spin-network states --- and a many-to-one
+  projection to the effective metric.
+  It is more advanced than $\Lambda$CDM in specifying $\Omega$, but $\Pi$
+  remains unspecified: the effective dynamics is postulated, not derived from
+  the projection structure.
+  Pre-Big Bang scenarios (string cosmology~\cite{Gasperini1993},
+  ekpyrotic~\cite{Khoury2001}, conformal cyclic~\cite{Penrose2010})
+  displace the singularity into a preceding phase, but that phase is itself
+  described by an effective geometry --- the question of its own $\Omega$ and
+  $\Pi$ is deferred, not answered.
+  Bounce cosmologies with everywhere-regular $g_{\mu\nu}$ avoid the
+  cosmological argument directly; they remain incomplete through the
+  renormalisation and measurement non-injectivities of mechanisms~(ii)
+  and~(iii) above.
+  Emergent-universe models (Hartle--Hawking~\cite{HartleHawking1983},
+  tunnelling from nothing~\cite{Vilenkin1982}) replace
+  the singularity by a quantum-to-classical transition --- which is itself a
+  non-injective projection from $\mathcal{H}$ to a classical geometry.
+
+  In every case, the structure of the argument is the same:
+  \begin{quote}
+    \emph{Eliminating the singularity removes one signal of projective
+    incompleteness.
+    It does not supply $\Omega$, $\Pi$, or the non-injective structure of $\Pi$.
+    A theory without a singularity but without a fundamental level is simply
+    a theory whose limit of validity has not yet been reached within the
+    observed range.}
+  \end{quote}
+  Completeness in the projective sense requires specifying what lies above
+  $\mathcal{O}$, not merely extending $\mathcal{O}$ to a regime where it no
+  longer breaks down.
+
+  The three reformulations --- structural (Theorem~\ref{thm:main}), categorical
+  (Theorem~\ref{thm:cat}), and informational
+  (Corollary~\ref{cor:info}) --- are equivalent in content but address different
+  audiences and connect to different existing bodies of work.
+  Their convergence on the same conclusion strengthens the claim that
+  non-injectivity is a universal structural feature of emergent descriptions,
+  not an artefact of any particular formalism.
+
+  \textbf{On the non-triviality of the result.}
+  A natural objection is that non-injectivity is ``obvious'' in any
+  coarse-graining procedure.
+  This objection conflates two distinct claims.
+  It is indeed obvious that a specific coarse-graining --- such as the spin
+  model of Example~\ref{ex:spin} --- produces a non-injective map.
+  What Theorem~\ref{thm:main} establishes is different: it shows that
+  \emph{any} framework satisfying Definitions~\ref{def:defined-by-Pi}
+  and~\ref{def:non-trivial} must be non-injective, independently of the
+  specific form of $\Pi$.
+  The theorem is a constraint on the class of theories, not an observation
+  about a particular model.
+  Its content is the logical equivalence
+  $\text{genuine emergence} \Leftrightarrow \text{non-injectivity}$
+  within the projective-emergent setting, which rules out the possibility of
+  a faithful emergent description --- something that is not guaranteed by
+  pointing to examples of coarse-graining.
+  The present result does not introduce a new model of emergence, but
+  establishes a structural constraint that any such model must satisfy:
+  within the present projective-emergent framework, emergence without
+  non-injectivity is impossible.
+
+  The core equivalence, within the present projective-emergent setting, can
+  be stated in a single line:
+  \begin{equation}
+    \text{genuine emergence}
+    \;\Longleftrightarrow\;
+    \text{information loss}
+    \;\Longleftrightarrow\;
+    \Pi \text{ non-injective}
+    \;\Longleftrightarrow\;
+    S_\Pi > 0.
+    \label{eq:equivalence}
+  \end{equation}
+  The left-to-right direction is Theorem~\ref{thm:main}; the right-to-left
+  direction follows from the fact that any non-injective $\Pi$ whose fibres are
+  non-trivial defines a genuinely distinct effective level by the identification
+  of distinct configurations.
+  A fully injective effective theory is not an emergent theory but a renaming
+  of the fundamental level.
+
+  \appendix
+
+  \section{On the Route from Non-Injectivity to the Standard Model Gauge Group}
+  \label{app:SU2}
+
+  Theorem~\ref{thm:main} guarantees the existence of non-trivial fibres but
+  says nothing about their form.
+  The identification of the structure group $G_\Pi$ with the Standard Model gauge
+  group $G_{\mathrm{SM}} = \mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$
+  is a separate result, established in~\cite{Cosmochrony} and subsequent
+  papers via a chain of constraints absent from the universal theorem.
+  We sketch the main steps for $\mathrm{SU}(2)$, then indicate how the same
+  mechanism extends to the full gauge group.
+
+  \subsection*{The SU(2) identification}
+
+    The route to $\mathrm{SU}(2)$ proceeds in four steps, now entirely analytical.
+    First, the Born--Infeld parity constraint~\cite{Beau2026a22} fixes the
+    minimal fibre structure to the involution $c \leftrightarrow q - c$ on the
+    Weil representation space of $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$.
+    Second, the requirement that the representation algebra be associative,
+    combined with the Hurwitz classification of real normed division algebras
+    ($\mathbb{R}$, $\mathbb{C}$, $\mathbb{H}$, $\mathbb{O}$), selects
+    $\mathbb{H}$ as the minimal associative non-commutative structure, with
+    $\dim_{\mathbb{R}} \mathrm{Im}\,\mathbb{H} = 3$ admissible directions~\cite{Beau2026a26}.
+    Third, the quaternionic rigidity theorem~\cite{Beau2026a31} proves that
+    every admissible morphism on $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ necessarily
+    factors through $\mathfrak{su}(2)$, and the symmetric rank formula
+    $r_{\mathrm{eff}} = d_\rho(d_\rho + 1)/2 = 3$ uniquely identifies
+    $d_\rho = 2$~\cite{Beau2026a33}.
+    The exclusion of $\mathrm{SO}(3)$ is structural: quotienting the central
+    $\mathbb{Z}_2$ of $\mathrm{SU}(2)$ destroys the $4\pi$-periodicity required
+    for spinorial holonomy.
+    Fourth, the Born--Infeld parity anti-linearity forces an equatorial constraint
+    on the admissible fibre, from which the invariant covariance ratio
+    $\lambda_1/\lambda_2 = 2$ is derived analytically as the squared
+    symmetric-tensor normalisation of the Carnot-degree-2 central generator
+    $Z = [X, Y]$~\cite{Beau2026a34}.
+
+    These four steps close the following analytical chain:
+    \begin{equation}
+      \text{emergence} \;\Rightarrow\; \mathfrak{su}(2)\;\text{\cite{Beau2026a31}}
+      \;\Rightarrow\; d_\rho = 2\;\text{\cite{Beau2026a33}}
+      \;\Rightarrow\; \lambda_1/\lambda_2 = 2\;\text{\cite{Beau2026a34}, proved}.
+      \label{eq:SU2chain}
+    \end{equation}
+    Each implication in~\eqref{eq:SU2chain} is a proved theorem.
+
+  \subsection*{Extension to the full gauge group}
+
+    The $\mathrm{U}(1)$ factor corresponds to global phase rotations within the
+    complex fibre $\mathbb{C}^q$, which lie in the kernel of $\Pi$ by the phase
+    invariance of $\sigma_c(n)$~\cite{Beau2026a31}.
+    Its identification is unconditional.
+
+    The $\mathrm{SU}(3)$ factor arises from a structurally distinct mechanism:
+    the colour triplet $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$
+    satisfying $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ and pairwise non-conjugacy.
+    With $[\mathrm{H\text{-}color}]$ established analytically in O31~\cite{Beau2026a35}
+    (exact triplet co-admissibility
+    $\sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n)$ via the single-frequency
+    fingerprint structure, Proposition~4.23), the group of
+    Born--Infeld-compatible fibre-preserving transformations of the combined
+    effective space $\tilde{V}_{\mathrm{color}} \cong \mathbb{C}^3$ is exactly
+    $\mathrm{SU}(3)$; all alternatives ($\mathrm{U}(3)$, $\mathrm{SO}(3)$,
+    $\mathrm{U}(2)$, $G_2$) are excluded~\cite{Beau2026a35}.
+    The composite admissibility fixed point is therefore
+    $G_{\mathrm{SM}} = \mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$,
+    derived unconditionally for both the colour-adapted and the standard Cayley
+    graphs~\cite{Beau2026a35}.
+
+  \subsection*{Complementarity with Theorem~\ref{thm:main}}
+
+    None of the steps above --- Born--Infeld dynamics, Weil representations,
+    Hurwitz theorem, quaternionic rigidity, colour triplet co-admissibility ---
+    appears in Theorem~\ref{thm:main}.
+    The universal theorem supplies the necessary condition (non-trivial fibres,
+    $S_\Pi > 0$); the framework-specific constraints supply the sufficient
+    conditions that fix the fibre geometry to $G_{\mathrm{SM}}$.
+    This selection is model-dependent: other emergent frameworks may yield
+    different structure groups.
+    The two results are complementary and non-redundant.
+
+    \clearpage
   \section*{Acknowledgements}
 
-    This work is part of the Cosmochrony research programme.
-    The author thanks the referees for helpful comments.
+  This work is part of a research programme on projective emergent physics~\cite{Cosmochrony}.
+  The author thanks the referees for helpful comments.
 
-  \clearpage
-    \begin{thebibliography}{99}
-      \input{cosmochrony-bibliography}
-    \end{thebibliography}
+  \bibliographystyle{plain}
+  \bibliography{cosmochrony-bibliography, external-refs}
 
 \end{document}
