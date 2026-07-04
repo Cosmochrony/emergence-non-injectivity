@@ -51,9 +51,8 @@ Independent Researcher, Paris, France\\
     as standard cosmology at $t \lesssim t_\mathrm{Planck}$ --- is
     structurally consistent with the presence of a non-injective projection.
     We provide a categorical reformulation (genuine emergence corresponds to
-    a non-faithful functor) and an informational one (the Kullback--Leibler
-    divergence of any state distribution with respect to its projection
-    lift is strictly positive).
+    a non-faithful functor) and an informational one (genuine emergence forces
+    a strict, not merely non-negative, data-processing information loss).
     The result is illustrated by a concrete spin model and discussed in
     relation to the projective incompleteness of $\Lambda$CDM and the
     Standard Model, whose fundamental constants are identified as invariants
@@ -63,10 +62,9 @@ Independent Researcher, Paris, France\\
     tower of genuinely distinct emergent levels carries one independent
     non-injective projection per stratum, with entropy accumulating across
     levels.
-    This recursive structure implies that colour confinement --- the
-    non-observability of free quarks --- is a structural necessity of any
-    framework in which colour-neutral hadrons arise as genuinely emergent from
-    coloured degrees of freedom.
+    This recursive structure implies, in any framework in which colour-neutral hadrons arise as genuinely
+    emergent from coloured degrees of freedom, the structural non-observability of free colour under the
+    emergent hadronic projection --- the structural, not dynamical, content of confinement.
   \end{abstract}
 
   \paragraph{Keywords.}
@@ -95,7 +93,9 @@ Independent Researcher, Paris, France\\
   of microscopic information~\cite{Wilson1975,Jaynes1957,GellMannHartle1993}.
   More generally, the relation between emergence and information
   compression has been discussed in both physical and philosophical
-  contexts~\cite{Butterfield2011,Ellis2012}.
+  contexts, from Anderson's classic statement of the autonomy of emergent
+  levels~\cite{Anderson1972} to recent systematic
+  classifications~\cite{Butterfield2011,Ellis2012,CarrollParola2024}.
   This non-injectivity has been identified as the structural origin of gauge
   symmetry~\cite{Cosmochrony}, Bell-inequality violations~\cite{Beau2026b},
   and black hole entropy~\cite{Beau2026c}, and is broadly related to
@@ -235,17 +235,18 @@ Independent Researcher, Paris, France\\
 
   \begin{example}[Spin model]
     \label{ex:spin}
-    Let $\Omega = \{-1,+1\}^N$ be the configuration space of $N$ Ising spins,
-    and let $\mathcal{O} = \mathbb{R}$ with $\Pi(\sigma) = N^{-1}\sum_i \sigma_i$
-    the mean magnetisation.
+    Let $\Omega = \{-1,+1\}^N$ be the configuration space of $N$ Ising spins, let
+    $\Pi(\sigma) = N^{-1}\sum_i \sigma_i$ be the mean magnetisation, and let
+    $\mathcal{O} = \Pi(\Omega) = \{-1, -1+\tfrac{2}{N}, \ldots, 1\}$ be the finite set of attainable
+    magnetisation values, so that $\Pi$ is surjective.
     Distinct spin configurations with the same mean magnetisation are
     observationally indiscernible: $\mathcal{O}$ carries no structure that
     distinguishes them.
     Definition~\ref{def:defined-by-Pi} is satisfied.
-    Condition~(E3) holds since $|\mathcal{O}| \ll |\Omega|$ for large $N$.
-    Theorem~\ref{thm:main} then guarantees $S_\Pi > 0$, which is immediate:
-    for any magnetisation value $m \in (-1,1)$, the fibre $\Pi^{-1}(m)$ has
-    exponentially many elements.
+    Condition~(E3) holds since $|\mathcal{O}| = N+1 \ll 2^N = |\Omega|$ for large $N$.
+    Theorem~\ref{thm:main} then guarantees $S_\Pi(\mu) > 0$ for every non-degenerate $\mu$, which is immediate:
+    for any attainable magnetisation value $m \in (-1,1)$, the fibre $\Pi^{-1}(m)$ has
+    exponentially many elements, each of positive mass.
     The non-injectivity is not merely observed here; it is a structural
     necessity of the emergent description.
   \end{example}
@@ -274,17 +275,28 @@ Independent Researcher, Paris, France\\
     would make the main theorem circular.
   \end{remark}
 
-  We also recall the standard projection entropy associated with $\Pi$.
-  Given a non-degenerate measure $\mu$ on $\Omega$, define $\nu(o) =
-  \mu(\Pi^{-1}(o))$ for each $o \in \mathcal{O}$.
-  The \emph{projection entropy} is
+  We now fix the entropy that quantifies the compression of $\Pi$.
+  Throughout, $\Omega$ is finite or countable, and a \emph{non-degenerate} measure on $\Omega$ is a probability
+  measure $\mu$ with full support: $\mu(\{\omega\}) > 0$ for every $\omega \in \Omega$.
+  Let $\nu = \Pi_*\mu$ be the pushforward distribution on $\mathcal{O}$, $\nu(o) = \mu(\Pi^{-1}(o))$.
+  Two entropies are naturally associated with $\Pi$, and they must be distinguished.
+  The \emph{observable entropy} $H(\nu) = -\sum_o \nu(o)\log\nu(o)$ measures the diversity of the effective
+  description; it is the quantity used (normalised by its maximum) in the Bell analysis of~\cite{Beau2026b}.
+  The quantity relevant to the present result is the \emph{projection entropy}: the information about $\Omega$
+  that the passage to $\mathcal{O}$ erases,
   \begin{equation}
-    S_\Pi \;\equiv\; -\sum_{o \in \mathcal{O}} \nu(o) \log \nu(o).
+    S_\Pi(\mu) \;\equiv\; H(\mu) - H(\Pi_*\mu) \;=\; \sum_{o \in \mathcal{O}} \nu(o)\, H(\mu_o),
     \label{eq:SPI}
   \end{equation}
-  $S_\Pi = 0$ if and only if $\Pi$ is (almost everywhere) injective; $S_\Pi > 0$
-  if and only if at least one fibre $\Pi^{-1}(o)$ has measure greater than
-  that of a single point~\cite{Beau2026b,Cosmochrony}.
+  where $\mu_o$ is the conditional distribution of $\mu$ on the fibre $\Pi^{-1}(o)$; the second equality is the
+  chain rule for Shannon entropy, so $S_\Pi(\mu)$ is the mean fibre entropy.
+  It satisfies $S_\Pi(\mu) \geq 0$, with $S_\Pi(\mu) = 0$ if and only if every fibre of positive measure is a
+  singleton, i.e.\ $\Pi$ is $\mu$-almost everywhere injective, and $S_\Pi(\mu) > 0$ if and only if some fibre
+  contains more than one point of positive measure.
+  For a non-degenerate $\mu$, the last condition is exactly the non-injectivity of $\Pi$.
+  The observable entropy carries no such equivalence --- $H(\nu)$ is positive for any non-constant $\Pi$,
+  injective or not --- and the conditional form~\eqref{eq:SPI} is the one for which the co-extensivity
+  statements of this paper are exact.
 
   \section{Main Result}
   \label{sec:theorem}
@@ -325,7 +337,7 @@ Independent Researcher, Paris, France\\
     Then $\Pi$ is necessarily non-injective, and for any non-degenerate measure
     $\mu$ on $\Omega$,
     \[
-      S_\Pi > 0.
+      S_\Pi(\mu) > 0.
     \]
   \end{theorem}
 
@@ -335,11 +347,11 @@ Independent Researcher, Paris, France\\
     This contradicts condition~(E3).
     Therefore $\Pi$ is not injective.
 
-    Since $\Pi$ is not injective, there exists $o \in \mathcal{O}$ such that
-    $|\Pi^{-1}(o)| > 1$.
-    For any non-degenerate measure $\mu$, the weight $\nu(o) \in (0,1)$ for
-    this $o$, and $-\nu(o)\log\nu(o) > 0$.
-    Hence $S_\Pi > 0$.
+    Since $\Pi$ is not injective, there exists $o \in \mathcal{O}$ whose fibre $\Pi^{-1}(o)$ contains at least
+    two points, each of positive mass because $\mu$ is non-degenerate.
+    The conditional distribution $\mu_o$ is then supported on at least two points, so $H(\mu_o) > 0$ and
+    $\nu(o) > 0$; hence
+    $S_\Pi(\mu) = \sum_{o'} \nu(o')\, H(\mu_{o'}) \geq \nu(o)\, H(\mu_o) > 0$.
   \end{proof}
 
   \section{Gauge Structure and Co-extensivity}
@@ -353,11 +365,13 @@ Independent Researcher, Paris, France\\
   \end{proposition}
 
   \begin{proof}
-    If $\Pi$ were injective, the holonomy group of $\Pi$ would be trivial
-    ($G_\Pi = \{e\}$), every connection would be flat, and no non-trivial gauge
-    field could emerge from the bundle structure of $\Pi$ alone.
+    If $\Pi$ were injective, every fibre $\Pi^{-1}(o)$ would be a singleton.
+    A gauge structure arising from $\Pi$ requires a non-trivial action of a structure group $G_\Pi$ on the
+    fibres; on singleton fibres only the trivial group acts effectively, so $G_\Pi = \{e\}$ and no non-trivial
+    gauge structure can arise from $\Pi$ alone.
     Any non-trivial gauge field would then require an independent postulate at
     the level of $\mathcal{O}$, violating Definition~\ref{def:defined-by-Pi}.
+    Non-injectivity, hence $S_\Pi(\mu) > 0$ for every non-degenerate $\mu$, follows.
   \end{proof}
 
   \begin{remark}[On the converse]
@@ -430,12 +444,15 @@ Independent Researcher, Paris, France\\
     Let $\Omega_0 \xrightarrow{\Pi_1} \Omega_1 \xrightarrow{\Pi_2} \Omega_2$ be a tower
     of surjective projections in which, at each step $i \in \{1,2\}$, the observables of
     $\Omega_i$ are defined by $\Pi_i$ and $\Omega_i \not\cong \Omega_{i-1}$.
-    Then each $\Pi_i$ is non-injective, $S_{\Pi_i} > 0$, and the composed projection
-    $\Pi_2 \circ \Pi_1 : \Omega_0 \to \Omega_2$ is non-injective with
+    Then each $\Pi_i$ is non-injective, $S_{\Pi_i} > 0$ on non-degenerate measures, and for any non-degenerate
+    $\mu$ on $\Omega_0$ the composed projection $\Pi_2 \circ \Pi_1 : \Omega_0 \to \Omega_2$ is non-injective
+    with the exact additivity
     \[
-      S_{\Pi_2 \circ \Pi_1} \;\geq\; S_{\Pi_1}.
+      S_{\Pi_2 \circ \Pi_1}(\mu) \;=\; S_{\Pi_1}(\mu) + S_{\Pi_2}\!\left((\Pi_1)_*\mu\right)
+      \;>\; S_{\Pi_1}(\mu).
     \]
-    The result extends to towers of arbitrary finite depth.
+    The result extends to towers of arbitrary finite depth: the total compression is the sum of the per-stratum
+    compressions.
   \end{corollary}
 
   \begin{proof}
@@ -443,9 +460,12 @@ Independent Researcher, Paris, France\\
     level independently.
     Non-injectivity of the composition is immediate: if $\Pi_1(\omega) = \Pi_1(\omega')$
     for $\omega \neq \omega'$, then $\Pi_2(\Pi_1(\omega)) = \Pi_2(\Pi_1(\omega'))$.
-    The entropy bound $S_{\Pi_2 \circ \Pi_1} \geq S_{\Pi_1}$ follows because each fibre of
-    $\Pi_2 \circ \Pi_1$ is a union of fibres of $\Pi_1$, so the composed map is at least as
-    compressive as $\Pi_1$ alone.
+    The entropy identity is the telescoping of Eq.~\eqref{eq:SPI}:
+    $H(\mu) - H((\Pi_2 \circ \Pi_1)_*\mu)
+    = \left[H(\mu) - H((\Pi_1)_*\mu)\right] + \left[H((\Pi_1)_*\mu) - H((\Pi_2)_*(\Pi_1)_*\mu)\right]$,
+    and each bracket is the projection entropy of the corresponding stratum.
+    Surjectivity of $\Pi_1$ and full support of $\mu$ make $(\Pi_1)_*\mu$ non-degenerate on $\Omega_1$, so the
+    second bracket is strictly positive by Theorem~\ref{thm:main} applied at the second stratum.
   \end{proof}
 
   \begin{remark}[Self-application of the theorem]
@@ -704,30 +724,36 @@ Independent Researcher, Paris, France\\
   existing mathematical frameworks.
 
   \textbf{Categorical form.}
-  Let $\mathbf{Fund}$ be the category whose objects are spaces of fundamental
-  configurations and whose morphisms are dynamically compatible maps, and let
-  $\mathbf{Obs}$ be the category of observable spaces.
-  The projection $\Pi$ defines a functor $F_\Pi : \mathbf{Fund} \to \mathbf{Obs}$.
-  Recall that a functor is \emph{faithful} if it distinguishes all morphisms
-  that the source category distinguishes; faithfulness is the categorical
-  analogue of injectivity.
+  Fix the pair $(\Omega, \Pi)$.
+  Let $\mathbf{Fund}$ be the category with the single object $\Omega$ whose morphisms are the
+  \emph{fibre-compatible} maps $f : \Omega \to \Omega$, i.e.\ those satisfying
+  $\Pi(\omega) = \Pi(\omega') \Rightarrow \Pi(f(\omega)) = \Pi(f(\omega'))$, and let $\mathbf{Obs}$ be the
+  category with the single object $\mathcal{O}$ and all maps $\mathcal{O} \to \mathcal{O}$ as morphisms.
+  Every fibre-compatible $f$ descends to a unique map $F_\Pi(f) : \mathcal{O} \to \mathcal{O}$ with
+  $F_\Pi(f) \circ \Pi = \Pi \circ f$, and this assignment satisfies
+  $F_\Pi(g \circ f) = F_\Pi(g) \circ F_\Pi(f)$ and $F_\Pi(\mathrm{id}_\Omega) = \mathrm{id}_{\mathcal{O}}$:
+  $F_\Pi$ is a functor.
+  Recall that a functor is \emph{faithful} if it is injective on each hom-set.
 
   \begin{theorem}[Categorical form of compression necessity]
     \label{thm:cat}
     Under the hypotheses of Theorem~\ref{thm:main}, the functor
-    $F_\Pi : \mathbf{Fund} \to \mathbf{Obs}$ is necessarily non-faithful.
-    Conversely, a faithful functor from $\mathbf{Fund}$ to a non-equivalent
-    $\mathbf{Obs}$ cannot exist.
+    $F_\Pi : \mathbf{Fund} \to \mathbf{Obs}$ is not faithful.
+    Conversely, if $F_\Pi$ is faithful then $\Pi$ is injective and, by Lemma~\ref{lem:pivot},
+    $\mathcal{O} \cong \Omega$: faithfulness is equivalent to the absence of genuine emergence.
   \end{theorem}
 
   \begin{proof}
-    If $F_\Pi$ were faithful, the induced map on morphisms would be injective at
-    every hom-set, which at the level of objects recovers the injectivity of $\Pi$.
-    By Lemma~\ref{lem:pivot}, this forces $\mathcal{O} \cong \Omega$, i.e.\
-    $\mathbf{Obs} \simeq \mathbf{Fund}$, contradicting condition~(E3).
-    Hence $F_\Pi$ cannot be faithful.
-    The converse follows immediately: a faithful functor to a non-equivalent
-    category is a contradiction in the same sense.
+    By Theorem~\ref{thm:main}, $\Pi$ is non-injective: some fibre contains two distinct points
+    $\omega_1 \neq \omega_2$.
+    Let $g : \Omega \to \Omega$ exchange $\omega_1$ and $\omega_2$ and fix every other point.
+    Then $g$ preserves every fibre of $\Pi$, hence is fibre-compatible, and it descends to
+    $F_\Pi(g) = \mathrm{id}_{\mathcal{O}} = F_\Pi(\mathrm{id}_\Omega)$ while $g \neq \mathrm{id}_\Omega$.
+    Two distinct morphisms of $\mathbf{Fund}$ have the same image, so $F_\Pi$ is not faithful.
+    For the converse, suppose $F_\Pi$ is faithful and $\Pi(\omega_1) = \Pi(\omega_2)$ with
+    $\omega_1 \neq \omega_2$; the same transposition $g$ would give $F_\Pi(g) = F_\Pi(\mathrm{id}_\Omega)$ with
+    $g \neq \mathrm{id}_\Omega$, contradicting faithfulness.
+    Hence $\Pi$ is injective, and Lemma~\ref{lem:pivot} gives $\mathcal{O} \cong \Omega$.
   \end{proof}
 
   \begin{remark}
@@ -739,45 +765,119 @@ Independent Researcher, Paris, France\\
   \end{remark}
 
   \textbf{Informational version.}
-  Let $p$ be a probability distribution on $\Omega$ and
-  $q = \Pi_* p$ its pushforward on $\mathcal{O}$.
-  The Kullback--Leibler divergence of $p$ with respect to the lifted distribution
-  $\Pi^* q$ measures the information lost under $\Pi$:
-  \begin{equation}
-    D_{\mathrm{KL}}(p \,\|\, \Pi^* q)
-    \;=\; \sum_{\omega \in \Omega} p(\omega) \log \frac{p(\omega)}{q(\Pi(\omega))}.
-    \label{eq:KL}
-  \end{equation}
-  If $\Pi$ is injective, $p(\omega) = q(\Pi(\omega))$ for all $\omega$ and
-  $D_{\mathrm{KL}} = 0$.
-  Theorem~\ref{thm:main} implies:
+  Let $p$ be a probability distribution on $\Omega$ and $q = \Pi_* p$ its pushforward on $\mathcal{O}$.
+  The information about the fundamental configuration that survives the passage to the effective level is
+  $H(q)$; the loss is $H(p) - H(q) = S_\Pi(p) \geq 0$, by the chain rule of Eq.~\eqref{eq:SPI}.
+  The data-processing inequality~\cite{CoverThomas2006} guarantees that this loss is non-negative for
+  \emph{any} map; it does not force it to be strictly positive.
+  Theorem~\ref{thm:main} adds exactly the missing strictness.
 
-  \begin{corollary}[Informational lower bound]
+  \begin{corollary}[Strict information loss]
     \label{cor:info}
-    In any effectively non-trivial emergent framework, there exists a distribution
-    $p$ on $\Omega$ such that $D_{\mathrm{KL}}(p \,\|\, \Pi^* q) > 0$.
-    The projection entropy $S_\Pi$ provides a distribution-independent lower bound
-    on the structural information loss.
+    In any effectively non-trivial emergent framework, every non-degenerate distribution $p$ on $\Omega$
+    satisfies
+    \[
+      H(p) - H(\Pi_* p) \;=\; S_\Pi(p) \;>\; 0 .
+    \]
   \end{corollary}
 
-  The projection entropy $S_\Pi$ defined in Eq.~\eqref{eq:SPI} is the
-  distribution-independent part of this loss: it captures the structural
-  compression built into $\Pi$ independently of any particular state.
-  $D_{\mathrm{KL}}$ then adds the state-dependent contribution.
-  Together, they quantify two distinct aspects of the same fundamental
-  compression.
+  The distinction with the data-processing inequality should be kept sharp, because it locates the content of
+  the theorem.
+  The inequality states that no processing can increase information; it is entirely compatible with lossless
+  processing ($S_\Pi = 0$, $\Pi$ injective).
+  The theorem states that genuine emergence \emph{forces} strictly lossy processing: the hypotheses of
+  Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial} exclude the lossless case.
+  The claim is therefore not ``a data-processing inequality holds'' but ``genuine emergence forces a strict
+  data-processing loss''.
 
   The informational reading also connects to the renormalisation group.
   The Wilsonian RG projection $\Pi_\Lambda$ is non-injective by construction~\cite{Wilson1975}:
   the same low-energy observable corresponds to infinitely many UV completions.
   Corollary~\ref{cor:info} says that any such effective field theory has
-  $S_{\Pi_\Lambda} > 0$ and $D_{\mathrm{KL}} > 0$: the loss of UV information is
+  $S_{\Pi_\Lambda} > 0$: the loss of UV information is
   not a limitation to be overcome but a structural property of the emergent
   description itself.
 
   This interpretation aligns with the information-theoretic view of
   statistical mechanics and inference, where macroscopic descriptions
   necessarily involve a loss of microscopic detail~\cite{Jaynes1957}.
+
+  \section{Objections and Neighbouring Frameworks}
+  \label{sec:objections}
+
+  This section answers, in condensed form, the objections most naturally raised against
+  Theorem~\ref{thm:main}, and locates the result relative to neighbouring programmes.
+  Each item neutralises one specific objection; none extends the claim.
+
+  \subsection*{``Non-injectivity is obvious for any coarse-graining''}
+
+    This objection is addressed in detail in Section~\ref{sec:discussion}; here we record its external anchor.
+    The recent classification of varieties of emergence by Carroll and Parola~\cite{CarrollParola2024} contains
+    exactly one variety realised by a one-to-one map, which the authors themselves qualify as a somewhat trivial
+    case of emergence; every non-trivial variety in their taxonomy involves a many-to-one map.
+    The taxonomy records the pattern as an empirical regularity of the known examples; Theorem~\ref{thm:main}
+    converts it into a necessity: within the projective-emergent setting, no non-trivial variety \emph{can} be
+    realised by a one-to-one map.
+
+  \subsection*{``The information is still there, merely inaccessible''}
+
+    In coarse-grained statistical mechanics the microstate information remains present in principle --- in the
+    microscopic correlations --- and the coarse description is a resource-bounded choice; on this reading the
+    loss would be epistemic, not structural.
+    Two answers apply.
+    First, the loss asserted by Theorem~\ref{thm:main} is a property of the \emph{description} pair
+    $(\Omega, \mathcal{O})$, not of any process: nothing happens to $\Omega$, which loses nothing; the strict
+    loss $S_\Pi(\mu) > 0$ quantifies what the effective description cannot register.
+    Second, Definition~\ref{def:defined-by-Pi} excludes the epistemic reading structurally: if the effective
+    level retains an in-principle access to microstate distinctions, then $\mathcal{O}$ carries
+    microstate-resolving structure beyond $\Pi$, and the framework lies outside the class considered --- it is a
+    two-level description with autonomous observables, not an emergent one.
+    The theorem concerns frameworks whose fundamental level is pre-observational: observability itself is
+    defined only at the effective level, so the question of recovering the erased information does not arise
+    there as a resource problem.
+
+  \subsection*{``To do physics one must recover the Born rule''}
+
+    Correct, and outside the scope.
+    The theorem constrains structure (non-injectivity and its entropy), not probability assignments; the
+    construction of quantum probability from admissible projections is the object of the wider
+    programme~\cite{Cosmochrony, Beau2026b}, and the present result is independent of it.
+    The positioning with respect to the ontological-models framework should also be stated.
+    Harrigan and Spekkens~\cite{HarriganSpekkens2010} formalise many-to-one relations between ontic states and
+    quantum states, and the Pusey--Barrett--Rudolph theorem~\cite{PBR2012} constrains them; generalised
+    probabilistic theories~\cite{Barrett2007} posit states and effects in duality as primitives.
+    The map considered here is none of these: it relates a pre-quantum configuration space to observable
+    outcomes, with the Hilbert-space structure itself emergent, so the PBR constraint --- which operates within
+    quantum theory --- is not touched, and the GPT duality is one of the structures whose emergence is in
+    question rather than a starting point.
+
+  \subsection*{``A pre-geometric substrate is just non-locality, or superdeterminism''}
+
+    On Bell's taxonomy the classification is accepted, not evaded: a pre-geometric substrate does not satisfy
+    Bell's factorisation condition, whose very statement requires spatial separation, so the framework is
+    formally outside the Bell-local class --- consistent with experiment~\cite{Beau2026b}.
+    The claim is explanatory: the substrate is prior to the geometric context in which locality is defined, and
+    the observed violations appear as the signature of the non-injective projection rather than as
+    action-at-a-distance within a given geometry.
+    Nor is this superdeterminism: no correlation between hidden variables and measurement settings within a
+    given ontology is invoked; instead, the subsystem decomposition presupposed by the factorisation condition
+    is itself an output of the projection.
+
+  \subsection*{Deterministic substrata and minimal predictive compressions}
+
+    Two neighbouring programmes make the comparison sharp.
+    In 't~Hooft's cellular-automaton interpretation~\cite{tHooft2016}, a deterministic substrate underlies
+    quantum mechanics via many-to-one equivalence classes of ontological states; if that effective description
+    is genuinely emergent in the sense of Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial},
+    Theorem~\ref{thm:main} forces the class map to be non-injective --- consistent with, and structurally
+    required by, its construction.
+    In computational mechanics~\cite{CrutchfieldYoung1989}, the $\varepsilon$-machine is the minimal sufficient
+    statistic of a process: the coarsest compression that preserves predictive power, chosen for utility.
+    The two results are complementary: computational mechanics quantifies how much can be kept; the present
+    theorem states that, under genuine emergence, not everything can.
+    Process-theoretic approaches~\cite{Sulis2026} similarly generate spatial and temporal distinctions from a
+    pre-spatial level of process actions, sharing the structural stance that the arena of observables is
+    generated rather than given.
 
   \section{Discussion}
   \label{sec:discussion}
@@ -811,10 +911,11 @@ Independent Researcher, Paris, France\\
   fundamental level (condition~E3).
 
   The connection to information theory is direct.
-  The projection entropy $S_\Pi$ is not an epistemic quantity: it does not
-  measure ignorance about which $\omega \in \Omega$ is the true configuration.
-  It measures an objective structural property of $\Pi$ --- the degree to which
-  $\Omega$ distinctions are compressed out of $\mathcal{O}$.
+  Formally, the projection entropy $S_\Pi(\mu)$ is the conditional entropy of the configuration given the
+  observable; what makes it structural rather than epistemic is its origin.
+  It is fixed by the fibre structure of $\Pi$ and bounded away from zero by Theorem~\ref{thm:main} for every
+  non-degenerate $\mu$: it does not express an observer's limited resources, and no refinement available at the
+  effective level can reduce it, because by Definition~\ref{def:defined-by-Pi} the effective level has none.
   Theorem~\ref{thm:main} establishes that this compression is not optional: in
   any genuine emergent framework, $S_\Pi > 0$ is a structural necessity, not a
   contingent feature.
@@ -1105,7 +1206,10 @@ Independent Researcher, Paris, France\\
   \section*{Acknowledgements}
 
   This work is part of a research programme on projective emergent physics~\cite{Cosmochrony}.
-  The author thanks the referees for helpful comments.
+  The author acknowledges the use of large language models as a supportive tool for refining language,
+  structure, and internal consistency during the development of this manuscript.
+  All conceptual contributions, theoretical choices, and interpretations remain the sole responsibility of the
+  author.
 
   \bibliographystyle{plain}
   \bibliography{cosmochrony-bibliography, external-refs}
