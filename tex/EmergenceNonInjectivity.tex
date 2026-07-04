@@ -245,8 +245,9 @@ Independent Researcher, Paris, France\\
     Definition~\ref{def:defined-by-Pi} is satisfied.
     Condition~(E3) holds since $|\mathcal{O}| = N+1 \ll 2^N = |\Omega|$ for large $N$.
     Theorem~\ref{thm:main} then guarantees $S_\Pi(\mu) > 0$ for every non-degenerate $\mu$, which is immediate:
-    for any attainable magnetisation value $m \in (-1,1)$, the fibre $\Pi^{-1}(m)$ has
-    exponentially many elements, each of positive mass.
+    for any non-extremal attainable magnetisation value $m \in (-1,1)$, the fibre $\Pi^{-1}(m)$ contains at
+    least two configurations, each of positive mass, and for bulk magnetisation values it contains
+    exponentially many configurations.
     The non-injectivity is not merely observed here; it is a structural
     necessity of the emergent description.
   \end{example}
@@ -290,6 +291,11 @@ Independent Researcher, Paris, France\\
   \end{equation}
   where $\mu_o$ is the conditional distribution of $\mu$ on the fibre $\Pi^{-1}(o)$; the second equality is the
   chain rule for Shannon entropy, so $S_\Pi(\mu)$ is the mean fibre entropy.
+  For countable $\Omega$, the conditional-entropy expression is the definition:
+  $\sum_o \nu(o)\, H(\mu_o)$ is always well-defined in $[0, \infty]$, and whenever $H(\mu)$ and $H(\Pi_*\mu)$
+  are both finite it agrees with the difference $H(\mu) - H(\Pi_*\mu)$ by the chain rule.
+  All identities written as entropy differences below are to be read under this finite-entropy condition, or
+  equivalently through the conditional form.
   It satisfies $S_\Pi(\mu) \geq 0$, with $S_\Pi(\mu) = 0$ if and only if every fibre of positive measure is a
   singleton, i.e.\ $\Pi$ is $\mu$-almost everywhere injective, and $S_\Pi(\mu) > 0$ if and only if some fibre
   contains more than one point of positive measure.
@@ -777,8 +783,9 @@ Independent Researcher, Paris, France\\
     In any effectively non-trivial emergent framework, every non-degenerate distribution $p$ on $\Omega$
     satisfies
     \[
-      H(p) - H(\Pi_* p) \;=\; S_\Pi(p) \;>\; 0 .
+      S_\Pi(p) \;>\; 0 .
     \]
+    If $H(p)$ and $H(\Pi_* p)$ are finite, this is equivalently $H(p) - H(\Pi_* p) = S_\Pi(p) > 0$.
   \end{corollary}
 
   The distinction with the data-processing inequality should be kept sharp, because it locates the content of
@@ -1100,24 +1107,25 @@ Independent Researcher, Paris, France\\
   within the present projective-emergent framework, emergence without
   non-injectivity is impossible.
 
-  The core equivalence, within the present projective-emergent setting, can
-  be stated in a single line:
+  Within the present projective-emergent setting, the proved implication is
   \begin{equation}
     \text{genuine emergence}
-    \;\Longleftrightarrow\;
+    \;\Longrightarrow\;
     \text{information loss}
     \;\Longleftrightarrow\;
     \Pi \text{ non-injective}
     \;\Longleftrightarrow\;
-    S_\Pi > 0.
+    S_\Pi > 0 .
     \label{eq:equivalence}
   \end{equation}
-  The left-to-right direction is Theorem~\ref{thm:main}; the right-to-left
-  direction follows from the fact that any non-injective $\Pi$ whose fibres are
-  non-trivial defines a genuinely distinct effective level by the identification
-  of distinct configurations.
-  A fully injective effective theory is not an emergent theory but a renaming
-  of the fundamental level.
+  The converse requires the effective level to be taken as a genuine quotient description: $\mathcal{O}$ must
+  carry no microstate-resolving structure beyond $\Pi$ (Definition~\ref{def:defined-by-Pi}), and it must not be
+  structurally isomorphic to $\Omega$ (condition~E3).
+  Under these hypotheses, a non-injective projection is precisely the structural mark of a genuinely emergent
+  level.
+  Without them, non-injectivity alone is only compression, not yet emergence.
+  A fully injective effective theory, by contrast, is not an emergent theory but a renaming of the fundamental
+  level.
 
   \appendix
 
@@ -1174,21 +1182,22 @@ Independent Researcher, Paris, France\\
     invariance of $\sigma_c(n)$~\cite{Beau2026a31}.
     Its identification is unconditional.
 
-    The $\mathrm{SU}(3)$ factor arises from a structurally distinct mechanism:
-    the colour triplet $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$
-    satisfying $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ and pairwise non-conjugacy.
-    With $[\mathrm{H\text{-}color}]$ established analytically in O31~\cite{Beau2026a35}
-    (exact triplet co-admissibility
-    $\sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n)$ via the single-frequency
-    fingerprint structure, Proposition~4.23), the group of
-    Born--Infeld-compatible fibre-preserving transformations of the combined
-    effective space $\tilde{V}_{\mathrm{color}} \cong \mathbb{C}^3$ is exactly
-    $\mathrm{SU}(3)$; all alternatives ($\mathrm{U}(3)$, $\mathrm{SO}(3)$,
-    $\mathrm{U}(2)$, $G_2$) are excluded~\cite{Beau2026a35}.
+    The $\mathrm{SU}(3)$ factor arises from a structurally distinct mechanism: the colour-triplet
+    co-admissibility of $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ satisfying
+    $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ and pairwise non-conjugacy~\cite{Beau2026a35}.
+    On the colour-adapted Cayley graph, the triplet construction closes analytically: the group of
+    Born--Infeld-compatible fibre-preserving transformations of the combined effective space
+    $\tilde{V}_{\mathrm{color}} \cong \mathbb{C}^3$ is exactly $\mathrm{SU}(3)$, with the alternatives
+    ($\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, $G_2$) excluded~\cite{Beau2026a35}.
+    On the standard graph, the identification is supported at the rank, averaged, effective-exponent, and
+    numerical levels~\cite{Beau2026a35, Beau2026a36}; the pointwise finite-$q$ profile equality remains the
+    condition that promotes the centre-neutral triplet structure to the full $\mathrm{SU}(3)$ colour
+    interpretation.
     The composite admissibility fixed point is therefore
     $G_{\mathrm{SM}} = \mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$,
-    derived unconditionally for both the colour-adapted and the standard Cayley
-    graphs~\cite{Beau2026a35}.
+    with the $\mathrm{U}(1)$ and $\mathrm{SU}(2)$ factors closed analytically, the colour-adapted
+    $\mathrm{SU}(3)$ sector closed in its adapted setting, and the standard-graph $\mathrm{SU}(3)$ reading
+    conditional on the remaining pointwise co-admissibility hypothesis.
 
   \subsection*{Complementarity with Theorem~\ref{thm:main}}
 
