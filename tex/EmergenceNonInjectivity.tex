@@ -1,10 +1,16 @@
 \documentclass[12pt,a4paper]{article}
 
 \usepackage{amsmath,amsthm,amssymb}
+\usepackage[round,authoryear]{natbib}
 \usepackage{hyperref}
 \usepackage{doi}
 \usepackage{microtype}
 \usepackage[margin=2.5cm]{geometry}
+
+% Anonymised variant for double-blind review (EJPS).
+% Author information, acknowledgements and declarations are on the separate
+% title page (EJPSTitlePage.tex), per the journal's double-blind procedure.
+\hypersetup{pdfauthor={}, pdftitle={Non-Injectivity as a Structural Necessity of Genuine Emergence}}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -19,11 +25,10 @@
 \title{Non-Injectivity as a Structural Necessity of Genuine Emergence:\\
 A No-Go Theorem for Faithful Emergent Descriptions}
 
-\author{J\'er\^ome Beau\\
-Independent Researcher, Paris, France\\
-\texttt{jerome.beau@cosmochrony.org}}
+% Anonymised for double-blind review; see separate title page.
+\author{}
 
-\date{2026}
+\date{}
 
 \begin{document}
 
@@ -45,11 +50,8 @@ Independent Researcher, Paris, France\\
     surjective projection that is both informationally faithful and genuinely
     emergent cannot exist.
     As a corollary, descriptive redundancy, non-injectivity of $\Pi$, and
-    $S_\Pi > 0$ are co-extensive in any projective emergent framework; any
-    non-trivial gauge structure requires these properties; and any theory
-    admitting a regime where its own description ceases to be valid --- such
-    as standard cosmology at $t \lesssim t_\mathrm{Planck}$ --- is
-    structurally consistent with the presence of a non-injective projection.
+    $S_\Pi > 0$ are co-extensive in any projective emergent framework, and any
+    non-trivial gauge structure requires these properties.
     We provide a categorical reformulation (genuine emergence corresponds to
     a non-faithful functor) and an informational one (genuine emergence forces
     a strict, not merely non-negative, data-processing information loss).
@@ -61,15 +63,14 @@ Independent Researcher, Paris, France\\
     A further corollary establishes that non-injectivity is recursive: any
     tower of genuinely distinct emergent levels carries one independent
     non-injective projection per stratum, with entropy accumulating across
-    levels.
-    This recursive structure implies, in any framework in which colour-neutral hadrons arise as genuinely
-    emergent from coloured degrees of freedom, the structural non-observability of free colour under the
-    emergent hadronic projection --- the structural, not dynamical, content of confinement.
+    levels --- implying, wherever colour-neutral hadrons arise as genuinely
+    emergent from coloured degrees of freedom, the structural non-observability
+    of free colour: the structural, not dynamical, content of confinement.
   \end{abstract}
 
   \paragraph{Keywords.}
     emergence, non-injectivity, projection, gauge symmetry, information loss,
-    entropy, effective theories, colour confinement, towers of emergence.
+    effective theories.
 
     \clearpage
     \tableofcontents
@@ -90,15 +91,15 @@ Independent Researcher, Paris, France\\
   observable state $o \in \mathcal{O}$.
   This feature is closely related to coarse-graining and renormalisation
   procedures, where effective descriptions arise through systematic loss
-  of microscopic information~\cite{Wilson1975,Jaynes1957,GellMannHartle1993}.
+  of microscopic information~\citep{Wilson1975,Jaynes1957,GellMannHartle1993}.
   More generally, the relation between emergence and information
   compression has been discussed in both physical and philosophical
   contexts, from Anderson's classic statement of the autonomy of emergent
-  levels~\cite{Anderson1972} to recent systematic
-  classifications~\cite{Butterfield2011,Ellis2012,CarrollParola2024}.
+  levels~\citep{Anderson1972} to recent systematic
+  classifications~\citep{Butterfield2011,Ellis2012,CarrollParola2024}.
   This non-injectivity has been identified as the structural origin of gauge
-  symmetry~\cite{Cosmochrony}, Bell-inequality violations~\cite{Beau2026b},
-  and black hole entropy~\cite{Beau2026c}, and is broadly related to
+  symmetry~\citep{Cosmochrony}, Bell-inequality violations~\citep{Beau2026b},
+  and black hole entropy~\citep{Beau2026c}, and is broadly related to
   redundancy structures appearing in constrained and coarse-grained
   descriptions.
   In each case, however, non-injectivity has been introduced as a feature of
@@ -106,6 +107,22 @@ Independent Researcher, Paris, France\\
   What is missing across these frameworks is a structural necessity result:
   while non-injective mappings appear operationally, no general theorem
   establishes that they are unavoidable for emergence itself.
+
+  The same lacuna is visible from the philosophical side of the emergence debate.
+  Discussions of emergence standardly distinguish weak emergence, on which emergent behaviour is in principle
+  derivable from the base level but only by explicit simulation~\citep{Bedau1997}, from strong emergence, on
+  which the emergent level carries facts not deducible from the base level even in
+  principle~\citep{Chalmers2006}.
+  Both notions are characterised epistemically --- by what can be derived, deduced, or simulated --- and the
+  persistent difficulty of the debate has been to say what, in the \emph{structure} of an inter-level
+  relation, distinguishes genuine emergence from mere redescription~\citep{Kim1999, Butterfield2011}.
+  The present result addresses precisely this question in the restricted but exactly analysable setting of
+  projective frameworks: when the inter-level relation is a surjective projection and the effective
+  observables are entirely defined by it, genuine novelty (non-isomorphism of the two levels) is
+  \emph{equivalent} to a structural property of the map itself --- non-injectivity, and hence strictly
+  positive information loss.
+  The criterion is neither epistemic nor dynamical: it does not mention derivability, simulation, or any
+  observer, and it is decidable at the level of the map $\Pi$ alone.
 
   The present note supplies this missing result.
   We show that non-injectivity is not a modelling choice but a structural
@@ -282,7 +299,7 @@ Independent Researcher, Paris, France\\
   Let $\nu = \Pi_*\mu$ be the pushforward distribution on $\mathcal{O}$, $\nu(o) = \mu(\Pi^{-1}(o))$.
   Two entropies are naturally associated with $\Pi$, and they must be distinguished.
   The \emph{observable entropy} $H(\nu) = -\sum_o \nu(o)\log\nu(o)$ measures the diversity of the effective
-  description; it is the quantity used (normalised by its maximum) in the Bell analysis of~\cite{Beau2026b}.
+  description; it is the quantity used (normalised by its maximum) in the Bell analysis of~\citep{Beau2026b}.
   The quantity relevant to the present result is the \emph{projection entropy}: the information about $\Omega$
   that the passage to $\mathcal{O}$ erases,
   \begin{equation}
@@ -418,8 +435,8 @@ Independent Researcher, Paris, France\\
 
   This perspective is consistent with the standard interpretation of gauge
   symmetry as a redundancy of description, as formalised in constrained
-  Hamiltonian systems~\cite{HenneauxTeitelboim1992} and relational
-  approaches to observables~\cite{Rovelli2002}.
+  Hamiltonian systems~\citep{HenneauxTeitelboim1992} and relational
+  approaches to observables~\citep{Rovelli2002}.
 
   \begin{remark}[Algebraic route to $S_\Pi > 0$ via fibre non-commutativity]
     \label{rem:heisenberg-route}
@@ -508,14 +525,14 @@ Independent Researcher, Paris, France\\
   Theorem~\ref{thm:main} alone.
 
   \textbf{Concrete realisation.}
-  In the pre-geometric projective framework of~\cite{Cosmochrony}, the intermediate
+  In the pre-geometric projective framework of~\citep{Cosmochrony}, the intermediate
   hypothesis is explicitly realised: the fundamental projection $\Pi$ defines a principal
   bundle with fibre $S^3$, yielding $G_\Pi \supseteq \mathrm{SU}(2) \times \mathrm{U}(1)$.
   The resulting gauge structure underlies the emergence of electroweak
   interactions, while the Born--Infeld saturation bound selects the unique
-  admissible infrared dynamics~\cite{Beau2026c}.
+  admissible infrared dynamics~\citep{Beau2026c}.
   Bell-type correlations arise as the observable signature of $S_\Pi >
-  0$~\cite{Beau2026b}.
+  0$~\citep{Beau2026b}.
   The route from non-injectivity to the specific group $\mathrm{SU}(2)$,
   via Born--Infeld parity, Weil representations, and the Hurwitz classification
   of real normed division algebras, is detailed in Appendix~\ref{app:SU2}.
@@ -527,13 +544,13 @@ Independent Researcher, Paris, France\\
   single projection to a constraint on any stratified emergent framework.
   Each stratum is subject to Theorem~\ref{thm:main}; the non-injectivities at
   different strata are independent and additive in entropy.
-  We make this structure explicit in the framework of~\cite{Cosmochrony,Beau2026a35},
+  We make this structure explicit in the framework of~\citep{Cosmochrony,Beau2026a35},
   where the spectral admissibility programme identifies a natural tower, and draw a
   consequence for colour confinement.
 
   \subsection*{The admissibility tower}
 
-    The spectral admissibility programme of~\cite{Cosmochrony} works with conjugate pairs
+    The spectral admissibility programme of~\citep{Cosmochrony} works with conjugate pairs
     $\{c, q-c\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ as its fundamental observable units.
     Conjugate pairs are colour-neutral by construction: $c + (q-c) = q \equiv 0$, so
     the pair observable $\sigma_{\mathrm{pair}}(n) = \sigma_c(n) \cdot \sigma_{q-c}(n)$
@@ -541,7 +558,7 @@ Independent Researcher, Paris, France\\
     Leptons, which are colourless, are naturally identified at this level.
 
     However, each element $c_i$ of a colour triplet
-    $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$~\cite{Beau2026a35}
+    $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$~\citep{Beau2026a35}
     already carries a two-dimensional Weil-trajectory space $V_\rho \cong \mathbb{C}^2$ ---
     the spin-$\frac{1}{2}$ structure inherited from its own conjugate pair $\{c_i, q-c_i\}$
     --- together with a colour eigenspace $\tilde{V}_{c_i} \cong \mathbb{C}$ selected
@@ -630,7 +647,7 @@ Independent Researcher, Paris, France\\
   The theorem is silent about them.
 
   Loop quantum gravity (LQG) deserves explicit discussion, as it occupies an
-  intermediate position~\cite{Rovelli2004,Thiemann2007}.
+  intermediate position~\citep{Rovelli2004,Thiemann2007}.
   LQG describes the quantum geometry of the universe --- spin networks and spin
   foams --- as fundamental objects that are themselves part of the observable
   universe, not external to it.
@@ -651,7 +668,7 @@ Independent Researcher, Paris, France\\
   \end{quote}
   LQG describes the universe at the Planck scale; it does not describe what
   lies outside or before the universe.
-  The framework of~\cite{Cosmochrony}, by contrast, posits a pre-geometric substrate that is
+  The framework of~\citep{Cosmochrony}, by contrast, posits a pre-geometric substrate that is
   pre-spatial, pre-temporal, and structurally prior to the observable universe:
   it is explicitly in the class to which the theorem applies.
 
@@ -701,7 +718,7 @@ Independent Researcher, Paris, France\\
   micro-configurations and the mapping is many-to-one;
   spin-foam and spin-network models, where the effective geometrical observables
   arise from averaging over discrete micro-structures;
-  and pre-geometric relational frameworks~\cite{Cosmochrony}, where the
+  and pre-geometric relational frameworks~\citep{Cosmochrony}, where the
   full observable structure is explicitly derived from a pre-geometric substrate
   via a projection $\Pi$.
 
@@ -774,7 +791,7 @@ Independent Researcher, Paris, France\\
   Let $p$ be a probability distribution on $\Omega$ and $q = \Pi_* p$ its pushforward on $\mathcal{O}$.
   The information about the fundamental configuration that survives the passage to the effective level is
   $H(q)$; the loss is $H(p) - H(q) = S_\Pi(p) \geq 0$, by the chain rule of Eq.~\eqref{eq:SPI}.
-  The data-processing inequality~\cite{CoverThomas2006} guarantees that this loss is non-negative for
+  The data-processing inequality~\citep{CoverThomas2006} guarantees that this loss is non-negative for
   \emph{any} map; it does not force it to be strictly positive.
   Theorem~\ref{thm:main} adds exactly the missing strictness.
 
@@ -798,7 +815,7 @@ Independent Researcher, Paris, France\\
   data-processing loss''.
 
   The informational reading also connects to the renormalisation group.
-  The Wilsonian RG projection $\Pi_\Lambda$ is non-injective by construction~\cite{Wilson1975}:
+  The Wilsonian RG projection $\Pi_\Lambda$ is non-injective by construction~\citep{Wilson1975}:
   the same low-energy observable corresponds to infinitely many UV completions.
   Corollary~\ref{cor:info} says that any such effective field theory has
   $S_{\Pi_\Lambda} > 0$: the loss of UV information is
@@ -807,7 +824,7 @@ Independent Researcher, Paris, France\\
 
   This interpretation aligns with the information-theoretic view of
   statistical mechanics and inference, where macroscopic descriptions
-  necessarily involve a loss of microscopic detail~\cite{Jaynes1957}.
+  necessarily involve a loss of microscopic detail~\citep{Jaynes1957}.
 
   \section{Objections and Neighbouring Frameworks}
   \label{sec:objections}
@@ -819,7 +836,7 @@ Independent Researcher, Paris, France\\
   \subsection*{``Non-injectivity is obvious for any coarse-graining''}
 
     This objection is addressed in detail in Section~\ref{sec:discussion}; here we record its external anchor.
-    The recent classification of varieties of emergence by Carroll and Parola~\cite{CarrollParola2024} contains
+    The recent classification of varieties of emergence by Carroll and Parola~\citep{CarrollParola2024} contains
     exactly one variety realised by a one-to-one map, which the authors themselves qualify as a somewhat trivial
     case of emergence; every non-trivial variety in their taxonomy involves a many-to-one map.
     The taxonomy records the pattern as an empirical regularity of the known examples; Theorem~\ref{thm:main}
@@ -848,11 +865,11 @@ Independent Researcher, Paris, France\\
     Correct, and outside the scope.
     The theorem constrains structure (non-injectivity and its entropy), not probability assignments; the
     construction of quantum probability from admissible projections is the object of the wider
-    programme~\cite{Cosmochrony, Beau2026b}, and the present result is independent of it.
+    programme~\citep{Cosmochrony, Beau2026b}, and the present result is independent of it.
     The positioning with respect to the ontological-models framework should also be stated.
-    Harrigan and Spekkens~\cite{HarriganSpekkens2010} formalise many-to-one relations between ontic states and
-    quantum states, and the Pusey--Barrett--Rudolph theorem~\cite{PBR2012} constrains them; generalised
-    probabilistic theories~\cite{Barrett2007} posit states and effects in duality as primitives.
+    Harrigan and Spekkens~\citep{HarriganSpekkens2010} formalise many-to-one relations between ontic states and
+    quantum states, and the Pusey--Barrett--Rudolph theorem~\citep{PBR2012} constrains them; generalised
+    probabilistic theories~\citep{Barrett2007} posit states and effects in duality as primitives.
     The map considered here is none of these: it relates a pre-quantum configuration space to observable
     outcomes, with the Hilbert-space structure itself emergent, so the PBR constraint --- which operates within
     quantum theory --- is not touched, and the GPT duality is one of the structures whose emergence is in
@@ -862,7 +879,7 @@ Independent Researcher, Paris, France\\
 
     On Bell's taxonomy the classification is accepted, not evaded: a pre-geometric substrate does not satisfy
     Bell's factorisation condition, whose very statement requires spatial separation, so the framework is
-    formally outside the Bell-local class --- consistent with experiment~\cite{Beau2026b}.
+    formally outside the Bell-local class --- consistent with experiment~\citep{Beau2026b}.
     The claim is explanatory: the substrate is prior to the geometric context in which locality is defined, and
     the observed violations appear as the signature of the non-injective projection rather than as
     action-at-a-distance within a given geometry.
@@ -873,16 +890,16 @@ Independent Researcher, Paris, France\\
   \subsection*{Deterministic substrata and minimal predictive compressions}
 
     Two neighbouring programmes make the comparison sharp.
-    In 't~Hooft's cellular-automaton interpretation~\cite{tHooft2016}, a deterministic substrate underlies
+    In 't~Hooft's cellular-automaton interpretation~\citep{tHooft2016}, a deterministic substrate underlies
     quantum mechanics via many-to-one equivalence classes of ontological states; if that effective description
     is genuinely emergent in the sense of Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial},
     Theorem~\ref{thm:main} forces the class map to be non-injective --- consistent with, and structurally
     required by, its construction.
-    In computational mechanics~\cite{CrutchfieldYoung1989}, the $\varepsilon$-machine is the minimal sufficient
+    In computational mechanics~\citep{CrutchfieldYoung1989}, the $\varepsilon$-machine is the minimal sufficient
     statistic of a process: the coarsest compression that preserves predictive power, chosen for utility.
     The two results are complementary: computational mechanics quantifies how much can be kept; the present
     theorem states that, under genuine emergence, not everything can.
-    Process-theoretic approaches~\cite{Sulis2026} similarly generate spatial and temporal distinctions from a
+    Process-theoretic approaches~\citep{Sulis2026} similarly generate spatial and temporal distinctions from a
     pre-spatial level of process actions, sharing the structural stance that the arena of observables is
     generated rather than given.
 
@@ -953,7 +970,7 @@ Independent Researcher, Paris, France\\
 
   \emph{(ii) Renormalisation group.}
   The Standard Model can be naturally interpreted as a Wilsonian effective
-  field theory~\cite{Wilson1975} with UV cutoff $\Lambda$.
+  field theory~\citep{Wilson1975} with UV cutoff $\Lambda$.
   Under this interpretation, the map
   $\Pi_\Lambda : \Omega_\mathrm{UV} \to \mathcal{O}_\mathrm{IR}$
   is non-injective: infinitely many UV completions yield the
@@ -972,7 +989,7 @@ Independent Researcher, Paris, France\\
   it is non-injective.
 
   These three readings are independent of any hypothesis specific to
-  the framework of~\cite{Cosmochrony}.
+  the framework of~\citep{Cosmochrony}.
   They illustrate that the projective structure identified in
   Theorem~\ref{thm:main} is not exotic: it appears wherever an effective
   description is obtained from a finer-grained level.
@@ -1044,14 +1061,14 @@ Independent Researcher, Paris, France\\
 
   Consider the four main classes.
   LQC replaces the singularity by a quantum bounce at Planck
-  density~\cite{Ashtekar2006,Bojowald2001}.
+  density~\citep{Ashtekar2006,Bojowald2001}.
   It has a partial $\Omega$ --- spin-network states --- and a many-to-one
   projection to the effective metric.
   It is more advanced than $\Lambda$CDM in specifying $\Omega$, but $\Pi$
   remains unspecified: the effective dynamics is postulated, not derived from
   the projection structure.
-  Pre-Big Bang scenarios (string cosmology~\cite{Gasperini1993},
-  ekpyrotic~\cite{Khoury2001}, conformal cyclic~\cite{Penrose2010})
+  Pre-Big Bang scenarios (string cosmology~\citep{Gasperini1993},
+  ekpyrotic~\citep{Khoury2001}, conformal cyclic~\citep{Penrose2010})
   displace the singularity into a preceding phase, but that phase is itself
   described by an effective geometry --- the question of its own $\Omega$ and
   $\Pi$ is deferred, not answered.
@@ -1059,8 +1076,8 @@ Independent Researcher, Paris, France\\
   cosmological argument directly; they remain incomplete through the
   renormalisation and measurement non-injectivities of mechanisms~(ii)
   and~(iii) above.
-  Emergent-universe models (Hartle--Hawking~\cite{HartleHawking1983},
-  tunnelling from nothing~\cite{Vilenkin1982}) replace
+  Emergent-universe models (Hartle--Hawking~\citep{HartleHawking1983},
+  tunnelling from nothing~\citep{Vilenkin1982}) replace
   the singularity by a quantum-to-classical transition --- which is itself a
   non-injective projection from $\mathcal{H}$ to a classical geometry.
 
@@ -1127,6 +1144,24 @@ Independent Researcher, Paris, France\\
   A fully injective effective theory, by contrast, is not an emergent theory but a renaming of the fundamental
   level.
 
+  \subsection*{Interpretive outlook}
+
+  The following reading goes beyond what the theorem proves and is offered as interpretation, with its status
+  explicitly labelled.
+  If genuine emergence structurally forces information loss, then the effective theories of standard physics
+  --- $\Lambda$CDM and the Standard Model --- are naturally read not as approximations of a more exact theory
+  of the same observables, but as quotient descriptions whose free constants are invariants of an unspecified
+  projection (Section~\ref{sec:discussion}).
+  On this reading, the persistent resistance of these constants to derivation from within the effective level
+  is not an accident of theoretical progress but a structural feature: by
+  Definition~\ref{def:defined-by-Pi}, the effective level has no resources to resolve its own fibres.
+  This suggests a reorientation of the reduction debate: the question ``can the effective theory be derived
+  from a fundamental one?'' is well posed only together with the projection that connects them, and the
+  theorem shows that any such projection worth the name must forget.
+  This interpretation is speculative-structural: it is consistent with the theorem and motivated by it, but
+  the identification of a specific $\Omega$ and $\Pi$ for standard physics is an open programme, not a result
+  of this paper.
+
   \appendix
 
   \section{On the Route from Non-Injectivity to the Standard Model Gauge Group}
@@ -1136,7 +1171,7 @@ Independent Researcher, Paris, France\\
   says nothing about their form.
   The identification of the structure group $G_\Pi$ with the Standard Model gauge
   group $G_{\mathrm{SM}} = \mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$
-  is a separate result, established in~\cite{Cosmochrony} and subsequent
+  is a separate result, established in~\citep{Cosmochrony} and subsequent
   papers via a chain of constraints absent from the universal theorem.
   We sketch the main steps for $\mathrm{SU}(2)$, then indicate how the same
   mechanism extends to the full gauge group.
@@ -1144,19 +1179,19 @@ Independent Researcher, Paris, France\\
   \subsection*{The SU(2) identification}
 
     The route to $\mathrm{SU}(2)$ proceeds in four steps, now entirely analytical.
-    First, the Born--Infeld parity constraint~\cite{Beau2026a22} fixes the
+    First, the Born--Infeld parity constraint~\citep{Beau2026a22} fixes the
     minimal fibre structure to the involution $c \leftrightarrow q - c$ on the
     Weil representation space of $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$.
     Second, the requirement that the representation algebra be associative,
     combined with the Hurwitz classification of real normed division algebras
     ($\mathbb{R}$, $\mathbb{C}$, $\mathbb{H}$, $\mathbb{O}$), selects
     $\mathbb{H}$ as the minimal associative non-commutative structure, with
-    $\dim_{\mathbb{R}} \mathrm{Im}\,\mathbb{H} = 3$ admissible directions~\cite{Beau2026a26}.
-    Third, the quaternionic rigidity theorem~\cite{Beau2026a31} proves that
+    $\dim_{\mathbb{R}} \mathrm{Im}\,\mathbb{H} = 3$ admissible directions~\citep{Beau2026a26}.
+    Third, the quaternionic rigidity theorem~\citep{Beau2026a31} proves that
     every admissible morphism on $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ necessarily
     factors through $\mathfrak{su}(2)$, and $r_{\mathrm{eff}} = 3$ identifies the spin-$1$ carrier
     $H_{\mathrm{eff}} \cong \mathrm{Sym}^2(V_\rho)$, with $d_\rho = 2$ the spin-$\tfrac{1}{2}$ square-root
-    doublet~\cite{Beau2026a33}.
+    doublet~\citep{Beau2026a33}.
     The exclusion of $\mathrm{SO}(3)$ is structural: quotienting the central
     $\mathbb{Z}_2$ of $\mathrm{SU}(2)$ destroys the $4\pi$-periodicity required
     for spinorial holonomy.
@@ -1164,13 +1199,13 @@ Independent Researcher, Paris, France\\
     on the admissible fibre, from which the invariant covariance ratio
     $\lambda_1/\lambda_2 = 2$ is derived analytically as the squared
     symmetric-tensor normalisation of the Carnot-degree-2 central generator
-    $Z = [X, Y]$~\cite{Beau2026a34}.
+    $Z = [X, Y]$~\citep{Beau2026a34}.
 
     These four steps close the following analytical chain:
     \begin{equation}
-      \text{emergence} \;\Rightarrow\; \mathfrak{su}(2)\;\text{\cite{Beau2026a31}}
-      \;\Rightarrow\; d_\rho = 2\;\text{\cite{Beau2026a33}}
-      \;\Rightarrow\; \lambda_1/\lambda_2 = 2\;\text{\cite{Beau2026a34}, proved}.
+      \text{emergence} \;\Rightarrow\; \mathfrak{su}(2)\;\text{\citep{Beau2026a31}}
+      \;\Rightarrow\; d_\rho = 2\;\text{\citep{Beau2026a33}}
+      \;\Rightarrow\; \lambda_1/\lambda_2 = 2\;\text{\citep{Beau2026a34}, proved}.
       \label{eq:SU2chain}
     \end{equation}
     Each implication in~\eqref{eq:SU2chain} is a proved theorem.
@@ -1179,18 +1214,18 @@ Independent Researcher, Paris, France\\
 
     The $\mathrm{U}(1)$ factor corresponds to global phase rotations within the
     complex fibre $\mathbb{C}^q$, which lie in the kernel of $\Pi$ by the phase
-    invariance of $\sigma_c(n)$~\cite{Beau2026a31}.
+    invariance of $\sigma_c(n)$~\citep{Beau2026a31}.
     Its identification is unconditional.
 
     The $\mathrm{SU}(3)$ factor arises from a structurally distinct mechanism: the colour-triplet
     co-admissibility of $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ satisfying
-    $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ and pairwise non-conjugacy~\cite{Beau2026a35}.
+    $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ and pairwise non-conjugacy~\citep{Beau2026a35}.
     On the colour-adapted Cayley graph, the triplet construction closes analytically: the group of
     Born--Infeld-compatible fibre-preserving transformations of the combined effective space
     $\tilde{V}_{\mathrm{color}} \cong \mathbb{C}^3$ is exactly $\mathrm{SU}(3)$, with the alternatives
-    ($\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, $G_2$) excluded~\cite{Beau2026a35}.
+    ($\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, $G_2$) excluded~\citep{Beau2026a35}.
     On the standard graph, the identification is supported at the rank, averaged, effective-exponent, and
-    numerical levels~\cite{Beau2026a35, Beau2026a36}; the pointwise finite-$q$ profile equality remains the
+    numerical levels~\citep{Beau2026a35, Beau2026a36}; the pointwise finite-$q$ profile equality remains the
     condition that promotes the centre-neutral triplet structure to the full $\mathrm{SU}(3)$ colour
     interpretation.
     The composite admissibility fixed point is therefore
@@ -1211,16 +1246,15 @@ Independent Researcher, Paris, France\\
     different structure groups.
     The two results are complementary and non-redundant.
 
-    \clearpage
-  \section*{Acknowledgements}
+  \section*{Statements and declarations}
 
-  This work is part of a research programme on projective emergent physics~\cite{Cosmochrony}.
-  The author acknowledges the use of large language models as a supportive tool for refining language,
-  structure, and internal consistency during the development of this manuscript.
-  All conceptual contributions, theoretical choices, and interpretations remain the sole responsibility of the
-  author.
+  % Acknowledgements, funding and competing-interest statements are on the separate title page,
+  % per the journal's double-blind procedure.
+  Large language models were used as a supportive tool for refining language, structure, and internal
+  consistency during the development of this manuscript; all conceptual contributions, theoretical choices,
+  and interpretations remain the sole responsibility of the author(s).
 
-  \bibliographystyle{plain}
+  \bibliographystyle{apalike}
   \bibliography{cosmochrony-bibliography, external-refs}
 
 \end{document}
