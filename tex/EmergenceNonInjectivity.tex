@@ -7,10 +7,8 @@
 \usepackage{microtype}
 \usepackage[margin=2.5cm]{geometry}
 
-% Anonymised variant for double-blind review (EJPS).
-% Author information, acknowledgements and declarations are on the separate
-% title page (EJPSTitlePage.tex), per the journal's double-blind procedure.
-\hypersetup{pdfauthor={}, pdftitle={Non-Injectivity as a Structural Necessity of Genuine Emergence}}
+\hypersetup{pdfauthor={Jerome Beau},
+  pdftitle={Non-Injectivity and Strict Information Loss in Projective Effective Descriptions}}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -22,11 +20,11 @@
 
 \newcommand{\bstar}{\beta^*}
 
-\title{Non-Injectivity as a Structural Necessity of Genuine Emergence:\\
-A No-Go Theorem for Faithful Emergent Descriptions}
+\title{Non-Injectivity and Strict Information Loss in Projective Effective Descriptions:\\
+A Structural No-Go Theorem}
 
-% Anonymised for double-blind review; see separate title page.
-\author{}
+\author{J\'er\^ome Beau\thanks{Independent Researcher, Paris, France.
+  \texttt{jerome.beau@cosmochrony.org}, ORCID 0009-0001-7697-7868.}}
 
 \date{}
 
@@ -35,42 +33,32 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   \maketitle
 
   \begin{abstract}
-    We prove that any genuinely emergent (i.e.\ non-isomorphic effective) physical
-    description is necessarily non-injective and intrinsically compressive.
-    The argument is purely structural: given a surjective projection
-    $\Pi : \Omega \to \mathcal{O}$ such that $\mathcal{O}$ carries no
-    independent microstate-resolving structure beyond what $\Pi$ provides,
-    and such that the effective level is not structurally isomorphic to the
-    fundamental level, then $\Pi$ cannot be injective and the associated
-    projection entropy $S_\Pi > 0$.
-    The proof uses only surjectivity, informational completeness of $\Pi$ for
-    observables, and the non-isomorphism condition; it is independent of any
-    specific physical framework.
-    The result constitutes a \emph{no-go theorem for faithful emergence}: a
-    surjective projection that is both informationally faithful and genuinely
-    emergent cannot exist.
-    As a corollary, descriptive redundancy, non-injectivity of $\Pi$, and
-    $S_\Pi > 0$ are co-extensive in any projective emergent framework, and any
-    non-trivial gauge structure requires these properties.
-    We provide a categorical reformulation (genuine emergence corresponds to
-    a non-faithful functor) and an informational one (genuine emergence forces
-    a strict, not merely non-negative, data-processing information loss).
-    The result is illustrated by a concrete spin model and discussed in
-    relation to the projective incompleteness of $\Lambda$CDM and the
-    Standard Model, whose fundamental constants are identified as invariants
-    of an unspecified projection $\Pi$ not accessible from the effective level
-    alone.
-    A further corollary establishes that non-injectivity is recursive: any
-    tower of genuinely distinct emergent levels carries one independent
-    non-injective projection per stratum, with entropy accumulating across
-    levels --- implying, wherever colour-neutral hadrons arise as genuinely
-    emergent from coloured degrees of freedom, the structural non-observability
-    of free colour: the structural, not dynamical, content of confinement.
+    That genuinely emergent descriptions are many-to-one --- that distinct microconfigurations share one
+    effective state --- is a familiar, at times definitional, feature of emergence, not a new observation.
+    We do not restate it; we prove a chain of previously unstated implications that turn it from a stipulation
+    into a structural necessity.
+    Our central result is a no-go theorem: for a surjective projection $\Pi : \Omega \to \mathcal{O}$ whose
+    observables carry no resolving structure beyond what $\Pi$ supplies, faithfulness (injectivity) is
+    equivalent to the absence of emergence (structural isomorphism $\mathcal{O} \cong \Omega$); hence no
+    genuinely emergent projection can be information-preserving, and its projection entropy is strictly
+    positive, $S_\Pi > 0$.
+    From this we derive, as further results: (i) descriptive redundancy, non-injectivity, and $S_\Pi > 0$ are
+    co-extensive, and any non-trivial gauge structure requires them; (ii) the compression is recursive and
+    exactly additive across a tower of emergent levels; (iii) wherever colour-neutral states are genuinely
+    emergent from coloured degrees of freedom, the colour projection is non-injective, making the
+    non-observability of free colour structural rather than dynamical.
+    The theorem admits a categorical form (genuine emergence is the non-faithfulness of a functor) and an
+    informational one (a strict, not merely non-negative, data-processing loss).
+    It clarifies apparent counterexamples: exact holographic dualities, when fully faithful, are isomorphisms
+    rather than genuine emergent projections in this sense, while causal-emergence constructions in which
+    ``macro beats micro'' remain many-to-one and lossy in $S_\Pi$.
+    The argument assumes no metric, Hilbert space, Lagrangian, or dynamics, and applies uniformly to
+    renormalisation-group, coarse-grained, causal-set, spin-foam, and pre-geometric projections.
   \end{abstract}
 
   \paragraph{Keywords.}
-    emergence, non-injectivity, projection, gauge symmetry, information loss,
-    effective theories.
+    emergence, non-injective projection, projection entropy, gauge redundancy, information loss,
+    effective field theory, renormalisation group, confinement.
 
     \clearpage
     \tableofcontents
@@ -80,61 +68,73 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   \section{Introduction}
   \label{sec:intro}
 
-  Many physical frameworks assume the existence of two distinct levels of
-  description: a fundamental level $\Omega$ of underlying configurations, and
-  an effective level $\mathcal{O}$ of observable states.
-  The relationship between these levels is typically encoded in a projection
-  map $\Pi : \Omega \to \mathcal{O}$.
+  Effective descriptions in physics are routinely obtained from a finer level of configurations $\Omega$
+  through a projection $\Pi : \Omega \to \mathcal{O}$ onto a space of observable states.
+  Such a projection is generically many-to-one: distinct configurations $\omega \in \Omega$ may yield the same
+  observable $o \in \mathcal{O}$.
+  This is the structural signature of coarse-graining and of the renormalisation group, where effective
+  descriptions arise through a systematic loss of microscopic
+  information~\citep{Wilson1975,Jaynes1957,GellMannHartle1993}, and it recurs across causal-set, spin-foam, and
+  pre-geometric relational models as well as in the information-theoretic reading of
+  emergence~\citep{Anderson1972,Butterfield2011,Ellis2012}.
 
-  A recurring feature of such frameworks is that $\Pi$ is many-to-one:
-  distinct configurations $\omega \in \Omega$ may correspond to the same
-  observable state $o \in \mathcal{O}$.
-  This feature is closely related to coarse-graining and renormalisation
-  procedures, where effective descriptions arise through systematic loss
-  of microscopic information~\citep{Wilson1975,Jaynes1957,GellMannHartle1993}.
-  More generally, the relation between emergence and information
-  compression has been discussed in both physical and philosophical
-  contexts, from Anderson's classic statement of the autonomy of emergent
-  levels~\citep{Anderson1972} to recent systematic
-  classifications~\citep{Butterfield2011,Ellis2012,CarrollParola2024}.
-  Within one projective-emergent programme, this non-injectivity has been
-  identified as the structural origin of Bell-inequality
-  violations~\citep{Beau2026b}, as well as of gauge symmetry and black-hole
-  entropy; the relation of the present result to that programme is discussed
-  in Sections~\ref{sec:scope} and~\ref{sec:objections}.
-  More broadly, non-injectivity is related to redundancy structures appearing
-  in constrained and coarse-grained descriptions.
-  In each case, however, non-injectivity has been introduced as a feature of
-  a specific model rather than derived as a universal necessity.
-  What is missing across these frameworks is a structural necessity result:
-  while non-injective mappings appear operationally, no general theorem
-  establishes that they are unavoidable for emergence itself.
+  In each of these settings non-injectivity is introduced as a feature of a particular model or construction,
+  not derived.
+  Several recent accounts go further and build the many-to-one map, or its associated loss of information, into
+  the very \emph{definition} of emergence~\citep{Rizi2025,Rosas2022,CarrollParola2024}: the classification of
+  Carroll and Parola~\citep{CarrollParola2024} realises every non-trivial variety of emergence by a
+  many-to-one map, and the information-conversion account of Rosas et~al.~\citep{Rosas2022} makes compression
+  constitutive.
+  What has been missing is a structural necessity result --- a theorem showing that, once an effective
+  description is genuinely distinct from the level it is projected from, non-injectivity, and hence strictly
+  positive information loss, is \emph{unavoidable} rather than stipulated.
+  The data-processing inequality~\citep{CoverThomas2006} does not supply it: it only bounds the loss below by
+  zero and is fully compatible with a lossless, injective projection.
+  A definition, likewise, is not a derivation: stipulating that emergence is many-to-one leaves open whether a
+  genuinely distinct effective level \emph{could} nonetheless be injective.
+  We prove that it cannot.
 
-  The same lacuna is visible from the philosophical side of the emergence debate.
-  Discussions of emergence standardly distinguish weak emergence, on which emergent behaviour is in principle
-  derivable from the base level but only by explicit simulation~\citep{Bedau1997}, from strong emergence, on
-  which the emergent level carries facts not deducible from the base level even in
-  principle~\citep{Chalmers2006}.
-  Both notions are characterised epistemically --- by what can be derived, deduced, or simulated --- and the
-  persistent difficulty of the debate has been to say what, in the \emph{structure} of an inter-level
-  relation, distinguishes genuine emergence from mere redescription~\citep{Kim1999, Butterfield2011}.
-  The present result addresses precisely this question in the restricted but exactly analysable setting of
-  projective frameworks: when the inter-level relation is a surjective projection and the effective
-  observables are entirely defined by it, genuine novelty (non-isomorphism of the two levels) is
-  \emph{equivalent} to a structural property of the map itself --- non-injectivity, and hence strictly
-  positive information loss.
-  The criterion is neither epistemic nor dynamical: it does not mention derivability, simulation, or any
-  observer, and it is decidable at the level of the map $\Pi$ alone.
+  We show that any surjective projection $\Pi$ whose observables are entirely defined by $\Pi$
+  (Definition~\ref{def:defined-by-Pi}), and whose effective level is not structurally isomorphic to the
+  fundamental level (Definition~\ref{def:non-trivial}), must be non-injective, with projection entropy
+  $S_\Pi > 0$ for every non-degenerate measure (Theorem~\ref{thm:main}).
+  The argument is elementary and framework-independent: it invokes no metric, Hilbert space, Lagrangian, or
+  dynamics, and the criterion it yields is neither epistemic nor dynamical --- it does not mention derivability,
+  simulation, or any observer, and is decidable at the level of the map $\Pi$ alone.
+  Its content is exactly the strictness that the data-processing inequality leaves open: genuine distinctness of
+  the effective level converts $S_\Pi \geq 0$ into $S_\Pi > 0$.
 
-  The present note supplies this missing result.
-  We show that non-injectivity is not a modelling choice but a structural
-  consequence of genuine emergence: any surjective map $\Pi$ whose observables
-  are entirely defined by $\Pi$, and whose effective level is not isomorphic
-  to the fundamental level, must be non-injective.
-  The proof is elementary and framework-independent.
-  A further corollary (Section~\ref{sec:towers}) shows that non-injectivity is
-  recursive: the same structural necessity applies at every stratum of a tower
-  of emergent descriptions, with entropy accumulating across levels.
+  Three consequences give the result its physical reach.
+  First, gauge structure is implicated directly: any non-trivial gauge symmetry emerging from $\Pi$ forces
+  non-injectivity, so descriptive redundancy, non-injectivity of $\Pi$, and $S_\Pi > 0$ are co-extensive
+  (Proposition~\ref{prop:gauge}, Corollary~\ref{cor:co-ext}).
+  Second, the compression is recursive: applied to a tower of genuinely distinct effective levels, the theorem
+  forces one independent non-injective projection per stratum, with projection entropies adding exactly across
+  levels (Corollary~\ref{cor:recursive}).
+  Third, in any framework where colour-neutral states arise as genuinely emergent from coloured degrees of
+  freedom, the colour projection must be non-injective: the non-observability of free colour is then a
+  structural feature of the emergence rather than a separate dynamical mechanism (Section~\ref{sec:towers}).
+  This last point is a projective, model-independent reading of confinement, complementary to --- not a
+  replacement for --- its quantitative QCD dynamics.
+
+  Framed this way, the theorem has a definite target: the possibility that a genuinely emergent description
+  could nonetheless be faithful.
+  Two prominent cases appear to realise it --- exact holographic dualities, which present bulk gravity as
+  \emph{emergent} yet information-preserving~\citep{deHaro2016}, and causal-emergence analyses on which a
+  coarse-grained macro-level carries \emph{more} effective information than its
+  micro-level~\citep{Hoel2013,Dewhurst2021}.
+  Neither is a genuine counterexample; we make the reason precise in Section~\ref{subsec:rulesout}.
+
+  The same necessity settles, in the restricted but exactly analysable projective setting, a question left open
+  by the philosophical literature on emergence, where weak and strong emergence are characterised
+  epistemically --- by what can be derived or simulated~\citep{Bedau1997,Chalmers2006,Kim1999} --- rather than
+  by a structural property of the inter-level map.
+  Here genuine novelty, i.e.\ non-isomorphism of the two levels, is \emph{equivalent} to a structural property
+  of $\Pi$ itself.
+  Within one pre-geometric projective programme this non-injectivity has further been identified as the
+  structural origin of Bell-inequality violations~\citep{Beau2026b}, of gauge symmetry, and of black-hole
+  entropy; the relation of the present, framework-independent result to that programme is discussed in
+  Sections~\ref{sec:scope} and~\ref{sec:objections}.
 
   \subsection*{A preliminary observation: standard cosmology as an effective description}
 
@@ -1145,6 +1145,56 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   A fully injective effective theory, by contrast, is not an emergent theory but a renaming of the fundamental
   level.
 
+  \subsection{What the no-go rules out}
+  \label{subsec:rulesout}
+
+  The theorem does not rule out effective descriptions, dual descriptions, or macro-level
+  causal explanations.
+  It rules out a narrower but conceptually important possibility: a description that is both
+  genuinely emergent and faithful to all microstate distinctions.
+  This distinction matters for two families of apparent counterexamples.
+  First, an exact holographic duality may be fully information-preserving.
+  In that case, however, the two sides are structurally equivalent in the relevant sense:
+  the map is a re-encoding, not a genuinely emergent projection as defined here.
+  If no information is lost and no resolving structure is missing, the effective side is not an
+  emergent level but an isomorphic presentation of the same physical content.
+  Second, causal-emergence constructions can show that a macro-level variable carries more
+  effective causal information than a chosen micro-level description.
+  This does not contradict the theorem.
+  Such constructions still use a many-to-one macro-map, and therefore remain non-injective
+  as projections.
+  The increase concerns causal informativeness, stability, or intervention-level efficiency,
+  not the preservation of all microstate distinctions under $\Pi$.
+  The no-go result therefore targets faithful emergence, not emergence in general.
+  It excludes the claim that a genuinely distinct effective level can retain all the resolving
+  power of the level from which it arises.
+  Exact dualities survive by ceasing to be genuine emergence in the present sense.
+  Causal-emergence models survive by accepting non-injectivity while optimising a different
+  notion of information.
+
+  \subsection{Physical realisations of the projection entropy}
+  \label{subsec:realisations}
+
+  Theorem~\ref{thm:main} fixes the existence and strict positivity of $S_\Pi$, but neither its magnitude nor its
+  physical form.
+  Within the wider programme these are supplied by three concrete realisations, each an information-loss
+  functional of a non-injective projection.
+  On the admissible Weil-block hierarchy, the residual fibre information is monotone-decreasing under
+  coarse-graining --- a data-processing (fibre-erasure) theorem --- and is measurable through the Born--Infeld
+  capacity profile~\citep{Beau2026fe}; this is the information-theoretic quantity of Theorem~\ref{thm:main}
+  resolved along a coarse-graining axis.
+  A projective spectral entropy functional $S_\Pi[g] = \tfrac{1}{2}\log\det' A_g$ has an extremum condition that
+  is Einstein's equation~\citep{Beau2026h,Beau2026Thermodynamics}.
+  And a history-branching entropy with production rate $\dot S_{\mathrm{hist}} = h_b H$ carries the accelerated
+  expansion sector~\citep{Beau2026d}.
+  These are sibling functionals sharing the projective-information-loss motivation, not literally the same
+  $S_\Pi$: the combinatorial $S_\Pi$ of Theorem~\ref{thm:main} is the information-theoretic root, while the
+  gravitational and cosmological realisations use continuum and dynamical entropies.
+  Whether they coincide in appropriate discrete-to-continuum or micro-to-macro limits is an open problem, not a
+  claim of this paper.
+  What the theorem contributes is the structural guarantee that every such realisation must be strictly
+  positive: genuine emergence cannot be information-preserving at any level.
+
   \subsection*{Interpretive outlook}
 
   The following reading goes beyond what the theorem proves and is offered as interpretation, with its status
@@ -1163,13 +1213,18 @@ A No-Go Theorem for Faithful Emergent Descriptions}
   the identification of a specific $\Omega$ and $\Pi$ for standard physics is an open programme, not a result
   of this paper.
 
-  \section*{Statements and declarations}
+  \section*{Acknowledgements}
 
-  % Acknowledgements, funding and competing-interest statements are on the separate title page,
-  % per the journal's double-blind procedure.
+  This work is part of a research programme on projective emergent physics.
   Large language models were used as a supportive tool for refining language, structure, and internal
   consistency during the development of this manuscript; all conceptual contributions, theoretical choices,
-  and interpretations remain the sole responsibility of the author(s).
+  and interpretations remain the sole responsibility of the author.
+
+  \paragraph{Funding information.}
+  No funding was received to assist with the preparation of this manuscript.
+
+  \paragraph{Competing interests.}
+  The author has no competing interests to declare.
 
   \bibliographystyle{apalike}
   \bibliography{cosmochrony-bibliography, external-refs}
