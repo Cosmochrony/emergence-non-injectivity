@@ -11,3 +11,6 @@ pdfs/
 *.toc
 *.fls
 *.fdb_latexmk
+
+# MDPI class for the Quantum Reports build only (not versioned in non-QR branches)
+tex/Definitions/
