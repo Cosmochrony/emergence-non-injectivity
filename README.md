@@ -1,5 +1,5 @@
 This repository contains the source of the  
-[Cosmochrony paper on projection-induced fluctuations and λ-dependent fibre dynamics](out/EmergenceNonInjectivity.pdf).
+Cosmochrony paper on projection-induced fluctuations and λ-dependent fibre dynamics.
 
 This work provides a **structural derivation of apparent stochasticity**
 in effective descriptions arising from a non-injective projection
