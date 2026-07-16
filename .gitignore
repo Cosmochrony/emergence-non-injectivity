@@ -16,7 +16,6 @@ pdfs/
 tex/Definitions/
 
 # Manim-generated files
-video/.venv/
 video/__pycache__/
 video/media/
 video/out/

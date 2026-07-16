@@ -19,7 +19,6 @@ from manim import (
     Line,
     ORIGIN,
     RIGHT,
-    Scene,
     Text,
     Transform,
     UP,
@@ -28,6 +27,10 @@ from manim import (
     Write,
     config,
 )
+from manim_voiceover import VoiceoverScene
+from manim_voiceover.services.gtts import GTTSService
+
+from narration import NARRATION
 
 
 BACKGROUND = "#080D1B"
@@ -121,18 +124,20 @@ def make_label(title: str, symbol: str) -> VGroup:
     return VGroup(words, maths).arrange(RIGHT, buff=0.18)
 
 
-class OneRealityMultipleDescriptions(Scene):
+class OneRealityMultipleDescriptions(VoiceoverScene):
     """Animate the no-go theorem connecting emergence and non-injectivity."""
 
     def construct(self) -> None:
+        self.set_speech_service(GTTSService(lang="en", tld="com", slow=False))
+
         title = Text("ONE REALITY", font=FONT, font_size=64, weight="BOLD", color=FOREGROUND)
         subtitle = Text("MULTIPLE DESCRIPTIONS", font=FONT, font_size=34, color=CYAN)
         opening = VGroup(title, subtitle).arrange(DOWN, buff=0.20).move_to(ORIGIN)
 
-        self.play(Write(title), run_time=1.25)
-        self.play(FadeIn(subtitle, shift=0.16 * UP), run_time=0.85)
-        self.wait(0.8)
-        self.play(FadeOut(opening), run_time=0.7)
+        with self.voiceover(text=NARRATION["opening"]) as tracker:
+            self.play(Write(title), run_time=tracker.duration * 0.48)
+            self.play(FadeIn(subtitle, shift=0.16 * UP), run_time=tracker.duration * 0.25)
+        self.play(FadeOut(opening), run_time=0.5)
 
         question = Text(
             "When is an effective description genuinely emergent?",
@@ -145,19 +150,24 @@ class OneRealityMultipleDescriptions(Scene):
         source_label = make_label("Fine-grained level", "Ω")
         source_label.next_to(source.group, DOWN, buff=0.36)
 
-        self.play(Write(question), run_time=0.8)
-        self.play(
-            LaggedStart(*[Create(edge) for edge in source.edges], lag_ratio=0.045),
-            LaggedStart(*[GrowFromCenter(node) for node in source.nodes], lag_ratio=0.07),
-            run_time=2.0,
-        )
-        self.play(FadeIn(source_label, shift=0.12 * UP), run_time=0.6)
-
         projection_arrow = Arrow(0.9 * LEFT, 0.9 * RIGHT, buff=0, color=FOREGROUND, stroke_width=4)
         projection_symbol = Text("Π", font=FONT, font_size=48, color=CYAN).next_to(
             projection_arrow, UP, buff=0.14
         )
-        self.play(Create(projection_arrow), FadeIn(projection_symbol), run_time=0.7)
+
+        with self.voiceover(text=NARRATION["fine_grained"]) as tracker:
+            self.play(Write(question), run_time=tracker.duration * 0.18)
+            self.play(
+                LaggedStart(*[Create(edge) for edge in source.edges], lag_ratio=0.045),
+                LaggedStart(*[GrowFromCenter(node) for node in source.nodes], lag_ratio=0.07),
+                run_time=tracker.duration * 0.44,
+            )
+            self.play(FadeIn(source_label, shift=0.12 * UP), run_time=tracker.duration * 0.14)
+            self.play(
+                Create(projection_arrow),
+                FadeIn(projection_symbol),
+                run_time=tracker.duration * 0.12,
+            )
 
         target = make_structure(3.65 * RIGHT + 0.25 * DOWN)
         target_label = make_label("Effective level", "O")
@@ -186,19 +196,22 @@ class OneRealityMultipleDescriptions(Scene):
             Text("a relabelling, not genuine emergence", font=FONT, font_size=25, color=MUTED),
         ).arrange(DOWN, buff=0.12).to_edge(DOWN, buff=0.28)
 
-        self.play(
-            Transform(question, injective_heading),
-            LaggedStart(*[Create(line) for line in injective_lines], lag_ratio=0.035),
-            run_time=1.2,
-        )
-        self.play(
-            LaggedStart(*[Create(edge) for edge in target.edges], lag_ratio=0.035),
-            LaggedStart(*[GrowFromCenter(node) for node in target.nodes], lag_ratio=0.05),
-            FadeIn(target_label, shift=0.12 * UP),
-            run_time=1.6,
-        )
-        self.play(FadeIn(injective_verdict, shift=0.12 * UP), run_time=0.7)
-        self.wait(1.2)
+        with self.voiceover(text=NARRATION["injective"]) as tracker:
+            self.play(
+                Transform(question, injective_heading),
+                LaggedStart(*[Create(line) for line in injective_lines], lag_ratio=0.035),
+                run_time=tracker.duration * 0.23,
+            )
+            self.play(
+                LaggedStart(*[Create(edge) for edge in target.edges], lag_ratio=0.035),
+                LaggedStart(*[GrowFromCenter(node) for node in target.nodes], lag_ratio=0.05),
+                FadeIn(target_label, shift=0.12 * UP),
+                run_time=tracker.duration * 0.35,
+            )
+            self.play(
+                FadeIn(injective_verdict, shift=0.12 * UP),
+                run_time=tracker.duration * 0.12,
+            )
 
         outcome_centres = (3.65 * RIGHT + 1.18 * UP, 3.65 * RIGHT, 3.65 * RIGHT + 1.18 * DOWN)
         outcomes = VGroup()
@@ -232,27 +245,28 @@ class OneRealityMultipleDescriptions(Scene):
         many_to_one_label = make_label("Effective level", "O")
         many_to_one_label.next_to(outcomes, DOWN, buff=0.50)
 
-        self.play(
-            Transform(question, many_to_one_heading),
-            FadeOut(injective_verdict),
-            FadeOut(injective_lines),
-            FadeOut(target.group),
-            FadeOut(target_label),
-            run_time=0.9,
-        )
-        self.play(
-            LaggedStart(*[Create(line) for line in fibre_lines], lag_ratio=0.04),
-            LaggedStart(*[GrowFromCenter(circle) for circle in outcomes], lag_ratio=0.15),
-            LaggedStart(*[FadeIn(label) for label in outcome_text], lag_ratio=0.15),
-            FadeIn(many_to_one_label, shift=0.12 * UP),
-            run_time=1.8,
-        )
-
         colour_animations = []
         for fibre_index, node_indices in enumerate(FIBRES):
             for node_index in node_indices:
                 colour_animations.append(source.nodes[node_index].animate.set_color(FIBRE_COLORS[fibre_index]))
-        self.play(*colour_animations, run_time=0.9)
+
+        with self.voiceover(text=NARRATION["many_to_one"]) as tracker:
+            self.play(
+                Transform(question, many_to_one_heading),
+                FadeOut(injective_verdict),
+                FadeOut(injective_lines),
+                FadeOut(target.group),
+                FadeOut(target_label),
+                run_time=tracker.duration * 0.24,
+            )
+            self.play(
+                LaggedStart(*[Create(line) for line in fibre_lines], lag_ratio=0.04),
+                LaggedStart(*[GrowFromCenter(circle) for circle in outcomes], lag_ratio=0.15),
+                LaggedStart(*[FadeIn(label) for label in outcome_text], lag_ratio=0.15),
+                FadeIn(many_to_one_label, shift=0.12 * UP),
+                run_time=tracker.duration * 0.42,
+            )
+            self.play(*colour_animations, run_time=tracker.duration * 0.18)
 
         fibre_caption = Text(
             "Each colour marks a fibre of indistinguishable configurations",
@@ -260,8 +274,11 @@ class OneRealityMultipleDescriptions(Scene):
             font_size=25,
             color=MUTED,
         ).to_edge(DOWN, buff=0.30)
-        self.play(FadeIn(fibre_caption, shift=0.12 * UP), run_time=0.6)
-        self.wait(1.5)
+        with self.voiceover(text=NARRATION["fibres"]) as tracker:
+            self.play(
+                FadeIn(fibre_caption, shift=0.12 * UP),
+                run_time=tracker.duration * 0.20,
+            )
 
         diagram = VGroup(
             question,
@@ -275,8 +292,6 @@ class OneRealityMultipleDescriptions(Scene):
             many_to_one_label,
             fibre_caption,
         )
-        self.play(FadeOut(diagram), run_time=0.9)
-
         theorem_heading = Text("STRUCTURAL NECESSITY", font=FONT, font_size=30, color=CYAN)
         theorem = Text(
             "genuine emergence  ⇒  Π non-injective",
@@ -302,9 +317,16 @@ class OneRealityMultipleDescriptions(Scene):
         )
         conclusion = VGroup(theorem_heading, theorem, entropy, closing).arrange(DOWN, buff=0.34)
 
-        self.play(FadeIn(theorem_heading, shift=0.15 * UP), run_time=0.6)
-        self.play(Write(theorem), run_time=1.5)
-        self.play(Write(entropy), run_time=0.8)
-        self.play(FadeIn(closing, shift=0.12 * UP), run_time=0.7)
-        self.wait(2.0)
+        with self.voiceover(text=NARRATION["conclusion"]) as tracker:
+            self.play(FadeOut(diagram), run_time=tracker.duration * 0.18)
+            self.play(
+                FadeIn(theorem_heading, shift=0.15 * UP),
+                run_time=tracker.duration * 0.12,
+            )
+            self.play(Write(theorem), run_time=tracker.duration * 0.28)
+            self.play(Write(entropy), run_time=tracker.duration * 0.16)
+            self.play(
+                FadeIn(closing, shift=0.12 * UP),
+                run_time=tracker.duration * 0.12,
+            )
         self.play(FadeOut(conclusion), run_time=0.8)

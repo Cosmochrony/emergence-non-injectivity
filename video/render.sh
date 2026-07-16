@@ -9,6 +9,10 @@ SCENE_FILE="one_reality_multiple_descriptions.py"
 SCENE_NAME="OneRealityMultipleDescriptions"
 OUTPUT_STEM="one-reality-multiple-descriptions"
 MODE="${1:-final}"
+MANIM_PACKAGE="manim==0.20.1"
+VOICEOVER_PACKAGE="manim-voiceover[gtts]==0.3.7"
+SETUPTOOLS_PACKAGE="setuptools==80.9.0"
+PYTHON_VERSION="3.13"
 
 case "$MODE" in
     final)
@@ -36,7 +40,17 @@ cd "$SCRIPT_DIR"
 mkdir -p out
 
 echo "=== Rendering One Reality, Multiple Descriptions ($MODE) ==="
-uv run manim "$QUALITY_FLAG" --output_file "$OUTPUT_STEM" "$SCENE_FILE" "$SCENE_NAME"
+uv tool run \
+    --python "$PYTHON_VERSION" \
+    --from "$MANIM_PACKAGE" \
+    --with "$VOICEOVER_PACKAGE" \
+    --with "$SETUPTOOLS_PACKAGE" \
+    manim \
+    "$QUALITY_FLAG" \
+    --disable_caching \
+    --output_file "$OUTPUT_STEM" \
+    "$SCENE_FILE" \
+    "$SCENE_NAME"
 
 RENDERED_FILE="media/videos/${SCENE_FILE%.py}/${QUALITY_DIR}/${OUTPUT_STEM}.mp4"
 FINAL_FILE="out/$OUTPUT_FILE"
@@ -48,6 +62,16 @@ fi
 
 cp "$RENDERED_FILE" "$FINAL_FILE"
 
+SUBTITLE_FILE="${RENDERED_FILE%.mp4}.srt"
+if [ -f "$SUBTITLE_FILE" ]; then
+    FINAL_SUBTITLE_FILE="${FINAL_FILE%.mp4}.srt"
+    cp "$SUBTITLE_FILE" "$FINAL_SUBTITLE_FILE"
+fi
+
 echo "=== Render successful ==="
 echo "Output: $FINAL_FILE"
 ls -lh "$FINAL_FILE"
+if [ -n "${FINAL_SUBTITLE_FILE:-}" ]; then
+    echo "Subtitles: $FINAL_SUBTITLE_FILE"
+    ls -lh "$FINAL_SUBTITLE_FILE"
+fi
