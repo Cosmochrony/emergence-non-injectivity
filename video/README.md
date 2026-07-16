@@ -19,6 +19,10 @@ It does not create a virtual environment inside this directory or install a pers
 The free online Edge TTS service generates the English narration automatically from `narration.py` with the
 British male voice `en-GB-RyanNeural`.
 
+The final video is published on the Cosmochrony YouTube channel:
+
+<https://www.youtube.com/watch?v=cz4ralii728>
+
 Render the final narrated 1080p60 video with:
 
 ```bash
