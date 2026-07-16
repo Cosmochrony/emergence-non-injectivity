@@ -12,9 +12,10 @@ The first animation presents the paper's central structural distinction:
 - under the hypotheses of the paper, genuine emergence requires non-injectivity and strictly positive projection
   entropy.
 
-The rendering script uses a shared `uv` tool environment and pins Python 3.13, Manim 0.20.1, Manim Voiceover 0.3.7,
-Edge TTS 7.2.8, and the compatibility version of `setuptools` required by the voice-over plugin.
-It does not create a virtual environment inside this directory.
+The rendering script uses `uv run --no-project` with the shared global `uv` package cache and pins Python 3.13,
+Manim 0.20.1, Manim Voiceover 0.3.7, Edge TTS 7.2.8, and the compatibility version of `setuptools` required by the
+voice-over plugin.
+It does not create a virtual environment inside this directory or install a persistent tool under `~/.local`.
 The free online Edge TTS service generates the English narration automatically from `narration.py` with the
 British male voice `en-GB-RyanNeural`.
 

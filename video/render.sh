@@ -41,12 +41,14 @@ cd "$SCRIPT_DIR"
 mkdir -p out
 
 echo "=== Rendering One Reality, Multiple Descriptions ($MODE) ==="
-uv tool run \
+uv run \
+    --no-project \
     --python "$PYTHON_VERSION" \
-    --from "$MANIM_PACKAGE" \
+    --with "$MANIM_PACKAGE" \
     --with "$VOICEOVER_PACKAGE" \
     --with "$EDGE_TTS_PACKAGE" \
     --with "$SETUPTOOLS_PACKAGE" \
+    -- \
     manim \
     "$QUALITY_FLAG" \
     --disable_caching \
