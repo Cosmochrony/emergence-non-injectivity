@@ -12,6 +12,10 @@ The first animation presents the paper's central structural distinction:
 - under the hypotheses of the paper, genuine emergence requires non-injectivity and strictly positive projection
   entropy.
 
+In the animation, $\Omega$ denotes the framework-independent theorem's fine-grained configuration space.
+It is not another name for $\chi$, the proposed substrate symbol used in the preliminary Cosmochrony white-paper
+vocabulary. The paper does not identify the two or construct a Cosmochrony-specific $\Omega$.
+
 The rendering script uses `uv run --no-project` with the shared global `uv` package cache and pins Python 3.13,
 Manim 0.20.1, Manim Voiceover 0.3.7, Edge TTS 7.2.8, and the compatibility version of `setuptools` required by the
 voice-over plugin.
