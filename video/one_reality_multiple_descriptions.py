@@ -28,8 +28,8 @@ from manim import (
     config,
 )
 from manim_voiceover import VoiceoverScene
-from manim_voiceover.services.gtts import GTTSService
 
+from edge_tts_service import EdgeTTSService
 from narration import NARRATION
 
 
@@ -128,7 +128,7 @@ class OneRealityMultipleDescriptions(VoiceoverScene):
     """Animate the no-go theorem connecting emergence and non-injectivity."""
 
     def construct(self) -> None:
-        self.set_speech_service(GTTSService(lang="en", tld="com", slow=False))
+        self.set_speech_service(EdgeTTSService(voice="en-GB-RyanNeural"))
 
         title = Text("ONE REALITY", font=FONT, font_size=64, weight="BOLD", color=FOREGROUND)
         subtitle = Text("MULTIPLE DESCRIPTIONS", font=FONT, font_size=34, color=CYAN)

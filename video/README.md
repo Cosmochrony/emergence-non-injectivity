@@ -13,9 +13,10 @@ The first animation presents the paper's central structural distinction:
   entropy.
 
 The rendering script uses a shared `uv` tool environment and pins Python 3.13, Manim 0.20.1, Manim Voiceover 0.3.7,
-and the compatibility version of `setuptools` required by the voice-over plugin.
+Edge TTS 7.2.8, and the compatibility version of `setuptools` required by the voice-over plugin.
 It does not create a virtual environment inside this directory.
-The free gTTS service generates the English narration automatically from `narration.py`.
+The free online Edge TTS service generates the English narration automatically from `narration.py` with the
+British male voice `en-GB-RyanNeural`.
 
 Render the final narrated 1080p60 video with:
 

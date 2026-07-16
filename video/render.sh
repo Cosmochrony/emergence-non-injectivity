@@ -10,7 +10,8 @@ SCENE_NAME="OneRealityMultipleDescriptions"
 OUTPUT_STEM="one-reality-multiple-descriptions"
 MODE="${1:-final}"
 MANIM_PACKAGE="manim==0.20.1"
-VOICEOVER_PACKAGE="manim-voiceover[gtts]==0.3.7"
+VOICEOVER_PACKAGE="manim-voiceover==0.3.7"
+EDGE_TTS_PACKAGE="edge-tts==7.2.8"
 SETUPTOOLS_PACKAGE="setuptools==80.9.0"
 PYTHON_VERSION="3.13"
 
@@ -44,6 +45,7 @@ uv tool run \
     --python "$PYTHON_VERSION" \
     --from "$MANIM_PACKAGE" \
     --with "$VOICEOVER_PACKAGE" \
+    --with "$EDGE_TTS_PACKAGE" \
     --with "$SETUPTOOLS_PACKAGE" \
     manim \
     "$QUALITY_FLAG" \
