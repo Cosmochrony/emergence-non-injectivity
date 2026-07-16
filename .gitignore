@@ -14,3 +14,9 @@ pdfs/
 
 # MDPI class for the Quantum Reports build only (not versioned in non-QR branches)
 tex/Definitions/
+
+# Manim-generated files
+video/.venv/
+video/__pycache__/
+video/media/
+video/out/
