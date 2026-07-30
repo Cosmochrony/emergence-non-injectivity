@@ -19,3 +19,10 @@ tex/Definitions/
 video/__pycache__/
 video/media/
 video/out/
+
+# Common build-artefact baseline
+**/.DS_Store
+.venv/
+media/
+**/__pycache__/
+*.py[cod]
