@@ -59,3 +59,7 @@ The published video is available on
 
 Portions of the editorial refinement benefited from iterative interactions with large language models used as
 analytical assistants. All claims, interpretations, and final formulations remain the author's responsibility.
+
+## BI-1 correction candidate
+
+Version 2.8, pending independent review and publication. Restores FibreErasure's H-suff condition and the distinction between its rank proof and numerical full-capacity support. Aligns the Einstein realisation with Gravity's scheme-separated conditional infrared metric response, not an exact bare-determinant extremum equation. The separate ENI-colour debt is outside this correction.
