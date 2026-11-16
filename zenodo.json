@@ -4,5 +4,5 @@
   "main_tex": "tex/EmergenceNonInjectivity.tex",
   "zenodo_id": 19391746,
   "doi": "10.5281/zenodo.19391746",
-  "notes": "Version 2.8. Restores FibreErasure's H-suff condition and the distinction between its rank proof and numerical full-capacity support. Aligns the Einstein realisation with Gravity's scheme-separated conditional infrared metric response, not an exact bare-determinant extremum equation. The separate ENI-colour debt is outside this correction."
+  "notes": "Version 2.9. States the colour reading of Section 5 as a conditional template: the sum-zero arithmetic of conjugate pairs and triples is not identified with colour, leptons, quarks or a spin-1/2 module, and the tower's premises are open. Corrects the direction of the confinement implication: colour-neutral observables emerging from coloured degrees of freedom force a non-injective colour projection, which takes colour neutrality as a premise and does not explain why free colour is unobserved."
 }

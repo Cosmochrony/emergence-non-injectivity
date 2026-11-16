@@ -30,8 +30,9 @@ concrete fundamental space and projection for standard physics remains an open p
   assumptions.
 - Compression is recursive and exactly additive across towers of emergent levels.
 - Any non-trivial gauge structure requires non-trivial fibres.
-- When colour-neutral states genuinely emerge from coloured degrees of freedom, free colour is structurally
-  unobservable through a non-injective colour projection.
+- When colour-neutral observables genuinely emerge from coloured degrees of freedom, the colour projection is
+  non-injective. This constrains any such emergence; it takes colour neutrality as a premise and does not explain
+  why free colour is unobserved.
 - The theorem admits categorical and information-theoretic formulations.
 
 ## Video
@@ -60,6 +61,6 @@ The published video is available on
 Portions of the editorial refinement benefited from iterative interactions with large language models used as
 analytical assistants. All claims, interpretations, and final formulations remain the author's responsibility.
 
-## BI-1 correction candidate
+## ENI-colour correction candidate
 
-Version 2.8, pending independent review and publication. Restores FibreErasure's H-suff condition and the distinction between its rank proof and numerical full-capacity support. Aligns the Einstein realisation with Gravity's scheme-separated conditional infrared metric response, not an exact bare-determinant extremum equation. The separate ENI-colour debt is outside this correction.
+Version 2.9, pending independent review and publication. States the colour reading of Section 5 as a conditional template: the sum-zero arithmetic of conjugate pairs and triples is not identified with colour, leptons, quarks or a spin-1/2 module, and the tower's premises are open. Corrects the direction of the confinement implication: colour-neutral observables emerging from coloured degrees of freedom force a non-injective colour projection, which takes colour neutrality as a premise and does not explain why free colour is unobserved.

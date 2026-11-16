@@ -26,7 +26,7 @@ A Structural No-Go Theorem}
 \author{J\'er\^ome Beau\thanks{Independent Researcher, Paris, France.
   \texttt{jerome.beau@cosmochrony.org}, ORCID 0009-0001-7697-7868.}}
 
-\date{2026, Version 2.8}
+\date{2026, Version 2.9}
 
 \begin{document}
 
@@ -44,9 +44,10 @@ A Structural No-Go Theorem}
     positive, $S_\Pi > 0$.
     From this we derive, as further results: (i) descriptive redundancy, non-injectivity, and $S_\Pi > 0$ are
     co-extensive, and any non-trivial gauge structure requires them; (ii) the compression is recursive and
-    exactly additive across a tower of emergent levels; (iii) wherever colour-neutral states are genuinely
-    emergent from coloured degrees of freedom, the colour projection is non-injective, making the
-    non-observability of free colour structural rather than dynamical.
+    exactly additive across a tower of emergent levels; (iii) wherever colour-neutral observables are genuinely
+    emergent from coloured degrees of freedom, the colour projection is non-injective; this constrains any such
+    emergence structurally, but takes the colour neutrality of the observables as a premise and does not explain
+    why free colour is unobserved.
     The theorem admits a categorical form (genuine emergence is the non-faithfulness of a functor) and an
     informational one (a strict, not merely non-negative, data-processing loss).
     It clarifies apparent counterexamples: exact holographic dualities, when fully faithful, are isomorphisms
@@ -111,11 +112,11 @@ A Structural No-Go Theorem}
   Second, the compression is recursive: applied to a tower of genuinely distinct effective levels, the theorem
   forces one independent non-injective projection per stratum, with projection entropies adding exactly across
   levels (Corollary~\ref{cor:recursive}).
-  Third, in any framework where colour-neutral states arise as genuinely emergent from coloured degrees of
-  freedom, the colour projection must be non-injective: the non-observability of free colour is then a
-  structural feature of the emergence rather than a separate dynamical mechanism (Section~\ref{sec:towers}).
-  This last point is a projective, model-independent reading of confinement, complementary to --- not a
-  replacement for --- its quantitative QCD dynamics.
+  Third, in any framework where colour-neutral observables arise as genuinely emergent from coloured degrees
+  of freedom, the colour projection must be non-injective (Section~\ref{sec:towers}).
+  The colour neutrality of the observable level is a premise of this statement, not its consequence: the
+  theorem constrains any emergence of colour-neutral observables, and leaves the dynamical question of why
+  free colour is unobserved to QCD.
 
   Framed this way, the theorem has a definite target: the possibility that a genuinely emergent description
   could nonetheless be faithful.
@@ -544,81 +545,70 @@ A Structural No-Go Theorem}
   single projection to a constraint on any stratified emergent framework.
   Each stratum is subject to Theorem~\ref{thm:main}; the non-injectivities at
   different strata are independent and additive in entropy.
-  We make this structure explicit in the same programme (Section~\ref{sec:scope}),
-  whose spectral admissibility sector identifies a natural tower, and draw a
-  consequence for colour confinement.
+  We illustrate it by a schematic tower whose premises are not established for any concrete
+  carrier, and state what the theorem does and does not say about colour confinement.
 
-  \subsection*{The admissibility tower}
+  \subsection*{A schematic tower}
 
-    This programme works with conjugate pairs
-    $\{c, q-c\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ as its fundamental observable units.
-    Conjugate pairs are colour-neutral by construction: $c + (q-c) = q \equiv 0$, so
-    the pair observable $\sigma_{\mathrm{pair}}(n) = \sigma_c(n) \cdot \sigma_{q-c}(n)$
-    retains no colour information.
-    Leptons, which are colourless, are naturally identified at this level.
+    The programme mentioned in the introduction (Section~\ref{sec:scope}) works with conjugate pairs
+    $\{c, q-c\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ and with sum-zero triples $\{c_1, c_2, c_3\}$ of
+    pairwise non-conjugate sectors.
+    The sums $c + (q-c)$ and $c_1 + c_2 + c_3$ vanish modulo $q$; this is an arithmetic property of the labels.
+    No result of the programme identifies it with colour neutrality, the pairs with leptons, the triples
+    with colour triplets, or the individual sectors with quarks: O31 asserts no colour-triplet
+    co-admissibility and no derivation of $\mathrm{SU}(3)$~\citep{Beau2026a35}, and O29 identifies no subspace
+    of its measured spaces with a spin-$\frac{1}{2}$ module~\citep{Beau2026a33}.
 
-    However, each element $c_i$ of a colour triplet
-    $\{c_1, c_2, c_3\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ (a sum-zero triple of
-    pairwise non-conjugate sectors, in the terminology of the programme)
-    already carries a two-dimensional Weil-trajectory space $V_\rho \cong \mathbb{C}^2$ ---
-    the spin-$\frac{1}{2}$ structure inherited from its own conjugate pair $\{c_i, q-c_i\}$
-    --- together with a colour eigenspace $\tilde{V}_{c_i} \cong \mathbb{C}$ selected
-    by Born--Infeld saturation.
-    The individual sector $c_i$ therefore carries simultaneously spin-$\frac{1}{2}$ and a
-    colour charge: the minimal quantum number content of a quark.
-
-    This identifies a tower of genuinely distinct emergent levels above the pre-geometric
-    substrate $\Omega_0$:
+    The colour reading below is therefore a template, not a realisation.
+    Suppose a framework supplies levels
     \begin{equation}
       \Omega_0
       \;\xrightarrow{\Pi_1}\;
-      \{\text{individual sectors } c_i\}
+      \{\text{coloured sectors}\}
       \;\xrightarrow{\Pi_2}\;
-      \{\text{colour-neutral pairs and triplets}\}
+      \{\text{colour-neutral composites}\}
       \;\xrightarrow{\Pi_3}\;
-      \{\text{leptons, hadrons}\}.
+      \{\text{hadronic observables}\}.
       \label{eq:tower}
     \end{equation}
-    Each arrow satisfies the hypotheses of Theorem~\ref{thm:main}: the target level is
-    genuinely distinct from the source (different symmetry group, different admissibility
-    structure, different observable content), and its observables are defined by the
-    projection.
-    By Corollary~\ref{cor:recursive}, each $\Pi_i$ is non-injective with
-    $S_{\Pi_i} > 0$.
+    Corollary~\ref{cor:recursive} applies to an arrow only if that arrow is surjective, the observables of
+    its target are defined by it, and its target is not isomorphic to its source.
+    These premises are not established for any concrete carrier proposed by the programme.
+    Where they hold, each $\Pi_i$ is non-injective with $S_{\Pi_i} > 0$.
 
-  \subsection*{Structural confinement}
+  \subsection*{What the theorem says about confinement}
 
-    The projection $\Pi_2$ in~\eqref{eq:tower} maps coloured sectors $c_i$ to
-    colour-neutral pairs and triplets.
-    Theorem~\ref{thm:main}, applied to this pair of adjacent levels, forces $\Pi_2$ to
-    be non-injective: distinct colour configurations --- distinct assignments of colours to
-    the three sectors $c_1, c_2, c_3$ --- map to the same colour-neutral observable.
+    Suppose the observable level of $\Pi_2$ in~\eqref{eq:tower} consists of colour-neutral composites
+    defined by $\Pi_2$, and is not isomorphic to the level of coloured sectors.
+    Theorem~\ref{thm:main} then forces $\Pi_2$ to be non-injective: distinct colour configurations of the
+    sectors map to the same colour-neutral observable, and $S_{\Pi_2} > 0$.
 
-    This is the structural content of colour confinement: individual coloured sectors are
-    not observable because $\Pi_2$ erases colour information.
-    Within the projective-emergent setting, confinement is not a dynamical accident
-    requiring a separate explanation; it is a structural necessity of the emergence of
-    colour-neutral observables from coloured degrees of freedom.
+    The direction of this implication matters.
+    That free colour is not observed is its premise --- the observable level is taken to be colour-neutral
+    --- and not its consequence.
+    Conversely, $S_{\Pi_2} > 0$ alone does not make colour unobservable: a non-injective map that forgets
+    some other label while resolving the colour of one sector also has $S_{\Pi_2} > 0$.
+    The theorem therefore supplies a structural constraint on any emergence of colour-neutral observables
+    from coloured degrees of freedom; why free colour is unobserved remains a dynamical question.
 
-    \begin{remark}[Confinement as projective necessity]
+    \begin{remark}[Colour neutrality as a constraint on the projection]
       \label{rem:confinement}
-      The present argument does not reproduce the quantitative features of QCD confinement
-      (string tension, running coupling, asymptotic freedom).
-      It establishes the weaker but more fundamental claim: any framework in which
-      colour-neutral hadrons arise as genuinely emergent from coloured sectors --- in the
-      sense of Definitions~\ref{def:defined-by-Pi} and~\ref{def:non-trivial} --- must have
-      a non-injective colour projection.
-      The non-observability of free colour charges is the observable signature of
-      $S_{\Pi_2} > 0$ at the colour stratum.
-      The quantitative dynamics of confinement is a supplementary question, analogous to
-      the question of which specific group $G_\Pi$ organises the fibre redundancy
-      (Remark~\ref{rem:converse}).
+      The present argument does not reproduce QCD confinement (string tension, running coupling,
+      asymptotic freedom).
+      It establishes a weaker statement: any framework in which colour-neutral hadrons arise as
+      genuinely emergent from coloured sectors --- in the sense of Definitions~\ref{def:defined-by-Pi}
+      and~\ref{def:non-trivial} --- must have a non-injective colour projection, and $S_{\Pi_2} > 0$
+      measures the configuration information that the colour-neutral level does not resolve.
+      Why the observable level is colour-neutral is not addressed; that question, like the question of
+      which specific group $G_\Pi$ organises the fibre redundancy (Remark~\ref{rem:converse}), is
+      supplementary.
     \end{remark}
 
   \subsection*{Recursive self-similarity}
 
     A structural consequence of Remark~\ref{rem:self-application} is that the compression
-    mechanism is self-similar across the tower~\eqref{eq:tower}: the same structural
+    mechanism is self-similar across any tower satisfying the premises of
+    Corollary~\ref{cor:recursive}, such as~\eqref{eq:tower} where they hold: the same structural
     argument --- surjectivity, informational completeness, non-isomorphism --- forces
     non-injectivity at each stratum, regardless of which stratum one takes as its own
     ``fundamental level.''
@@ -626,7 +616,7 @@ A Structural No-Go Theorem}
     is the first instance of a pattern that the theorem forces to repeat at every level of
     genuine emergence.
     This self-similarity is not postulated but derived: it is the content of
-    Corollary~\ref{cor:recursive} applied to each adjacent pair in the tower.
+    Corollary~\ref{cor:recursive} applied to each adjacent pair in such a tower.
 
   \section{Scope and Limits of the Result}
   \label{sec:scope}
@@ -1032,16 +1022,15 @@ A Structural No-Go Theorem}
   $\Pi$, and the non-injective structure of $\Pi$.
 
   \textbf{Recursive structure and the particle hierarchy.}
-  Corollary~\ref{cor:recursive} and Section~\ref{sec:towers} show that the
-  structural incompleteness of standard physics is not confined to its deepest level.
-  The Standard Model itself contains an internal tower of emergence: leptons and
-  hadrons are not fundamental objects but colour-neutral projections of coloured
-  degrees of freedom.
-  The projection from the quark level to the hadronic level is subject to
-  Theorem~\ref{thm:main} in its own right and is therefore necessarily non-injective.
-  This is a second instance of structural incompleteness within $\mathcal{O}$ itself:
-  the map $\Pi_{\mathrm{SM}} : \{\text{quarks}\} \to \{\text{hadrons}\}$ is a
-  non-injective projection whose fibre structure is currently described dynamically
+  Corollary~\ref{cor:recursive} and Section~\ref{sec:towers} show that, wherever their
+  premises hold, the structural incompleteness of standard physics is not limited to its deepest level.
+  Hadrons are colour-neutral bound states of coloured degrees of freedom.
+  If a framework defines a projection
+  $\Pi_{\mathrm{SM}} : \{\text{quark configurations}\} \to \{\text{hadrons}\}$ that is surjective,
+  defines the hadronic observables, and has a target not isomorphic to its source, then
+  Theorem~\ref{thm:main} makes it non-injective.
+  This would be a second instance of structural incompleteness within $\mathcal{O}$ itself:
+  a non-injective projection whose fibre structure is currently described dynamically
   (QCD) but not derived from a more primitive level.
   Theorem~\ref{thm:main} does not construct this fibre structure; it establishes that
   any framework which derives hadrons as genuinely emergent from quarks must have
