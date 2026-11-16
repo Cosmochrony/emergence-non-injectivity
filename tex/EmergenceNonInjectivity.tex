@@ -550,7 +550,8 @@ A Structural No-Go Theorem}
 
   \subsection*{A schematic tower}
 
-    The programme mentioned in the introduction (Section~\ref{sec:scope}) works with conjugate pairs
+    The pre-geometric projective programme whose concrete realisation is described in
+    Section~\ref{sec:levels} works with conjugate pairs
     $\{c, q-c\} \subset (\mathbb{Z}/q\mathbb{Z})^*$ and with sum-zero triples $\{c_1, c_2, c_3\}$ of
     pairwise non-conjugate sectors.
     The sums $c + (q-c)$ and $c_1 + c_2 + c_3$ vanish modulo $q$; this is an arithmetic property of the labels.
@@ -562,13 +563,15 @@ A Structural No-Go Theorem}
     The colour reading below is therefore a template, not a realisation.
     Suppose a framework supplies levels
     \begin{equation}
-      \Omega_0
-      \;\xrightarrow{\Pi_1}\;
-      \{\text{coloured sectors}\}
-      \;\xrightarrow{\Pi_2}\;
-      \{\text{colour-neutral composites}\}
-      \;\xrightarrow{\Pi_3}\;
-      \{\text{hadronic observables}\}.
+      \begin{aligned}
+        \Omega_0
+        &\;\xrightarrow{\Pi_1}\;
+        \{\text{coloured sectors}\}
+        \;\xrightarrow{\Pi_2}\;
+        \{\text{colour-neutral composites}\} \\
+        &\;\xrightarrow{\Pi_3}\;
+        \{\text{hadronic observables}\}.
+      \end{aligned}
       \label{eq:tower}
     \end{equation}
     Corollary~\ref{cor:recursive} applies to an arrow only if that arrow is surjective, the observables of
@@ -578,10 +581,10 @@ A Structural No-Go Theorem}
 
   \subsection*{What the theorem says about confinement}
 
-    Suppose the observable level of $\Pi_2$ in~\eqref{eq:tower} consists of colour-neutral composites
-    defined by $\Pi_2$, and is not isomorphic to the level of coloured sectors.
-    Theorem~\ref{thm:main} then forces $\Pi_2$ to be non-injective: distinct colour configurations of the
-    sectors map to the same colour-neutral observable, and $S_{\Pi_2} > 0$.
+    Suppose $\Pi_2$ in~\eqref{eq:tower} is surjective onto an observable level that consists of
+    colour-neutral composites defined by $\Pi_2$ and is not isomorphic to the level of coloured sectors.
+    Theorem~\ref{thm:main} then forces $\Pi_2$ to be non-injective: some distinct configurations of the
+    coloured sectors map to the same colour-neutral observable, and $S_{\Pi_2} > 0$.
 
     The direction of this implication matters.
     That free colour is not observed is its premise --- the observable level is taken to be colour-neutral
@@ -1035,10 +1038,9 @@ A Structural No-Go Theorem}
   Theorem~\ref{thm:main} does not construct this fibre structure; it establishes that
   any framework which derives hadrons as genuinely emergent from quarks must have
   $S_{\Pi_{\mathrm{SM}}} > 0$.
-  The quantities that QCD cannot derive from first principles --- the proton-to-electron
-  mass ratio $m_p/m_e$, the strong coupling constant $\alpha_s$ at a given scale ---
-  can be interpreted, in line with the general argument of this section, as invariants
-  of $\Pi_{\mathrm{SM}}$ not accessible from the hadronic level alone.
+  The strong coupling constant $\alpha_s$ at a given scale, which QCD takes as an input, can be
+  interpreted, in line with the general argument of this section, as an invariant of
+  $\Pi_{\mathrm{SM}}$ not accessible from the hadronic level alone.
 
   \textbf{Singularity elimination does not restore completeness.}
   A natural response is to propose a framework that eliminates the initial
