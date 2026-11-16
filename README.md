@@ -61,6 +61,6 @@ The published video is available on
 Portions of the editorial refinement benefited from iterative interactions with large language models used as
 analytical assistants. All claims, interpretations, and final formulations remain the author's responsibility.
 
-## ENI-colour correction candidate
+## Current version
 
-Version 2.9, pending independent review and publication. States the colour reading of Section 6 as a conditional template: the sum-zero arithmetic of conjugate pairs and triples is not identified with colour, leptons, quarks or a spin-1/2 module, and the tower's premises are open. Corrects the direction of the confinement implication: colour-neutral observables emerging from coloured degrees of freedom force a non-injective colour projection, which takes colour neutrality as a premise and does not explain why free colour is unobserved.
+Version 2.9. States the colour reading of Section 6 as a conditional template: the sum-zero arithmetic of conjugate pairs and triples is not identified with colour, leptons, quarks or a spin-1/2 module, and the tower's premises are open. Corrects the direction of the confinement implication: colour-neutral observables emerging from coloured degrees of freedom force a non-injective colour projection, which takes colour neutrality as a premise and does not explain why free colour is unobserved.
